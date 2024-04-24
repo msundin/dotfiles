@@ -198,8 +198,6 @@ vim.keymap.set('n', '<down>', '<C-w><C-j>', { desc = 'Escape from insert mode' }
 vim.keymap.set('n', '<up>', '<C-w><C-k>', { desc = 'Escape from insert mode' })
 vim.keymap.set('n', '<right>', '<C-w><C-l>', { desc = 'Escape from insert mode' })
 
-vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<CR>')
-
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -393,6 +391,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>fr', builtin.resume, { desc = '[F]ind [R]esume' })
       -- vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = '[F]ind [O]ld Files' })
       vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = '[F]ind [O]ld Files' })
+      vim.keymap.set('n', '<leader>fb', '<cmd>Telescope buffers<CR>')
       vim.keymap.set('n', '<leader><leader>', function()
         require('telescope.builtin').buffers {
           sort_mru = true,
@@ -647,7 +646,7 @@ require('lazy').setup({
     lazy = false,
     keys = {
       {
-        '<leader>f',
+        '<leader>fm',
         function()
           require('conform').format { async = true, lsp_fallback = true }
         end,
@@ -669,12 +668,13 @@ require('lazy').setup({
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        lua = { 'ktlint' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { "prettierd", "prettier" } },
+        javascript = { { 'prettierd', 'prettier' } },
       },
     },
   },
@@ -852,7 +852,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     opts = {
-      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'html', 'lua', 'luadoc', 'markdown', 'vim', 'vimdoc', 'kotlin' },
       -- Autoinstall languages that are not installed
       auto_install = true,
       highlight = {
