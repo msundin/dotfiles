@@ -193,10 +193,24 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- My custom keymaps:
 vim.keymap.set('i', 'jk', '<esc>', { desc = 'Escape from insert mode' })
 
+-- Window Navigation
 vim.keymap.set('n', '<left>', '<C-w><C-h>', { desc = 'Escape from insert mode' })
 vim.keymap.set('n', '<down>', '<C-w><C-j>', { desc = 'Escape from insert mode' })
 vim.keymap.set('n', '<up>', '<C-w><C-k>', { desc = 'Escape from insert mode' })
 vim.keymap.set('n', '<right>', '<C-w><C-l>', { desc = 'Escape from insert mode' })
+
+vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'Escape from insert mode' })
+
+-- Buffer Navigation
+vim.keymap.set('n', '<S-j>', ':bprevious<CR>', { silent = true })
+vim.keymap.set('n', '<S-k>', ':bnext<CR>', { silent = true })
+
+-- Jump List Navigation
+vim.keymap.set('n', '<S-h>', '<C-o>', { silent = true })
+vim.keymap.set('n', '<S-l>', '<C-i>', { silent = true })
+
+-- Tab Navigation
+vim.keymap.set('n', '<S-n>', ':tabnext<CR>', { silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -246,7 +260,7 @@ require('lazy').setup({
   --    require('Comment').setup({})
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',    opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -281,7 +295,7 @@ require('lazy').setup({
   -- after the plugin has been loaded:
   --  config = function() ... end
 
-  { -- Useful plugin to show you pending keybinds.
+  {                     -- Useful plugin to show you pending keybinds.
     'folke/which-key.nvim',
     event = 'VimEnter', -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
@@ -334,7 +348,7 @@ require('lazy').setup({
       { 'nvim-telescope/telescope-ui-select.nvim' },
 
       -- Useful for getting pretty icons, but requires a Nerd Font.
-      { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
+      { 'nvim-tree/nvim-web-devicons',            enabled = vim.g.have_nerd_font },
     },
     config = function()
       -- Telescope is a fuzzy finder that comes with a lot of different things that
@@ -434,11 +448,11 @@ require('lazy').setup({
 
       -- Useful status updates for LSP.
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',       opts = {} },
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
+      { 'folke/neodev.nvim',       opts = {} },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -517,7 +531,8 @@ require('lazy').setup({
 
           -- Opens a popup that displays documentation about the word under your cursor
           --  See `:help K` for why this keymap.
-          map('K', vim.lsp.buf.hover, 'Hover Documentation')
+          -- map('K', vim.lsp.buf.hover, 'Hover Documentation')
+          map('gK', vim.lsp.buf.hover, 'Hover Documentation')
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
