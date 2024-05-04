@@ -1,0 +1,134 @@
+" DOCUMENTATION
+"" Source your .vimrc
+" :source ~/.ideavimrc
+"" See all available commands
+" :actionlist
+
+set scrolloff=5
+set incsearch
+set hlsearch
+nnoremap <esc> :noh<return><esc>
+set linenumber
+set highlightedyank
+set showmode
+set showcmd
+set visualbell
+set clipboard+=unnamed
+set relativenumber
+set number
+set ignorecase
+set smartcase
+set easymotion
+set surround
+set commentary
+set NERDTree
+set which-key
+set notimeout
+
+ inoremap <C-j> <Action>(PopupMenu-selectNext)
+ inoremap <C-k> <Action>(PopupMenu-selectPrev)
+nmap ; :
+let g:NERDTreeMapActivateNode='l'
+let g:NERDTreeMapJumpParent='h'
+vnoremap < <gv
+vnoremap > >gv
+
+" map ESC to jk
+inoremap jk <esc>
+vnoremap jk <esc>
+let mapleader = " "
+" yank to clipboard
+set clipboard+=unnamed
+set idearefactormode=keep
+" these create newlines like o and O but stay in normal mode
+nmap zj o<Esc>k
+nmap zk O<Esc>j
+
+nmap <leader>fo <action>(RecentFiles)
+"nmap <leader>m <action>(RecentFiles)
+"nmap <leader>ff <action>(GotoClass)
+"vmap <leader>ff <action>(GotoClass)
+nmap <leader>ff <action>(SearchEverywhere)
+vmap <leader>ff <action>(SearchEverywhere)
+nmap <leader>fw <action>(FindInPath)
+vmap <leader>fw <action>(FindInPath)
+nmap [d <action>(MethodUp)
+nmap ]d <action>(MethodDown)
+nmap <leader>/ <action>(CommentByLineComment)
+vmap <leader>/ <action>(CommentByLineComment)
+nmap <leader>fe <action>(ExtractFunction)
+vmap <leader>fe <action>(ExtractFunction)
+nmap <leader>gb <action>(Annotate)
+nmap <leader>gt <action>(RecentChangedFiles)
+nmap <leader>x <action>(CloseEditor)
+
+" Special commands for Android Studio
+nmap <leader>b <action>(ToggleLineBreakpoint)
+nmap <leader>s <action>(ShowSettings)
+nmap <leader>a <action>(HideAllWindows)
+nmap <leader>rr <action>(Run)
+nmap <leader>rd <action>(Debug)
+nmap <leader>rs <action>(Stop)
+
+nmap gd <action>(GotoDeclarationOnly)
+"nmap <leader>d <action>(GotoDeclaration)
+nmap gD <action>(GotoTypeDeclaration)
+"nmap <leader>D <action>(GotoTypeDeclaration)
+nmap gr <action>(GotoDeclaration)
+"nmap <leader>u <action>(FindUsages)
+nmap gi <action>(GotoImplementation)
+nmap gs <action>(GotoSuperMethod)
+"nmap <leader>i <action>(GotoImplementation)
+nmap gK <action>(QuickImplementations)
+nmap T <action>(QuickImplementations)
+"nmap <leader>; <action>(QuickJavaDoc)
+"nmap <leader>t <action>(ExpressionTypeInfo)
+nmap ge <action>(GotoNextError)
+nmap gt <action>(GotoTest)
+
+
+nmap <leader>e <action>(SelectInProjectView)
+vmap <leader>e <action>(SelectInProjectView)
+"nmap <leader>e <action>(GotoNextError)
+"nmap <leader>f <action>(SelectInProjectView)
+
+nmap <leader>fm <action>(ReformatCode)
+"nmap <leader>z <action>(ReformatCode)
+nmap <leader>rn <action>(RenameElement)
+"nmap <leader>ra <action>(RenameElement)
+"nmap <leader>c <action>(RenameElement)
+
+"nmap <leader>n <action>(PrevSplitter)
+"nmap <leader>h <action>(Back)
+"nmap <leader>l <action>(Forward)
+"nmap <leader>j <action>(PreviousTab)
+"nmap <leader>k <action>(NextTab)
+
+nmap H <action>(Back)
+nmap L <action>(Forward)
+nmap J <action>(PreviousTab)
+nmap K <action>(NextTab)
+
+"nmap <leader>, <action>(GotoClass)
+nmap <leader>y <action>(CollapseRegion)
+nmap <leader>o <action>(ExpandRegion)
+nmap <leader>q <action>(GotoTest)
+
+nmap <C-w>s <action>(SplitHorizontally)
+"nmap <leader>ws <action>(SplitHorizontally)
+nmap <C-w>v <action>(SplitVertically)
+"nmap <leader>wv <action>(SplitVertically)
+"nmap <C-w>o <action>(CloseAllTabsInGroup)
+nmap <C-w>o <action>(CloseEditorsGroup)
+
+ nmap <leader>wd <action>(ToggleDistractionFreeMode)
+ nmap <leader>wz <action>(ToggleZenMode)
+
+"nmap <A-a> <action>(HideAllWindows)
+nmap <Right> <action>(NextSplitter)
+nmap <Left> <action>(PrevSplitter)
+"nmap <leader>ff <action>(ToggleFullScreen)
+
+" Find more examples here:
+" https://www.cyberwizard.io/posts/the-ultimate-ideavim-setup/
+" https://jb.gg/share-ideavimrc
