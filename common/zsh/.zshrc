@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -71,7 +71,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  # zsh-syntax-highlighting
+  zsh-syntax-highlighting
   history-substring-search
   colored-man-pages
   zsh-autosuggestions
@@ -87,13 +87,40 @@ plugins=(
   jsontools
   git
   gh
-  jira
-  #vi-mode
+  # jira
+  # vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# Start ssh agent
+eval "$(ssh-agent -s)"
+
+export RANGER_LOAD_DEFAULT_RC="false"
+bindkey -v '^?' backward-delete-char
+
+case "$TERM" in
+  alacritty)
+    export TERM="xterm-256color"
+    ;;
+esac
+
+if [[ "$(uname)" == "Darwin" ]]; then
+  ### Commands specific to macOS
+
+  # To be able to run X11 applications (like feh) on Mac with xQuartz
+  export DISPLAY=:0
+
+  export PATH=$HOME/.local/bin:$PATH
+  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+else
+  ### Commands specific elsewhere, e.g. Linux
+
+  alias -s {png,jpg}=feh
+  alias -s {pdf}=brave
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -117,17 +144,16 @@ export VISUAL=nvim
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-
-### OTHER ### 
-export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
-bindkey -v '^?' backward-delete-char
-### To be able to run X11 applications (like feh) on Mac with xQuartz
-export DISPLAY=:0
-
+#
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias zshconfig='nvim ~/.zshrc'
+alias ohmyzsh='nvim ~/.oh-my-zsh'
+alias tmux='TERM=screen-256color tmux'
+alias clip='xclip -selection clipboard'
+
 alias v='nvim' # default Neovim config
 alias vz='NVIM_APPNAME=nvim-lazyvim nvim' # LazyVim
 alias vc='NVIM_APPNAME=nvim-nvchad nvim' # NvChad
@@ -138,16 +164,13 @@ alias vl='NVIM_APPNAME=lvim lvim' # LunarVim
 vv() {
   # Assumes all configs exist in directories named ~/.config/nvim-*
   local config=$(fd --max-depth 1 --glob 'nvim-*' ~/.config | fzf --prompt="Neovim Configs > " --height=~50% --layout=reverse --border --exit-0)
- 
+
   # If I exit fzf without selecting a config, don't open Neovim
   [[ -z $config ]] && echo "No config selected" && return
- 
+
   # Open Neovim with the selected config
   NVIM_APPNAME=$(basename $config) nvim $@
 }
-
-export PATH=/Users/msundin2/.local/bin:$PATH
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
