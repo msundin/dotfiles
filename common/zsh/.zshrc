@@ -87,16 +87,26 @@ plugins=(
   jsontools
   git
   gh
+  zsh-vi-mode
   # jira
-  # vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+## zsh-vi-mode plugin
+# Bind jk to ESC
+ZVM_VI_INSERT_ESCAPE_BINDKEY='jk'
+
 export RANGER_LOAD_DEFAULT_RC="false"
-bindkey -v '^?' backward-delete-char
+# Enable vi-mode
+# NOTE: I run the zsh-vi-mode plugin instead!
+# bindkey -v
+# set jk to ESC
+# bindkey -M viins 'jk' vi-cmd-mode
+# Set Backspace key to delete the character behind the cursor
+# bindkey '^?' backward-delete-char
 
 case "$TERM" in
   alacritty)
@@ -111,7 +121,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
   export DISPLAY=:0
 
   export PATH=$HOME/.local/bin:$PATH
-  source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 else
   ### Commands specific elsewhere, e.g. Linux
 
