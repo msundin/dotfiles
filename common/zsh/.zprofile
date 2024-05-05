@@ -3,6 +3,9 @@ if ! pgrep -u "$USER" ssh-agent > /dev/null; then
     eval "$(ssh-agent -s)"
 fi
 
+# Used only for Lunarvim?
+export PATH=$HOME/.local/bin:$PATH
+
 if [[ "$(uname)" == "Darwin" ]]; then
   ### Commands specific to macOS
 
@@ -11,8 +14,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
       eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 
-  # Used only for Lunarvim?
-  export PATH=$HOME/.local/bin:$PATH
 else
   ### Commands specific elsewhere, e.g. Linux
 
