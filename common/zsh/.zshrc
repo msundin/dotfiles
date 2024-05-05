@@ -70,12 +70,22 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
+## zsh-vi-mode plugin
+# NOTE: Has to be placed before the 'ZVM_INIT_MODE=sourcing', otherwise 'jk' will not work
+# Bind jk to ESC
+ZVM_VI_INSERT_ESCAPE_BINDKEY='jk'
+
+# NOTE: Without this zsh-vi-mode plugin breaks command history search CTRL-R, enabled by fzf plugin
+# NOTE: zsh-vi-mode also has to be placed before fzf amongst the plugins
+ZVM_INIT_MODE=sourcing
+
 plugins=(
+  zsh-vi-mode
   zsh-syntax-highlighting
   history-substring-search
   colored-man-pages
   zsh-autosuggestions
-  fzf
   z
   emoji
   sudo
@@ -87,17 +97,13 @@ plugins=(
   jsontools
   git
   gh
-  zsh-vi-mode
+  fzf
   # jira
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-## zsh-vi-mode plugin
-# Bind jk to ESC
-ZVM_VI_INSERT_ESCAPE_BINDKEY='jk'
 
 export RANGER_LOAD_DEFAULT_RC="false"
 # Enable vi-mode
