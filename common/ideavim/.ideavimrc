@@ -25,8 +25,8 @@ set NERDTree
 set which-key
 set notimeout
 
- inoremap <C-j> <Action>(PopupMenu-selectNext)
- inoremap <C-k> <Action>(PopupMenu-selectPrev)
+inoremap <C-j> <Action>(PopupMenu-selectNext)
+inoremap <C-k> <Action>(PopupMenu-selectPrev)
 nmap ; :
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
@@ -64,7 +64,7 @@ nmap <leader>x <action>(CloseEditor)
 
 " Special commands for Android Studio
 nmap <leader>b <action>(ToggleLineBreakpoint)
-nmap <leader>s <action>(ShowSettings)
+nmap <leader>p <action>(ShowSettings)
 nmap <leader>a <action>(HideAllWindows)
 nmap <leader>rr <action>(Run)
 nmap <leader>rd <action>(Debug)
@@ -84,7 +84,7 @@ nmap T <action>(QuickImplementations)
 "nmap <leader>; <action>(QuickJavaDoc)
 "nmap <leader>t <action>(ExpressionTypeInfo)
 nmap ge <action>(GotoNextError)
-nmap gt <action>(GotoTest)
+"nmap gt <action>(GotoTest)
 
 
 nmap <leader>e <action>(SelectInProjectView)
