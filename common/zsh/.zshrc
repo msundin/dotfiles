@@ -85,8 +85,10 @@ plugins=(
   zsh-syntax-highlighting
   history-substring-search
   colored-man-pages
-  zsh-autosuggestions
-  z
+  ## Seems lik it conflicts with SPACE+TAB in zoxide
+  # zsh-autosuggestions
+  ## Use zoxide, installed via paru/brew, instead of z
+  # z
   emoji
   sudo
   web-search
@@ -104,6 +106,9 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+eval "$(zoxide init --cmd cd zsh)"
+# eval "$(zoxide init zsh)"
 
 export RANGER_LOAD_DEFAULT_RC="false"
 # Enable vi-mode
