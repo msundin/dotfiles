@@ -107,6 +107,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Bash scripts
+export PATH=$HOME/scripts/bash:$PATH
+
 eval "$(zoxide init --cmd cd zsh)"
 # eval "$(zoxide init zsh)"
 
@@ -188,6 +191,8 @@ vv() {
   # Open Neovim with the selected config
   NVIM_APPNAME=$(basename $config) nvim $@
 }
+
+[ -f ~/aliases_private.zsh ] && source ~/aliases_private.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
