@@ -1,0 +1,53 @@
+#!/bin/bash
+
+# Function to fetch PR data, now includes state parameter and optional review-requested search
+fetch_pr_data() {
+    local state="$1"
+    local review_requested="$2"
+    local search_option=""
+    if [ -n "$review_requested" ]; then
+        # Properly handle the nested quoting for the CLI command
+        search_option="--search review-requested:$review_requested"
+    fi
+    gh pr list --json number,title,author,updatedAt,isDraft,additions,deletions,url --limit 2000 --state "$state" $search_option
+}
+
+# Function to format and output PR data with two spaces between columns
+process_pr_data() {
+    local users_json=""
+    if [ -z "$1" ]; then
+        # If no usernames are provided, set users_json to an empty array in JSON
+        users_json="[]"
+    else
+        # Else, convert the comma-separated usernames to a JSON array
+        users_json=$(jq -Rc '[split(",")[] | select(length > 0)]' <<< "$1")
+    fi
+    jq --argjson users "$users_json" -r '
+        map(if $users | length == 0 then .  # If no users are specified, include all PRs
+            else select(.isDraft == false and (.author.login | IN($users[])))
+            end)
+        | sort_by(.updatedAt)
+        | reverse
+        | .[]
+        | "+\((.additions | tostring | .[0:5] + " " * (5 - length))) -\((.deletions | tostring | .[0:5] + " " * (5 - length))) \((.title | tostring | .[0:120] + " " * (120 - length)))\n\((.author.login | tostring | .[0:12] + " " * (12 - length)))  \((.updatedAt | strptime("%Y-%m-%dT%H:%M:%SZ") | strftime("%y%m%d-%H:%M")))  \(.url)\n"
+    ' <<< "$2"
+}
+
+# Main function to control flow, now accepts state as a second argument and an optional review-requested parameter
+main() {
+    local usernames="$1"
+    local state="$2"
+    local review_requested="$3"
+    local pr_data=$(fetch_pr_data "$state" "$review_requested")
+    process_pr_data "$usernames" "$pr_data"
+}
+
+# Check if at least two arguments are provided
+if [ $# -lt 2 ]; then
+    echo "Usage: $0 username1[,username2,...] state [review-requested]"
+    exit 1
+fi
+
+# Call the main function with the first three arguments
+main "$1" "$2" "$3"
+
