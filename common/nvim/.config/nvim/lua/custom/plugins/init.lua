@@ -21,6 +21,11 @@ return {
   },
 
   {
+    'tpope/vim-fugitive',
+    cmd = 'Git',
+  },
+
+  {
     'NeogitOrg/neogit',
     dependencies = {
       'nvim-lua/plenary.nvim', -- required
