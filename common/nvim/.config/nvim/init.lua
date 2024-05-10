@@ -209,7 +209,7 @@ vim.keymap.set('n', '<S-h>', '<C-o>', { silent = true })
 vim.keymap.set('n', '<S-l>', '<C-i>', { silent = true })
 
 -- Tab Navigation
-vim.keymap.set('n', '<S-n>', ':tabnext<CR>', { silent = true })
+-- vim.keymap.set('n', '<S-n>', ':tabnext<CR>', { silent = true })
 
 -- Run applications
 vim.keymap.set('n', 'rrk', '<cmd>KotlinRun<CR>', { desc = 'Compile and run Kotlin code' })
@@ -920,6 +920,7 @@ require('lazy').setup({
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.lualine',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
