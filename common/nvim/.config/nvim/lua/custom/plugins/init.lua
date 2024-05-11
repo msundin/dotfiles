@@ -30,6 +30,17 @@ return {
   },
 
   {
+    -- amongst your other plugins
+    {
+      'akinsho/toggleterm.nvim',
+      version = '*',
+      opts = {--[[ things you want to change go here]]
+        direction = 'float',
+      },
+    },
+  },
+
+  {
     'folke/noice.nvim',
     event = 'VeryLazy',
     enabled = true,

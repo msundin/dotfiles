@@ -208,6 +208,8 @@ vim.keymap.set('n', '<S-k>', ':bnext<CR>', { silent = true })
 vim.keymap.set('n', '<S-h>', '<C-o>', { silent = true })
 vim.keymap.set('n', '<S-l>', '<C-i>', { silent = true })
 
+vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', { noremap = true, silent = true })
+vim.keymap.set('t', '<leader>t', '<Cmd>ToggleTerm<CR>', { noremap = true, silent = true })
 -- Tab Navigation
 -- vim.keymap.set('n', '<S-n>', ':tabnext<CR>', { silent = true })
 
@@ -319,7 +321,7 @@ require('lazy').setup({
         -- ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>f'] = { name = '[F]ind', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
+        -- ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
         ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
       }
       -- visual mode
