@@ -208,8 +208,8 @@ vim.keymap.set('n', '<S-k>', ':bnext<CR>', { silent = true })
 vim.keymap.set('n', '<S-h>', '<C-o>', { silent = true })
 vim.keymap.set('n', '<S-l>', '<C-i>', { silent = true })
 
-vim.keymap.set('n', '<leader>t', ':ToggleTerm<CR>', { noremap = true, silent = true })
-vim.keymap.set('t', '<leader>t', '<Cmd>ToggleTerm<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<C-t>', ':ToggleTerm<CR>', { noremap = true, silent = true })
+vim.keymap.set('t', '<C-t>', '<Cmd>ToggleTerm<CR>', { noremap = true, silent = true })
 -- Tab Navigation
 -- vim.keymap.set('n', '<S-n>', ':tabnext<CR>', { silent = true })
 
