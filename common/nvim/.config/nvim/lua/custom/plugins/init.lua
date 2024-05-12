@@ -75,7 +75,7 @@ return {
         },
       }
       require('notify').setup {
-        timeout = 10000,
+        timeout = 6000,
       }
     end,
   },
