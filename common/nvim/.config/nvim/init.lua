@@ -204,12 +204,12 @@ vim.keymap.set('n', '<right>', '<C-w><C-l>', { desc = 'Escape from insert mode' 
 vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'Escape from insert mode' })
 
 -- Buffer Navigation
-vim.keymap.set('n', '<S-j>', ':bprevious<CR>', { silent = true })
-vim.keymap.set('n', '<S-k>', ':bnext<CR>', { silent = true })
+vim.keymap.set('n', '<leader>j', ':bprevious<CR>', { silent = true })
+vim.keymap.set('n', '<leader>k', ':bnext<CR>', { silent = true })
 
 -- Jump List Navigation
-vim.keymap.set('n', '<S-h>', '<C-o>', { silent = true })
-vim.keymap.set('n', '<S-l>', '<C-i>', { silent = true })
+vim.keymap.set('n', '<leader>h', '<C-o>', { silent = true })
+vim.keymap.set('n', '<leader>l', '<C-i>', { silent = true })
 
 vim.keymap.set('n', '<C-t>', ':ToggleTerm<CR>', { noremap = true, silent = true })
 vim.keymap.set('t', '<C-t>', '<Cmd>ToggleTerm<CR>', { noremap = true, silent = true })
@@ -943,7 +943,7 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  require 'kickstart.plugins.indent_line',
+  -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',

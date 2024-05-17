@@ -81,6 +81,29 @@ return {
   },
 
   {
+    'stevearc/oil.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('oil').setup {
+        columns = { 'icon' },
+        keymaps = {
+          ['<C-h>'] = false,
+          ['<M-h>'] = 'actions.select_split',
+        },
+        view_options = {
+          show_hidden = true,
+        },
+      }
+
+      -- Open parent directory in current window
+      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+
+      -- Open parent directory in floating window
+      vim.keymap.set('n', '<space>-', require('oil').toggle_float)
+    end,
+  },
+
+  {
     'NeogitOrg/neogit',
     dependencies = {
       'nvim-lua/plenary.nvim', -- required
@@ -139,21 +162,24 @@ return {
       vim.keymap.set('n', '<leader>a', function()
         harpoon:list():add()
       end)
-      vim.keymap.set('n', '<leader>h', function()
+      vim.keymap.set('n', '<leader>z', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end)
 
-      vim.keymap.set('n', '<leader>j', function()
+      vim.keymap.set('n', '<leader>1', function()
         harpoon:list():select(1)
       end)
-      vim.keymap.set('n', '<leader>k', function()
+      vim.keymap.set('n', '<leader>2', function()
         harpoon:list():select(2)
       end)
-      vim.keymap.set('n', '<leader>l', function()
+      vim.keymap.set('n', '<leader>3', function()
         harpoon:list():select(3)
       end)
-      vim.keymap.set('n', '<leader>;', function()
+      vim.keymap.set('n', '<leader>4', function()
         harpoon:list():select(4)
+      end)
+      vim.keymap.set('n', '<leader>5', function()
+        harpoon:list():select(5)
       end)
 
       -- Toggle previous & next buffers stored within Harpoon list
