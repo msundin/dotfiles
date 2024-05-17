@@ -190,6 +190,9 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- My custom keymaps:
+-- Needed for markdown in Obsidian
+vim.opt.conceallevel = 2
+
 vim.keymap.set('i', 'jk', '<esc>', { desc = 'Escape from insert mode' })
 
 -- Window Navigation

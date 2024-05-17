@@ -9,7 +9,7 @@ fetch_pr_data() {
         # Properly handle the nested quoting for the CLI command
         search_option="--search review-requested:$review_requested"
     fi
-    gh pr list --json number,title,author,updatedAt,isDraft,additions,deletions,url --limit 2000 --state "$state" $search_option
+    gh pr list --json number,title,author,updatedAt,isDraft,additions,deletions,url --limit 1000 --state "$state" $search_option
 }
 
 # Function to format and output PR data with two spaces between columns

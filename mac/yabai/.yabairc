@@ -114,6 +114,7 @@ yabai -m rule --add app="^Spotify$" space=7
 yabai -m rule --add app="Outlook$" space=5
 
 # Floating
+yabai -m rule --add app="^Nextcloud" manage=off
 yabai -m rule --add app="^Microsoft Teams" manage=off
 yabai -m rule --add app='^System Preferences$' manage=off
 yabai -m rule --add title='Preferences$' manage=off
