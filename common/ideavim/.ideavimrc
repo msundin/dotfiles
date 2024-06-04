@@ -85,7 +85,8 @@ nmap gK <action>(QuickImplementations)
 nmap T <action>(QuickImplementations)
 "nmap <leader>; <action>(QuickJavaDoc)
 "nmap <leader>t <action>(ExpressionTypeInfo)
-nmap ge <action>(GotoNextError)
+nmap [d <action>(GotoPreviousError)
+nmap ]d <action>(GotoNextError)
 "nmap gt <action>(GotoTest)
 
 
