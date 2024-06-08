@@ -6,16 +6,9 @@
 CURRENT_DIR=$(pwd)
 echo "Current directory path: $CURRENT_DIR"
 
-# Extract the last directory from the current path
-LAST_DIR=$(basename "$CURRENT_DIR")
-
-# Print the last directory
-echo "The last directory in the current path is: $LAST_DIR"
-
-VAULT_DIR="~/$USER/nextcloud/obsidian-vaults/$LAST_DIR"
+VAULT_DIR="$CURRENT_DIR"
 SOURCE_DIR="zettelkasten"
 DEST_DIR="notes"
-
 
 # Iterate through all markdown files in the source directory
 find "$VAULT_DIR/$SOURCE_DIR" -type f -name "*.md" | while read -r file; do
