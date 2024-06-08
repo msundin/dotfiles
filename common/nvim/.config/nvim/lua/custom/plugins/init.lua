@@ -195,14 +195,24 @@ return {
   {
     'epwalsh/obsidian.nvim',
     version = '*', -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = 'markdown',
+    lazy = false,
+    -- ft = 'markdown',
     -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
     -- event = {
     --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
     --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
     --   "BufReadPre path/to/my-vault/**.md",
     --   "BufNewFile path/to/my-vault/**.md",
+    -- },
+    -- event = {
+    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+    --   'BufReadPre '
+    --     .. vim.fn.expand '~'
+    --     .. '/mattias/nextcloud/obsidian-vaults/work/**',
+    --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/work/**',
+    --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
+    --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
     -- },
     dependencies = {
       -- Required.
@@ -272,7 +282,7 @@ return {
           opts = { buffer = true, expr = true },
         },
       },
-
+      vim.keymap.set('n', '<leader>oto', '<cmd>ObsidianToday<CR>', { desc = 'Obsidian daily note' }),
       -- Where to put new notes. Valid options are
       --  * "current_dir" - put new notes in same directory as the current buffer.
       --  * "notes_subdir" - put new notes in the default notes subdirectory.
@@ -285,17 +295,17 @@ return {
         -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
         -- In this case a note with the title 'My new note' will be given an ID that looks
         -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
-        local suffix = ''
+        local prefix = ''
         if title ~= nil then
           -- If title is given, transform it into valid file name.
-          suffix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
+          prefix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
         else
           -- If title is nil, just add 4 random uppercase letters to the suffix.
           for _ = 1, 4 do
-            suffix = suffix .. string.char(math.random(65, 90))
+            prefix = prefix .. string.char(math.random(65, 90))
           end
         end
-        return os.date '%y%m%d-%H%M%S' .. '-' .. suffix
+        return prefix .. '-' .. os.date '%y%m%d-%H%M%S'
         -- return tostring(os.time()) .. '-' .. suffix
       end,
 
