@@ -173,6 +173,9 @@ alias zshconfig='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias tmux='TERM=screen-256color tmux'
 alias clip='xclip -selection clipboard'
+# Obsidian
+alias ow='cd ~/nextcloud/obsidian-vaults/work/'
+alias op='cd ~/nextcloud/obsidian-vaults/personal/'
 
 alias v='nvim' # default Neovim config
 alias vz='NVIM_APPNAME=nvim-lazyvim nvim' # LazyVim

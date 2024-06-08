@@ -75,7 +75,7 @@ return {
         },
       }
       require('notify').setup {
-        timeout = 6000,
+        -- timeout = 5000,
       }
     end,
   },
@@ -232,7 +232,7 @@ return {
         },
       },
       -- Optional, if you keep notes in a specific subdirectory of your vault.
-      notes_subdir = 'notes',
+      notes_subdir = 'inbox',
 
       -- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
       -- levels defined by "vim.log.levels.*".
@@ -282,7 +282,19 @@ return {
           opts = { buffer = true, expr = true },
         },
       },
-      vim.keymap.set('n', '<leader>oto', '<cmd>ObsidianToday<CR>', { desc = 'Obsidian daily note' }),
+      vim.keymap.set('n', '<leader>onn', '<cmd>ObsidianNew<CR>', { desc = 'Obsidian new note' }),
+      vim.keymap.set('n', '<leader>ont', '<cmd>ObsidianTemplate<CR>', { desc = 'Obsidian new template note' }),
+      vim.keymap.set('n', '<leader>ond', '<cmd>ObsidianToday<CR>', { desc = 'Obsidian new daily note for today' }),
+      vim.keymap.set('n', '<leader>off', '<cmd>ObsidianQuickSwitch<CR>', { desc = 'Obsidian find file' }),
+      vim.keymap.set('n', '<leader>ofg', '<cmd>ObsidianSearch<CR>', { desc = 'Obsidian find in file and filename with grep' }),
+      vim.keymap.set('n', '<leader>oo', '<cmd>ObsidianOpen<CR>', { desc = 'Obsidian open note in app' }),
+      vim.keymap.set('n', '<leader>ot', '<cmd>ObsidianTags<CR>', { desc = 'Obsidian tags' }),
+      vim.keymap.set('n', '<leader>ol', '<cmd>ObsidianLinks<CR>', { desc = 'Obsidian links' }),
+      vim.keymap.set('n', '<leader>obl', '<cmd>ObsidianBacklinks<CR>', { desc = 'Obsidian backlinks' }),
+      vim.keymap.set('n', '<leader>od', '<cmd>ObsidianDailies<CR>', { desc = 'Obsidian daily notes' }),
+      vim.keymap.set('n', '<leader>ov', '<cmd>ObsidianWorkspace<CR>', { desc = 'Obsidian switch to other vault/workspace' }),
+      -- vim.keymap.set('n', '<leader>otom', '<cmd>ObsidianTomorrow<CR>', { desc = 'Obsidian daily note for tomorrow' }),
+      -- vim.keymap.set('n', '<leader>oyes', '<cmd>ObsidianYesterday<CR>', { desc = 'Obsidian daily note for yesterday' }),
       -- Where to put new notes. Valid options are
       --  * "current_dir" - put new notes in same directory as the current buffer.
       --  * "notes_subdir" - put new notes in the default notes subdirectory.
@@ -295,17 +307,17 @@ return {
         -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
         -- In this case a note with the title 'My new note' will be given an ID that looks
         -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
-        local prefix = ''
+        local suffix = ''
         if title ~= nil then
           -- If title is given, transform it into valid file name.
-          prefix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
+          suffix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
         else
           -- If title is nil, just add 4 random uppercase letters to the suffix.
           for _ = 1, 4 do
-            prefix = prefix .. string.char(math.random(65, 90))
+            suffix = suffix .. string.char(math.random(65, 90))
           end
         end
-        return prefix .. '-' .. os.date '%y%m%d-%H%M%S'
+        return os.date '%y%m%d-%H%M' .. '_' .. suffix
         -- return tostring(os.time()) .. '-' .. suffix
       end,
 
@@ -355,7 +367,7 @@ return {
           note:add_alias(note.title)
         end
 
-        local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+        local out = { id = note.id, aliases = note.aliases, tags = note.tags, hubs = '' }
 
         -- `note.metadata` contains any manually added fields in the frontmatter.
         -- So here we just make sure those fields are kept in the frontmatter.
