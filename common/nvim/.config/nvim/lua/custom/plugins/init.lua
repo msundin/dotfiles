@@ -293,6 +293,46 @@ return {
       vim.keymap.set('n', '<leader>obl', '<cmd>ObsidianBacklinks<CR>', { desc = 'Obsidian backlinks' }),
       vim.keymap.set('n', '<leader>od', '<cmd>ObsidianDailies<CR>', { desc = 'Obsidian daily notes' }),
       vim.keymap.set('n', '<leader>ov', '<cmd>ObsidianWorkspace<CR>', { desc = 'Obsidian switch to other vault/workspace' }),
+
+      --------------
+      -- obsidian --
+      --------------
+      --
+      -- >>> op/ow/od # from shell, navigate to vault (optional)
+      --
+      -- # NEW NOTE
+      -- >>> ))) <leader>onn
+      -- >>> ))) # add tag, e.g. fact / blog / video / etc..
+      -- >>> ))) # add hubs, e.g. "[[python]]", "[[machine-learning]]", etc...
+      --
+      -- # END OF DAY/WEEK REVIEW
+      -- >>> or # review notes in inbox
+      -- >>>
+      -- >>> ))) <leader>ok # inside vim now, move to zettelkasten
+      -- >>> ))) <leader>od # or delete
+      -- >>>
+      -- >>> og # organize saved notes from zettelkasten into notes/[tag] folders
+      -- >>> ou # sync local with Notion
+      --
+      -- navigate to vault
+      vim.keymap.set('n', '<leader>op', ':cd ~/nextcloud/obsidian-vaults/personal/<cr>'),
+      vim.keymap.set('n', '<leader>ow', ':cd ~/nextcloud/obsidian-vaults/work/<cr>'),
+      --
+      -- strip date from note title and replace dashes with spaces
+      -- must have cursor on title
+      -- vim.keymap.set("n", "<leader>of", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>")
+      --
+      -- for review workflow
+      -- move file in current buffer to zettelkasten folder
+      vim.keymap.set('n', '<leader>ok', function()
+        local currentdir = vim.loop.cwd()
+        local filepath = vim.fn.expand '%:p'
+        local targetdir = currentdir .. '/zettelkasten'
+        local cmd = string.format("mv '%s' '%s'", filepath, targetdir)
+        vim.fn.system(cmd)
+        vim.cmd 'bd'
+      end, { noremap = true, silent = true }),
+      vim.keymap.set('n', '<leader>ox', ":!mv '%:p' .trash<cr>:bd<cr>"),
       -- vim.keymap.set('n', '<leader>otom', '<cmd>ObsidianTomorrow<CR>', { desc = 'Obsidian daily note for tomorrow' }),
       -- vim.keymap.set('n', '<leader>oyes', '<cmd>ObsidianYesterday<CR>', { desc = 'Obsidian daily note for yesterday' }),
       -- Where to put new notes. Valid options are
