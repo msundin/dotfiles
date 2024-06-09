@@ -68,10 +68,11 @@ shift + alt - 0 : yabai -m window --space 10
 ### INSERT ###
 # set insertion point in focused container
 #####
-ctrl - h : yabai -m window --insert west
-ctrl - j : yabai -m window --insert south
-ctrl - k : yabai -m window --insert north
-ctrl - l : yabai -m window --insert east
+# TODO: ctrl - h etc conflicts with ctrl usage in cli and neovim and changing to cmd gives problems to. Revisit shortcut for this.
+# ctrl - h : yabai -m window --insert west
+# ctrl - j : yabai -m window --insert south
+# ctrl - k : yabai -m window --insert north
+# ctrl - l : yabai -m window --insert east
 # alt + cmd - h : yabai -m window --insert west
 # alt + cmd - j : yabai -m window --insert south
 # alt + cmd - k : yabai -m window --insert north
