@@ -14,8 +14,8 @@ DEST_DIR="notes"
 find "$VAULT_DIR/$SOURCE_DIR" -type f -name "*.md" | while read -r file; do
   echo "Processing $file"
 
-  # Extract the hub from the file. This assumes the hub is on the line immediately following "hubs:"
-  hub=$(awk '/hubs:/{getline; print; exit}' "$file" | sed -e 's/^ *- *//' -e 's/^ *//;s/ *$//' -e 's/\[\[\(.*\)\.md\]\]/\1/')
+  # Extract the hub from the file. This assumes the hub is on the line immediately following "hub:"
+  hub=$(awk '/hub:/{getline; print; exit}' "$file" | sed -e 's/^ *- *//' -e 's/^ *//;s/ *$//' -e 's/\[\[\(.*\)\]\]/\1/' -e 's/[" ]//g')
 
   echo "Found hub $hub"
 

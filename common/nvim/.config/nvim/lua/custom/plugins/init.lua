@@ -315,8 +315,8 @@ return {
       -- >>> ou # sync local with Notion
       --
       -- navigate to vault
-      vim.keymap.set('n', '<leader>op', ':cd ~/nextcloud/obsidian-vaults/personal/<cr>'),
-      vim.keymap.set('n', '<leader>ow', ':cd ~/nextcloud/obsidian-vaults/work/<cr>'),
+      vim.keymap.set('n', '<leader>op', ':cd ~/nextcloud/obsidian-vaults/personal/<cr>', { desc = 'Obsidian switch to personal vault/workspace' }),
+      vim.keymap.set('n', '<leader>ow', ':cd ~/nextcloud/obsidian-vaults/work/<cr>', { desc = 'Obsidian switch to work vault/workspace' }),
       --
       -- strip date from note title and replace dashes with spaces
       -- must have cursor on title
@@ -331,8 +331,8 @@ return {
         local cmd = string.format("mv '%s' '%s'", filepath, targetdir)
         vim.fn.system(cmd)
         vim.cmd 'bd'
-      end, { noremap = true, silent = true }),
-      vim.keymap.set('n', '<leader>ox', ":!mv '%:p' .trash<cr>:bd<cr>"),
+      end, { noremap = true, silent = true, desc = 'Obsidian move reviewed OK file to zettelkasten directory' }),
+      vim.keymap.set('n', '<leader>orm', ":!mv '%:p' .trash<cr>:bd<cr>", { desc = 'Obsidian move reviewed NOK file to .trash directory' }),
       -- vim.keymap.set('n', '<leader>otom', '<cmd>ObsidianTomorrow<CR>', { desc = 'Obsidian daily note for tomorrow' }),
       -- vim.keymap.set('n', '<leader>oyes', '<cmd>ObsidianYesterday<CR>', { desc = 'Obsidian daily note for yesterday' }),
       -- Where to put new notes. Valid options are
@@ -350,7 +350,7 @@ return {
         local suffix = ''
         if title ~= nil then
           -- If title is given, transform it into valid file name.
-          suffix = title:gsub(' ', '-'):gsub('[^A-Za-z0-9-]', ''):lower()
+          suffix = title:gsub(' ', '-'):gsub('[^A-Öa-ö0-9-]', ''):lower()
         else
           -- If title is nil, just add 4 random uppercase letters to the suffix.
           for _ = 1, 4 do
@@ -407,7 +407,7 @@ return {
           note:add_alias(note.title)
         end
 
-        local out = { id = note.id, aliases = note.aliases, tags = note.tags, hubs = '' }
+        local out = { id = note.id, aliases = note.aliases, hub = '', tags = note.tags }
 
         -- `note.metadata` contains any manually added fields in the frontmatter.
         -- So here we just make sure those fields are kept in the frontmatter.
