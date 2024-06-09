@@ -3,73 +3,75 @@
 # alt - c : osascript /Users/msundin2/dev/scripts/new-alacritty-window.scpt
 # open terminal
 
-# ctrl - c : skhd --key "cmd - c"
-# ctrl - v : skhd --key "cmd - v"
-# ctrl - z : skhd --key "cmd - z"
-# ctrl - f : skhd --key "cmd - f"
-cmd - return : open -n /Applications/Alacritty.app 
+# ctrl - c : skhd --key "alt - c"
+# ctrl - v : skhd --key "alt - v"
+# ctrl - z : skhd --key "alt - z"
+# ctrl - f : skhd --key "alt - f"
+alt - return : open -n /Applications/Alacritty.app 
 
 #tell application "Brave Browser"
 #    make new window
 #    activate
 #end tell
 
-# cmd - c : open -n /Applications/Alacritty.app
-# cmd - d : open 'x-apple.systempreferences:com.apple.preference.keyboard'
+# alt - c : open -n /Applications/Alacritty.app
+# alt - d : open 'x-apple.systempreferences:com.apple.preference.keyboard'
 # open new Brave window
-# cmd - b : osascript /Users/msundin2/dev/scripts/new-brave-window.scpt
+# alt - b : osascript /Users/msundin2/dev/scripts/new-brave-window.scpt
 
 
 ### FOCUS ###
 # focus window
-cmd - h : yabai -m window --focus west || $(yabai -m display --focus west)
-cmd - j : yabai -m window --focus south || $(yabai -m display --focus south)
-cmd - k : yabai -m window --focus north || $(yabai -m display --focus north)
-cmd - l : yabai -m window --focus east || $(yabai -m display --focus east)
+alt - h : yabai -m window --focus west || $(yabai -m display --focus west)
+alt - j : yabai -m window --focus south || $(yabai -m display --focus south)
+alt - k : yabai -m window --focus north || $(yabai -m display --focus north)
+alt - l : yabai -m window --focus east || $(yabai -m display --focus east)
 # focus desktop
-#cmd - 0x1B : yabai -m space --focus recent
-cmd - 1 : yabai -m space --focus 1
-# lcmd - 2 : yabai -m space --focus 2 # Make it possible to write @ with right alt
-cmd - 2 : yabai -m space --focus 2
-cmd - 3 : yabai -m space --focus 3
-cmd - 4 : yabai -m space --focus 4
-cmd - 5 : yabai -m space --focus 5
-cmd - 6 : yabai -m space --focus 6
-cmd - 7 : yabai -m space --focus 7
-cmd - 8 : yabai -m space --focus 8
-cmd - 9 : yabai -m space --focus 9
-cmd - 0 : yabai -m space --focus 10
+#alt - 0x1B : yabai -m space --focus recent
+alt - 1 : yabai -m space --focus 1
+# lalt - 2 : yabai -m space --focus 2 # Make it possible to write @ with right alt
+alt - 2 : yabai -m space --focus 2
+alt - 3 : yabai -m space --focus 3
+alt - 4 : yabai -m space --focus 4
+alt - 5 : yabai -m space --focus 5
+alt - 6 : yabai -m space --focus 6
+alt - 7 : yabai -m space --focus 7
+alt - 8 : yabai -m space --focus 8
+alt - 9 : yabai -m space --focus 9
+alt - 0 : yabai -m space --focus 10
 
 ### MOVE ###
 # swap focused window
-shift + cmd - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west) 
-shift + cmd - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south) 
-shift + cmd - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north) 
-shift + cmd - l : yabai -m window --swap east || $(yabai -m config window_placement first_child; yabai -m window --display east; yabai -m display --focus east; yabai -m config window_placement second_child) 
+shift + alt - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west) 
+shift + alt - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south) 
+shift + alt - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north) 
+shift + alt - l : yabai -m window --swap east || $(yabai -m config window_placement first_child; yabai -m window --display east; yabai -m display --focus east; yabai -m config window_placement second_child) 
 # move focused window
-shift + alt - h : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west) 
-shift + alt - j : yabai -m window --warp south || $(yabai -m window --display south; yabai -m display --focus south) 
-shift + alt - k : yabai -m window --warp north || $(yabai -m window --display north; yabai -m display --focus north) 
-shift + alt - l : yabai -m window --warp east || $(yabai -m config window_placement first_child; yabai -m window --display east; yabai -m display --focus east; yabai -m config window_placement second_child) 
+#####
+shift + ctrl - h : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west) 
+shift + ctrl - j : yabai -m window --warp south || $(yabai -m window --display south; yabai -m display --focus south) 
+shift + ctrl - k : yabai -m window --warp north || $(yabai -m window --display north; yabai -m display --focus north) 
+shift + ctrl - l : yabai -m window --warp east || $(yabai -m config window_placement first_child; yabai -m window --display east; yabai -m display --focus east; yabai -m config window_placement second_child) 
 # send focused window to next/prev workspace
-shift + cmd - 0x1B : yabai -m window --space recent
-shift + cmd - 1 : yabai -m window --space 1
-shift + cmd - 2 : yabai -m window --space 2
-shift + cmd - 3 : yabai -m window --space 3
-shift + cmd - 4 : yabai -m window --space 4
-shift + cmd - 5 : yabai -m window --space 5
-shift + cmd - 6 : yabai -m window --space 6
-shift + cmd - 7 : yabai -m window --space 7
-shift + cmd - 8 : yabai -m window --space 8
-shift + cmd - 9 : yabai -m window --space 9
-shift + cmd - 0 : yabai -m window --space 10
+shift + alt - 0x1B : yabai -m window --space recent
+shift + alt - 1 : yabai -m window --space 1
+shift + alt - 2 : yabai -m window --space 2
+shift + alt - 3 : yabai -m window --space 3
+shift + alt - 4 : yabai -m window --space 4
+shift + alt - 5 : yabai -m window --space 5
+shift + alt - 6 : yabai -m window --space 6
+shift + alt - 7 : yabai -m window --space 7
+shift + alt - 8 : yabai -m window --space 8
+shift + alt - 9 : yabai -m window --space 9
+shift + alt - 0 : yabai -m window --space 10
 
 ### INSERT ###
 # set insertion point in focused container
-alt - h : yabai -m window --insert west
-alt - j : yabai -m window --insert south
-alt - k : yabai -m window --insert north
-alt - l : yabai -m window --insert east
+#####
+ctrl - h : yabai -m window --insert west
+ctrl - j : yabai -m window --insert south
+ctrl - k : yabai -m window --insert north
+ctrl - l : yabai -m window --insert east
 # alt + cmd - h : yabai -m window --insert west
 # alt + cmd - j : yabai -m window --insert south
 # alt + cmd - k : yabai -m window --insert north
@@ -77,27 +79,28 @@ alt - l : yabai -m window --insert east
 
 ### RESIZE ###
 # change window size to the left
-cmd - n : yabai -m window --resize left:-20:0 || yabai -m window --resize right:-20:0
+alt - n : yabai -m window --resize left:-20:0 || yabai -m window --resize right:-20:0
 # change window size upwards
-cmd - 0x2B : yabai -m window --resize top:0:-20 || yabai -m window --resize bottom:0:-20
+alt - 0x2B : yabai -m window --resize top:0:-20 || yabai -m window --resize bottom:0:-20
 # change window size to the right
-cmd - 0x2F : yabai -m window --resize left:20:0 || yabai -m window --resize right:20:0
+alt - 0x2F : yabai -m window --resize left:20:0 || yabai -m window --resize right:20:0
 # change window size downwards
-cmd - m : yabai -m window --resize top:0:20 || yabai -m window --resize bottom:0:20
+alt - m : yabai -m window --resize top:0:20 || yabai -m window --resize bottom:0:20
 
 ### CUSTOM COMMANDS ###
 # toggle window zoom
-# cmd - f : yabai -m window --toggle zoom-fullscreen;
+# alt - f : yabai -m window --toggle zoom-fullscreen;
 # Toggle fullscreen and adjust padding simultaneously
-cmd - f : yabai -m window --toggle zoom-fullscreen; IS_FULLSCREEN=$(yabai -m query --windows --window | jq -r '."has-fullscreen-zoom"'); if [ "$IS_FULLSCREEN" = "true" ]; then yabai -m config top_padding 0; yabai -m config bottom_padding 0; yabai -m config left_padding 0; yabai -m config right_padding 0; else yabai -m config top_padding 10; yabai -m config bottom_padding 10; yabai -m config left_padding 10; yabai -m config right_padding 10; fi
-# cmd - f : yabai -m window --toggle zoom-fullscreen; ~/adjust_fs_padding.sh
+alt - f : yabai -m window --toggle zoom-fullscreen; IS_FULLSCREEN=$(yabai -m query --windows --window | jq -r '."has-fullscreen-zoom"'); if [ "$IS_FULLSCREEN" = "true" ]; then yabai -m config top_padding 0; yabai -m config bottom_padding 0; yabai -m config left_padding 0; yabai -m config right_padding 0; else yabai -m config top_padding 10; yabai -m config bottom_padding 10; yabai -m config left_padding 10; yabai -m config right_padding 10; fi
+# alt - f : yabai -m window --toggle zoom-fullscreen; ~/adjust_fs_padding.sh
 
 # toggle window split type
-alt - s : yabai -m window --toggle split
+#####
+ctrl - s : yabai -m window --toggle split
 # balance size of windows
-cmd - g : yabai -m space --balance
+alt - g : yabai -m space --balance
 # key remaps
-cmd - space : skhd --key "escape"
+alt - space : skhd --key "escape"
 
 # Conditional bindings in skhdrc that ignore neovim in Alacritty
 # ctrl - h : [[ $(~/check_nvim_in_alacritty.sh) == "neovim is not running" ]] && skhd --key "left"
@@ -128,9 +131,9 @@ ctrl - j : skhd --key "down"
 ctrl - k : skhd --key "up"
 ctrl - l : skhd --key "right"
 # tiling/untiling (float/unfloat) window and center on screen
-cmd - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 # kill focused window
-shift + cmd - q : yabai -m window --close
+shift + alt - q : yabai -m window --close
 
 ###########################
 ### COMMENTED OUT BELOW ###
