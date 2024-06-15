@@ -87,6 +87,8 @@ return {
       require('oil').setup {
         columns = { 'icon' },
         keymaps = {
+          ['<C-s>'] = { 'actions.select', opts = { vertical = false, horizontal = true }, desc = 'Open the entry in a horizontal split' },
+          ['<C-v>'] = { 'actions.select', opts = { vertical = true }, desc = 'Open the entry in a veritcal split' },
           ['<C-h>'] = false,
           ['<M-h>'] = 'actions.select_split',
         },
@@ -96,7 +98,7 @@ return {
       }
 
       -- Open parent directory in current window
-      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+      -- vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
       -- Open parent directory in floating window
       vim.keymap.set('n', '<space>-', require('oil').toggle_float)

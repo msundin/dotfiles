@@ -84,6 +84,62 @@ I hope you enjoy your Neovim journey,
 P.S. You can delete this when you're done too. It's your config now! :)
 --]]
 
+--
+-- Always use US keyboard layout in Neovim outside insert mode
+local current_layout = ''
+
+-- Function to save the current layout
+local function save_current_layout()
+  current_layout = vim.fn.system('xkb-switch -p'):gsub('%s+', '')
+end
+
+-- Function to switch to the US layout
+local function switch_to_us_layout()
+  vim.fn.system 'xkb-switch -s us'
+end
+
+-- Function to switch to the previously saved layout
+local function switch_to_saved_layout()
+  if current_layout ~= '' then
+    vim.fn.system('xkb-switch -s ' .. current_layout)
+  end
+end
+
+-- Periodically update the current layout
+local function update_current_layout()
+  local new_layout = vim.fn.system('xkb-switch -p'):gsub('%s+', '')
+  if new_layout ~= current_layout then
+    current_layout = new_layout
+  end
+end
+
+-- Save the current layout when starting Neovim
+vim.api.nvim_create_autocmd('VimEnter', {
+  pattern = '*',
+  callback = save_current_layout,
+})
+
+-- Autocmd to switch layout when entering and leaving insert mode
+vim.api.nvim_create_autocmd('InsertEnter', {
+  pattern = '*',
+  callback = switch_to_saved_layout,
+})
+
+vim.api.nvim_create_autocmd('InsertLeave', {
+  pattern = '*',
+  callback = switch_to_us_layout,
+})
+
+-- Timer to periodically update the current layout
+local timer = vim.loop.new_timer()
+timer:start(
+  0,
+  2000,
+  vim.schedule_wrap(function()
+    update_current_layout()
+  end)
+)
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)

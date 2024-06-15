@@ -13,7 +13,7 @@
 # DOESN'T WORK RIGHT NOW SINCE YOU CANNOT SET VARIABLES IN INCLUDE FILES
 # include ~/.config/i3/include.conf
 
-set $mod Mod4
+set $mod Mod1
 
 workspace 3 output eDP1
 workspace 2 output DP2
