@@ -107,10 +107,21 @@ local function switch_to_saved_layout()
 end
 
 -- Autocommand to save the layout and switch to it when entering insert mode
+-- vim.api.nvim_create_autocmd('InsertEnter', {
+--   pattern = '*',
+--   callback = function()
+--     -- saved_layout = get_current_layout()
+--     switch_to_saved_layout()
+--   end,
+-- })
+-- Autocommand to save the layout and switch to it when entering insert mode
 vim.api.nvim_create_autocmd('InsertEnter', {
   pattern = '*',
   callback = function()
-    saved_layout = get_current_layout()
+    local current_layout = get_current_layout()
+    if current_layout ~= 'us' then
+      saved_layout = current_layout
+    end
     switch_to_saved_layout()
   end,
 })
@@ -130,6 +141,14 @@ vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     saved_layout = get_current_layout()
     switch_to_us_layout()
+  end,
+})
+
+-- Restore the saved layout on VimExit
+vim.api.nvim_create_autocmd('VimLeave', {
+  pattern = '*',
+  callback = function()
+    switch_to_saved_layout()
   end,
 })
 
