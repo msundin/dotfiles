@@ -3,8 +3,8 @@
 --
 -- See the kickstart.nvim README for more information
 return {
-
   -- using lazy.nvim
+
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -394,7 +394,8 @@ return {
       ---@return string
       image_name_func = function()
         -- Prefix image names with timestamp.
-        return string.format('%s-', os.time())
+        -- return string.format('%s-', os.time())
+        return os.date '%y%m%d-%H%M_'
       end,
 
       -- Optional, boolean or a function that takes a filename and returns a boolean.
@@ -552,7 +553,7 @@ return {
         -- The default folder to place images in via `:ObsidianPasteImg`.
         -- If this is a relative path it will be interpreted as relative to the vault root.
         -- You can always override this per image by passing a full path to the command instead of just a filename.
-        img_folder = 'assets/imgs', -- This is the default
+        img_folder = 'assets/images', -- This is the default
         -- A function that determines the text to insert in the note when pasting an image.
         -- It takes two arguments, the `obsidian.Client` and an `obsidian.Path` to the image file.
         -- This is the default implementation.

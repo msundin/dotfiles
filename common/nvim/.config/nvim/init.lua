@@ -152,6 +152,32 @@ vim.api.nvim_create_autocmd('VimLeave', {
   end,
 })
 
+-- Spellcheck but only for markdown
+vim.api.nvim_create_augroup('Markdown', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  group = 'Markdown',
+  pattern = 'markdown',
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = { 'en', 'sv' }
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  group = 'Markdown',
+  pattern = '*',
+  callback = function()
+    if vim.bo.filetype ~= 'markdown' then
+      vim.opt_local.spell = false
+    end
+  end,
+})
+
+-- Open images with feh
+vim.api.nvim_create_user_command('OpenImage', function(opts)
+  vim.fn.system('feh ' .. opts.args)
+end, { nargs = 1, desc = 'Open an image using feh' })
+
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
