@@ -173,6 +173,7 @@ alias zshconfig='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias tmux='TERM=screen-256color tmux'
 alias clip='xclip -selection clipboard'
+alias cl='clear'
 # Obsidian
 alias ow='cd ~/nextcloud/obsidian-vaults/work/'
 alias op='cd ~/nextcloud/obsidian-vaults/personal/'
@@ -185,6 +186,9 @@ alias vc='NVIM_APPNAME=nvim-nvchad nvim' # NvChad
 alias vk='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
 alias va='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
 alias vl='NVIM_APPNAME=lvim lvim' # LunarVim
+
+# Restart Yabai
+alias yr='yabai --stop-service && yabai --start-service'
 
 vv() {
   # Assumes all configs exist in directories named ~/.config/nvim-*

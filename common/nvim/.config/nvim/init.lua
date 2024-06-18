@@ -529,6 +529,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>ft', builtin.builtin, { desc = '[F]ind Telescope' })
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = '[F]ind [H]elp' })
       vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = '[F]ind [K]eymaps' })
+      vim.keymap.set('n', '<leader>pf', ':lua print(vim.fn.expand("%:p"))<CR>', { desc = '[p]rint [f]iles' })
 
       -- It's also possible to pass additional configuration options.
       --  See `:help telescope.builtin.live_grep()` for information about particular keys

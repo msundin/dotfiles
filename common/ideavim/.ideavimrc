@@ -71,6 +71,7 @@ nmap <leader>a <action>(HideAllWindows)
 nmap <leader>rr <action>(Run)
 nmap <leader>rd <action>(Debug)
 nmap <leader>rs <action>(Stop)
+nmap <leader>m <action>(ShowPopupMenu)
 
 nmap gd <action>(GotoDeclarationOnly)
 "nmap <leader>d <action>(GotoDeclaration)

@@ -11,6 +11,17 @@ return {
     config = function()
       require('lualine').setup {
         options = { theme = 'onenord' },
+
+        sections = {
+          lualine_c = {
+            { 'filename', path = 0 }, -- 0 = Just filename, 1 = Relative path, 2 = Absolute path
+          },
+        },
+        inactive_sections = {
+          lualine_c = {
+            { 'filename', path = 0 },
+          },
+        },
       }
     end,
   },
@@ -39,7 +50,15 @@ return {
       },
     },
   },
-
+  {
+    'rcarriga/nvim-notify',
+    config = function()
+      require('notify').setup {
+        timeout = 3000, -- Seems to be in addtion to 3000 ms default, so e.g. 2000 here gives 3000 ms total
+      }
+      vim.notify = require 'notify' -- Set notify as the default notification handler
+    end,
+  },
   {
     'folke/noice.nvim',
     event = 'VeryLazy',
@@ -57,6 +76,10 @@ return {
     },
     config = function()
       require('noice').setup {
+        messages = {
+          enabled = true, -- enable messages feature in noice
+          view = 'notify', -- use notify for message view
+        },
         lsp = {
           -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
@@ -73,9 +96,6 @@ return {
           inc_rename = false, -- enables an input dialog for inc-rename.nvim
           lsp_doc_border = false, -- add a border to hover docs and signature help
         },
-      }
-      require('notify').setup {
-        -- timeout = 5000,
       }
     end,
   },
