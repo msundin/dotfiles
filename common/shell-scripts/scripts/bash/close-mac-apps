@@ -57,29 +57,30 @@
 # force_quit_apps
 #
 
+
 #!/bin/bash
 
 # Function to close all running applications gracefully
 close_all_apps() {
-  # Get a list of running applications, convert to newline-separated format
-  apps=$(osascript -e 'tell application "System Events" to get the name of every process whose background only is false' | tr ',' '\n')
+  # Get a list of running applications
+  apps=$(osascript -e 'tell application "System Events" to get the name of every process whose background only is false')
 
   # Iterate through the list and close each application
   while IFS= read -r app; do
     app=$(echo "$app" | xargs)  # Remove leading/trailing spaces
     app_lower=$(echo "$app" | tr '[:upper:]' '[:lower:]')
-    if [ "$app_lower" != "finder" ] && [ "$app_lower" != "dock" ] && [ "$app_lower" != "systemuiserver" ] && [ "$app_lower" != "alacritty" ]; then
+    if [ "$app_lower" != "finder" ] && [ "$app_lower" != "dock" ] && [ "$app_lower" != "systemuiserver" ] && [ "$app_lower" != "alacritty" ] && [ "$app_lower" != "brave browser" ]; then
       echo "Closing $app..."
       osascript -e "tell application \"$app\" to quit"
       # Give each application a moment to close
       sleep 2
     fi
-  done <<< "$apps"
+  done <<< "$(echo "$apps" | sed 's/, /\n/g')"
 }
 
 # Function to forcefully terminate any remaining applications
 force_quit_apps() {
-  apps=$(osascript -e 'tell application "System Events" to get the name of every process whose background only is false' | tr ',' '\n')
+  apps=$(osascript -e 'tell application "System Events" to get the name of every process whose background only is false')
 
   while IFS= read -r app; do
     app=$(echo "$app" | xargs)  # Remove leading/trailing spaces
@@ -88,12 +89,12 @@ force_quit_apps() {
       echo "Force quitting $app..."
       pkill -f "$app"
     fi
-  done <<< "$apps"
+  done <<< "$(echo "$apps" | sed 's/, /\n/g')"
 }
 
 # Close all running applications gracefully
 close_all_apps
 
+# Commented out for now
 # Force quit any remaining applications
 # force_quit_apps
-#
