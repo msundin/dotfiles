@@ -1,95 +1,35 @@
-# #!/bin/bash
-#
-# # Function to close all running applications
-# close_all_apps() {
-#   # Get a list of running applications
-#   apps=$(osascript -e 'tell application "System Events" to get the name of every process whose background only is false')
-#
-#   # Iterate through the list and close each application
-#   for app in $apps; do
-#     if [ "$app" != "Finder" ] && [ "$app" != "Dock" ]; then
-#       echo "Closing $app..."
-#       osascript -e "tell application \"$app\" to quit"
-#       # Give each application a moment to close
-#       sleep 2
-#       # Force quit the application if it didn't close
-#       osascript -e "tell application \"$app\" to quit without saving"
-#     fi
-#   done
-# }
-#
-# close_all_apps
-
-# #!/bin/bash
-#
-# # Function to close all running applications gracefully
-# close_all_apps() {
-#   # Get a list of running applications
-#   apps=$(osascript -e 'tell application "System Events" to get the name of every process whose background only is false')
-#
-#   # Iterate through the list and close each application
-#   for app in $apps; do
-#     if [ "$app" != "Finder" ] && [ "$app" != "Dock" ] && [ "$app" != "Alacritty" ] && [ "$app" != "SystemUIServer" ]; then
-#       echo "Closing $app..."
-#       osascript -e "tell application \"$app\" to quit"
-#       # Give each application a moment to close
-#       sleep 2
-#     fi
-#   done
-# }
-#
-# # Function to forcefully terminate any remaining applications
-# force_quit_apps() {
-#   apps=$(osascript -e 'tell application "System Events" to get the name of every process whose background only is false')
-#
-#   for app in $apps; do
-#     if [ "$app" != "Finder" ] && [ "$app" != "Dock" ] && [ "$app" != "Alacritty" ] && [ "$app" != "SystemUIServer" ]; then
-#       echo "Force quitting $app..."
-#       pkill "$app"
-#     fi
-#   done
-# }
-#
-# # Close all running applications gracefully
-# close_all_apps
-#
-# # Force quit any remaining applications
-# force_quit_apps
-#
-
-
 #!/bin/bash
 
 # Function to close all running applications gracefully
 close_all_apps() {
   # Get a list of running applications
-  apps=$(osascript -e 'tell application "System Events" to get the name of every process whose background only is false')
+  apps=$(osascript -e 'tell application "System Events" to get the name of every application process whose background only is false')
 
   # Iterate through the list and close each application
   while IFS= read -r app; do
     app=$(echo "$app" | xargs)  # Remove leading/trailing spaces
     app_lower=$(echo "$app" | tr '[:upper:]' '[:lower:]')
-    if [ "$app_lower" != "finder" ] && [ "$app_lower" != "dock" ] && [ "$app_lower" != "systemuiserver" ] && [ "$app_lower" != "alacritty" ] && [ "$app_lower" != "brave browser" ]; then
+    if [ "$app_lower" != "finder" ] && [ "$app_lower" != "dock" ] && [ "$app_lower" != "systemuiserver" ] && [ "$app_lower" != "alacritty" ]; then
       echo "Closing $app..."
       osascript -e "tell application \"$app\" to quit"
       # Give each application a moment to close
       sleep 2
     fi
-  done <<< "$(echo "$apps" | sed 's/, /\n/g')"
+  done <<< "$(echo "$apps" | tr ',' '\n')"
 }
 
 # Function to forcefully terminate any remaining applications
 force_quit_apps() {
-  apps=$(osascript -e 'tell application "System Events" to get the name of every process whose background only is false')
+  apps=$(osascript -e 'tell application "System Events" to get the name of every application process whose background only is false')
 
   while IFS= read -r app; do
     app=$(echo "$app" | xargs)  # Remove leading/trailing spaces
     app_lower=$(echo "$app" | tr '[:upper:]' '[:lower:]')
-    if [ "$app_lower" != "finder" ] && [ "$app_lower" != "dock" ] && [ "$app_lower" != "systemuiserver" ] && [ "$app_lower" != "alacritty" ]; then
+    if [ "$app_lower" != "finder" ] && [ "$app_lower" != "dock" ] && [ "$app_lower" != "systemuiserver" ] && [ "$app_lower" != "alacritty" ] && [ "$app_lower" != "brave browser" ]; then
       echo "Force quitting $app..."
       pkill -f "$app"
     fi
-  done <<< "$(echo "$apps" | sed 's/, /\n/g')"
+  done <<< "$(echo "$apps" | tr ',' '\n')"
 }
 
 # Close all running applications gracefully
