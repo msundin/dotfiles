@@ -56,6 +56,7 @@
 # # Force quit any remaining applications
 # force_quit_apps
 #
+
 #!/bin/bash
 
 # Function to close all running applications gracefully
@@ -66,14 +67,13 @@ close_all_apps() {
   # Iterate through the list and close each application
   while IFS= read -r app; do
     app=$(echo "$app" | xargs)  # Remove leading/trailing spaces
-    if [ "$app" != "Finder" ] && [ "$app" != "Dock" ] && [ "$app" != "SystemUIServer" ] && [ "$app" != "alacritty" ]; then
+    app_lower=$(echo "$app" | tr '[:upper:]' '[:lower:]')
+    if [ "$app_lower" != "finder" ] && [ "$app_lower" != "dock" ] && [ "$app_lower" != "systemuiserver" ] && [ "$app_lower" != "alacritty" ]; then
       echo "Closing $app..."
       osascript -e "tell application \"$app\" to quit"
       # Give each application a moment to close
-      # sleep 2
+      sleep 2
     fi
-    # osascript -e "tell application \"Android Studio\" to quit"
-    osascript -e "tell application \"Microsoft Teams\" to quit"
   done <<< "$apps"
 }
 
@@ -83,9 +83,10 @@ force_quit_apps() {
 
   while IFS= read -r app; do
     app=$(echo "$app" | xargs)  # Remove leading/trailing spaces
-    if [ "$app" != "Finder" ] && [ "$app" != "Dock" ] && [ "$app" != "SystemUIServer" ] && [ "$app" != "alacritty" ]; then
+    app_lower=$(echo "$app" | tr '[:upper:]' '[:lower:]')
+    if [ "$app_lower" != "finder" ] && [ "$app_lower" != "dock" ] && [ "$app_lower" != "systemuiserver" ] && [ "$app_lower" != "alacritty" ]; then
       echo "Force quitting $app..."
-      pkill "$app"
+      pkill -f "$app"
     fi
   done <<< "$apps"
 }
@@ -95,3 +96,4 @@ close_all_apps
 
 # Force quit any remaining applications
 # force_quit_apps
+#
