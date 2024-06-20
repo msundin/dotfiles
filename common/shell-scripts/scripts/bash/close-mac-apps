@@ -5,27 +5,20 @@
 apps_to_close=(
   # "Android Studio"
   "Microsoft Teams"
-  # "Brave Browser"
   "Activity Monitor"
-  "Microsoft Edge"
-  # "Alacritty"
   # Add more applications here as needed
 )
 
 # List of applications that should never be closed
 dont_close_lowercase=(
-  # "finder"
+  "finder"
   "systemuiserver"
   "dock"
-  "alacritty"
-  "brave"
+  "terminal"
+  # "alacritty"
+  # "brave"
   # Add more system applications here as needed
 )
-
-for app in "${apps_to_close[@]}"; do
-  echo "Closing $app..."
-  osascript -e "quit app \"$app\""
-done
 
 # Function to check if an app is in the dont_close list
 should_close() {
@@ -41,13 +34,22 @@ should_close() {
 # Get the list of all running applications
 running_apps=$(osascript -e 'tell application "System Events" to get name of (processes where background only is false)')
 
-IFS=", " read -r -a running_apps_array <<< "$running_apps"
+# Process the running applications correctly
+running_apps=$(echo "$running_apps" | sed 's/, /\n/g')
 
-for app in "${running_apps_array[@]}"; do
+while IFS= read -r app; do
+  app=$(echo "$app" | sed 's/^ *//;s/ *$//')
+
   if should_close "$app"; then
     echo "Closing $app..."
     osascript -e "quit app \"$app\""
   else
     echo "Skipping $app..."
   fi
+done <<< "$running_apps"
+
+# Close the explicitly listed applications
+for app in "${apps_to_close[@]}"; do
+  echo "Closing $app..."
+  osascript -e "quit app \"$app\""
 done
