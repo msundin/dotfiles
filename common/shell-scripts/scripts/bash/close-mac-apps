@@ -1,40 +1,53 @@
+
 #!/bin/bash
 
-# Function to close all running applications gracefully
-close_all_apps() {
-  # Get a list of running applications
-  apps=$(osascript -e 'tell application "System Events" to get the name of every application process whose background only is false')
+# List of applications to always close
+apps_to_close=(
+  # "Android Studio"
+  "Microsoft Teams"
+  # "Brave Browser"
+  "Activity Monitor"
+  "Microsoft Edge"
+  # "Alacritty"
+  # Add more applications here as needed
+)
 
-  # Iterate through the list and close each application
-  while IFS= read -r app; do
-    app=$(echo "$app" | xargs)  # Remove leading/trailing spaces
-    app_lower=$(echo "$app" | tr '[:upper:]' '[:lower:]')
-    if [ "$app_lower" != "finder" ] && [ "$app_lower" != "dock" ] && [ "$app_lower" != "systemuiserver" ] && [ "$app_lower" != "alacritty" ]; then
-      echo "Closing $app..."
-      osascript -e "tell application \"$app\" to quit"
-      # Give each application a moment to close
-      sleep 2
+# List of applications that should never be closed
+dont_close_lowercase=(
+  # "finder"
+  "systemuiserver"
+  "dock"
+  "alacritty"
+  "brave"
+  # Add more system applications here as needed
+)
+
+for app in "${apps_to_close[@]}"; do
+  echo "Closing $app..."
+  osascript -e "quit app \"$app\""
+done
+
+# Function to check if an app is in the dont_close list
+should_close() {
+  local app_name_lowercase=$(echo "$1" | awk '{print tolower($0)}')
+  for dont_close in "${dont_close_lowercase[@]}"; do
+    if [[ "$app_name_lowercase" == *"$dont_close"* ]]; then
+      return 1
     fi
-  done <<< "$(echo "$apps" | tr ',' '\n')"
+  done
+  return 0
 }
 
-# Function to forcefully terminate any remaining applications
-force_quit_apps() {
-  apps=$(osascript -e 'tell application "System Events" to get the name of every application process whose background only is false')
+# Get the list of all running applications
+running_apps=$(osascript -e 'tell application "System Events" to get name of (processes where background only is false)')
 
-  while IFS= read -r app; do
-    app=$(echo "$app" | xargs)  # Remove leading/trailing spaces
-    app_lower=$(echo "$app" | tr '[:upper:]' '[:lower:]')
-    if [ "$app_lower" != "finder" ] && [ "$app_lower" != "dock" ] && [ "$app_lower" != "systemuiserver" ] && [ "$app_lower" != "alacritty" ] && [ "$app_lower" != "brave browser" ]; then
-      echo "Force quitting $app..."
-      pkill -f "$app"
-    fi
-  done <<< "$(echo "$apps" | tr ',' '\n')"
-}
+IFS=", " read -r -a running_apps_array <<< "$running_apps"
 
-# Close all running applications gracefully
-close_all_apps
-
-# Commented out for now
-# Force quit any remaining applications
-# force_quit_apps
+for app in "${running_apps_array[@]}"; do
+  if should_close "$app"; then
+    echo "Closing $app..."
+    osascript -e "quit app \"$app\""
+  else
+    echo "Skipping $app..."
+  fi
+done
