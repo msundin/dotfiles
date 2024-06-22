@@ -3,9 +3,10 @@
 
 # List of applications to always close
 apps_to_close=(
-  # "Android Studio"
+  "Android Studio"
   "Microsoft Teams"
   "Activity Monitor"
+  # "Slack"
   # Add more applications here as needed
 )
 
@@ -53,3 +54,7 @@ for app in "${apps_to_close[@]}"; do
   echo "Closing $app..."
   osascript -e "quit app \"$app\""
 done
+
+  echo "At last: Closing Terminal"
+  sleep 2
+  osascript -e "quit app \"Terminal\""

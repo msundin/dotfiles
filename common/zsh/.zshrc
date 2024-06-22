@@ -188,7 +188,33 @@ alias va='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
 alias vl='NVIM_APPNAME=lvim lvim' # LunarVim
 
 # Restart Yabai
-alias yr='yabai --stop-service && yabai --start-service'
+
+
+# Define a function instead of an alias
+yr() {
+  touch /tmp/yabai_softrestart_flag
+  echo "Created /tmp/yabai_softrestart_flag before service restart"
+  
+  # Restart yabai services
+  yabai --stop-service && yabai --start-service
+  
+  # Remove the temporary file
+  # rm /tmp/yabai_softrestart_flag
+  echo "Removed /tmp/yabai_softrestart_flag after service restart"
+}
+
+# yr() {
+#   export YABAI_INIT="softrestart"
+#   echo $YABAI_INIT
+#   yabai --stop-service && yabai --start-service
+#   unset YABAI_INIT
+#   echo $YABAI_INIT
+# }
+
+yrh() {
+  close-mac-apps
+  yabai --stop-service && yabai --start-service
+}
 
 vv() {
   # Assumes all configs exist in directories named ~/.config/nvim-*
@@ -201,7 +227,7 @@ vv() {
   NVIM_APPNAME=$(basename $config) nvim $@
 }
 
-[ -f ~/aliases_private.zsh ] && source ~/aliases_private.zsh
+[ -f ~/.private-aliases.zsh ] && source ~/.private-aliases.zsh
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"

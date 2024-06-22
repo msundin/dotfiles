@@ -1,5 +1,40 @@
+#!/bin/bash
 yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
 sudo yabai --load-sa
+
+# Source parts of yabai configuration based on flags
+if [ ! -f /tmp/yabai_softrestart_flag ]; then
+  # Open programs and apps
+
+  # Function to count connected displays
+  count_displays() {
+    yabai -m query --displays | jq '. | length'
+  }
+  
+  # Get the number of connected displays
+  display_count=$(count_displays)
+  
+  # Define the applications to open based on display count
+  if [ "$display_count" -gt 1 ]; then
+    # More than one display (e.g., laptop screen + external display)
+    source ~/.private-yabai-start-multi-display-apps
+
+  else
+    # Only laptop screen
+    source ~/.private-yabai-start-single-display-apps
+
+  fi
+
+  # Both external displays and only laptop display
+  source ~/.private-yabai-start-all-displays-apps
+
+fi # softrestart
+
+# Remove all yabai rules by iterating over their IDs
+# rules=$(yabai -m rule --list | jq -r '.[].id')
+# for rule in $rules; do
+#   yabai -m rule --remove "$rule"
+# done
 
 # border - NOT SUPPORTED ANYMORE
 #yabai -m config window_border on
@@ -102,16 +137,16 @@ yabai -m config normal_window_opacity 1.0
 # yabai -m signal --add event=window_created action='yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".\"can-resize\" or .\"is-floating\"" || yabai -m window $YABAI_WINDOW_ID --toggle float'
 
 # move some apps automatically to specific spaces
-yabai -m rule --add app="^Slack$" space=5
-#yabai -m rule --add app="Browser$" space=1
-##yabai -m rule --add app="Android$" space=2
-yabai -m rule --add app="Android Studio$" space=2
-#yabai -m rule --add app="iTerm2$" space=3
-yabai -m rule --add app="^Signal$" space=8
-yabai -m rule --add app="WhatsApp$" space=8
-yabai -m rule --add app="^KeePassXC$" space=7
-yabai -m rule --add app="^Spotify$" space=7
-yabai -m rule --add app="Outlook$" space=5
+# yabai -m rule --add app="^Slack$" space=5
+# #yabai -m rule --add app="Browser$" space=1
+# ##yabai -m rule --add app="Android$" space=2
+# yabai -m rule --add app="Android Studio$" space=2
+# #yabai -m rule --add app="iTerm2$" space=3
+# yabai -m rule --add app="^Signal$" space=8
+# yabai -m rule --add app="WhatsApp$" space=8
+# yabai -m rule --add app="^KeePassXC$" space=7
+# yabai -m rule --add app="^Spotify$" space=7
+# yabai -m rule --add app="Outlook$" space=5
 
 # Floating
 yabai -m rule --add app="^Nextcloud" manage=off
@@ -120,10 +155,41 @@ yabai -m rule --add app='^System Preferences$' manage=off
 yabai -m rule --add title='Preferences$' manage=off
 yabai -m rule --add app="^System Settings" manage=off
 yabai -m rule --add title='Settings$' manage=off
-yabai -m rule --add title="Nextcloud" manage=off
 
 # borders active_color=0xffe1e3e4 inactive_color=0xff494d64 width=5.0 &
 # borders active_color=0xff81a1c1 inactive_color=0xff4c566a width=6.0 &
 borders active_color=0xff81a1c1 inactive_color=0xff2e3440 width=6.0 &
+
+sleep 10
+# Remove all rules after starting applications
+rules=$(yabai -m rule --list | jq -r '.[].id')
+for rule in $rules; do
+  yabai -m rule --remove "$rule"
+done
+# Function to remove all existing rules
+remove_all_rules() {
+  echo "Removing all existing rules..."
+  
+  while :; do
+    rule_indexes=$(yabai -m rule --list | jq -r '.[].index')
+    if [ -z "$rule_indexes" ]; then
+      break
+    fi
+    
+    echo "Rule indexes to remove:"
+    echo "$rule_indexes"  # Print rule indexes for debugging
+    
+    # Split rule_indexes into lines and iterate over each line
+    echo "$rule_indexes" | while IFS= read -r rule_index; do
+      if [ -n "$rule_index" ]; then
+        echo "Removing rule with index: $rule_index"
+        yabai -m rule --remove "$rule_index" 2>/dev/null
+      fi
+    done
+  done
+}
+
+# Remove all existing rules
+remove_all_rules
 
 echo "yabai configuration loaded.."
