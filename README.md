@@ -15,7 +15,7 @@ stow -n -v -t ~ shell-scripts
 stow -v -t ~ shell-scripts
 ```
 
-## Install all common dotfiles
+## Install all Common dotfiles
 
 ```bash
 cd ~/dotfiles/common
@@ -25,7 +25,7 @@ stow -n -v -t ~ *
 stow -v -t ~ *
 ```
 
-## Install all linux dotfiles
+## Install all Linux dotfiles
 
 ```bash
 cd ~/dotfiles/linux
@@ -35,7 +35,7 @@ stow -n -v -t ~ *
 stow -v -t ~ *
 ```
 
-## Install all common dotfiles
+## Install all Mac dotfiles
 
 ```bash
 cd ~/dotfiles/mac
