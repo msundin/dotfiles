@@ -55,6 +55,6 @@ for app in "${apps_to_close[@]}"; do
   osascript -e "quit app \"$app\""
 done
 
-  echo "At last: Closing Terminal"
-  sleep 2
-  osascript -e "quit app \"Terminal\""
+  # echo "At last: Closing Terminal"
+  # sleep 2
+  # osascript -e "quit app \"Terminal\""

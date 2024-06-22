@@ -199,17 +199,11 @@ yr() {
   yabai --stop-service && yabai --start-service
   
   # Remove the temporary file
-  # rm /tmp/yabai_softrestart_flag
+  # Sleep needed, otherwise the file is removed before yabai is run
+  sleep 1
+  rm /tmp/yabai_softrestart_flag
   echo "Removed /tmp/yabai_softrestart_flag after service restart"
 }
-
-# yr() {
-#   export YABAI_INIT="softrestart"
-#   echo $YABAI_INIT
-#   yabai --stop-service && yabai --start-service
-#   unset YABAI_INIT
-#   echo $YABAI_INIT
-# }
 
 yrh() {
   close-mac-apps
