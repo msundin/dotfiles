@@ -6,6 +6,11 @@ return {
   -- using lazy.nvim
 
   {
+    'tpope/vim-obsession',
+    lazy = false,
+  },
+
+  {
     'tyru/open-browser.vim',
     config = function()
       -- Set up a key mapping to open URLs under the cursor with <Leader> + Enter
