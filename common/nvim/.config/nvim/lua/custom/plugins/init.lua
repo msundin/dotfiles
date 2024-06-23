@@ -6,6 +6,14 @@ return {
   -- using lazy.nvim
 
   {
+    'tyru/open-browser.vim',
+    config = function()
+      -- Set up a key mapping to open URLs under the cursor with <Leader> + Enter
+      vim.api.nvim_set_keymap('n', '<Leader><CR>', '<Plug>(openbrowser-smart-search)', {})
+    end,
+  },
+
+  {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
@@ -585,6 +593,24 @@ return {
           return string.format('![%s](%s)', path.name, path)
         end,
       },
+    },
+  },
+
+  {
+    'christoomey/vim-tmux-navigator',
+    cmd = {
+      'TmuxNavigateLeft',
+      'TmuxNavigateDown',
+      'TmuxNavigateUp',
+      'TmuxNavigateRight',
+      'TmuxNavigatePrevious',
+    },
+    keys = {
+      { '<c-h>', '<cmd><C-U>TmuxNavigateLeft<cr>' },
+      { '<c-j>', '<cmd><C-U>TmuxNavigateDown<cr>' },
+      { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
+      { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
+      { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
     },
   },
 }

@@ -310,6 +310,9 @@ vim.keymap.set('t', '<C-t>', '<Cmd>ToggleTerm<CR>', { noremap = true, silent = t
 -- Tab Navigation
 -- vim.keymap.set('n', '<S-n>', ':tabnext<CR>', { silent = true })
 
+-- Key mapping to reload the current buffer
+vim.api.nvim_set_keymap('n', '<Leader>rl', ':e!<CR>', { noremap = true, silent = true })
+
 -- Run applications
 vim.keymap.set('n', 'rrk', '<cmd>KotlinRun<CR>', { desc = 'Compile and run Kotlin code' })
 
