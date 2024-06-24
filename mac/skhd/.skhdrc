@@ -127,10 +127,11 @@ alt - space : skhd --key "escape"
 # ctrl - k : ~/check_nvim_in_alacritty.sh && yabai -m key --send 'ctrl + w, k' || yabai -m key --send 'up'
 # ctrl - l : ~/check_nvim_in_alacritty.sh && yabai -m key --send 'ctrl + w, l' || yabai -m key --send 'right'
 #
-ctrl - h : skhd --key "left"
-ctrl - j : skhd --key "down"
-ctrl - k : skhd --key "up"
-ctrl - l : skhd --key "right"
+# Map ctrl + vim keys to arrow keys
+# ctrl - h : skhd --key "left"
+# ctrl - j : skhd --key "down"
+# ctrl - k : skhd --key "up"
+# ctrl - l : skhd --key "right"
 # tiling/untiling (float/unfloat) window and center on screen
 alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
 # kill focused window
