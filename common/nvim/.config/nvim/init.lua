@@ -135,45 +135,12 @@ vim.api.nvim_create_autocmd('InsertLeave', {
   end,
 })
 
--- Function to simplify starting and saving sessions
-local function start_obsession()
-  if vim.fn.argc() == 0 then
-    vim.cmd 'silent! Obsession ~/.config/nvim/session.vim'
-    if vim.fn.filereadable(vim.fn.expand '~/.config/nvim/session.vim') == 1 then
-      print 'Sourcing session file...'
-      vim.cmd 'source ~/.config/nvim/session.vim'
-    else
-      print 'Session file not found.'
-    end
-  end
-end
-
-local function save_session()
-  if vim.fn.exists ':Obsession' == 2 then
-    print 'Saving session...'
-    vim.cmd 'silent! mksession! ~/.config/nvim/session.vim'
-  else
-    print 'Obsession not active.'
-  end
-end
-
 -- Save the layout on startup and switch to US layout
 vim.api.nvim_create_autocmd('VimEnter', {
   pattern = '*',
   callback = function()
     saved_layout = get_current_layout()
     switch_to_us_layout()
-
-    -- Session management code
-    start_obsession()
-  end,
-})
-
--- Separate VimLeavePre autocommand for saving session when exiting Neovim
-vim.api.nvim_create_autocmd('VimLeavePre', {
-  callback = function()
-    -- Session management code
-    save_session()
   end,
 })
 

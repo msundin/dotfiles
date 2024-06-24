@@ -6,8 +6,28 @@ return {
   -- using lazy.nvim
 
   {
-    'tpope/vim-obsession',
-    lazy = false,
+    'Shatur/neovim-session-manager',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      local Path = require 'plenary.path'
+      require('session_manager').setup {
+        sessions_dir = Path:new(vim.fn.stdpath 'data', 'sessions'), -- The directory where session files are stored.
+        path_replacer = '__', -- Replace path separators in the session filename.
+        colon_replacer = '++', -- Replace colons in the session filename.
+        autoload_mode = require('session_manager.config').AutoloadMode.Disabled,
+        autosave_last_session = true,
+        autosave_only_in_session = false,
+      }
+      vim.api.nvim_create_user_command('SaveSession', function()
+        require('session_manager').save_current_session()
+      end, { desc = 'Save current session' })
+
+      vim.api.nvim_create_user_command('LoadSession', function()
+        require('session_manager').load_last_session()
+      end, { desc = 'Load last session' })
+      vim.api.nvim_set_keymap('n', '<Leader>ss', ':SaveSession<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<Leader>sl', ':LoadSession<CR>', { noremap = true, silent = true })
+    end,
   },
 
   {
