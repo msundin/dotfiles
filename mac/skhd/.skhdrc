@@ -77,6 +77,8 @@ shift + alt - 0 : yabai -m window --space 10
 # alt + cmd - j : yabai -m window --insert south
 # alt + cmd - k : yabai -m window --insert north
 # alt + cmd - l : yabai -m window --insert east
+alt - s : yabai -m window --insert south
+alt - v : yabai -m window --insert east
 
 ### RESIZE ###
 # change window size to the left
@@ -97,9 +99,9 @@ alt - f : yabai -m window --toggle zoom-fullscreen; IS_FULLSCREEN=$(yabai -m que
 
 # toggle window split type
 #####
-ctrl - s : yabai -m window --toggle split
+ctrl - e : yabai -m window --toggle split
 # balance size of windows
-alt - g : yabai -m space --balance
+alt - b : yabai -m space --balance
 # key remaps
 alt - space : skhd --key "escape"
 

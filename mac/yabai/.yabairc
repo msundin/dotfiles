@@ -91,7 +91,7 @@ yabai -m config mouse_follows_focus on
 
 # modify window shadows (default: on, options: on, off, float)
 # example: show shadows only for floating windows
-yabai -m config window_shadow                float
+yabai -m config window_shadow float
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
 
