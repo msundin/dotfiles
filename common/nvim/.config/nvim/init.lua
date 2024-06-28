@@ -305,6 +305,10 @@ vim.keymap.set('n', '<leader>k', ':bnext<CR>', { silent = true })
 vim.keymap.set('n', '<leader>h', '<C-o>', { silent = true })
 vim.keymap.set('n', '<leader>l', '<C-i>', { silent = true })
 
+-- Handle splits
+vim.keymap.set('n', '<leader>s', '<cmd>split<cr>', { desc = '[s]plit horizontally' })
+vim.keymap.set('n', '<leader>v', '<cmd>vsplit<cr>', { desc = 'split [v]ertically' })
+
 vim.keymap.set('n', '<C-t>', ':ToggleTerm<CR>', { noremap = true, silent = true })
 vim.keymap.set('t', '<C-t>', '<Cmd>ToggleTerm<CR>', { noremap = true, silent = true })
 -- Tab Navigation
@@ -544,9 +548,9 @@ require('lazy').setup({
       end, { desc = '[F]ind [/] in Open Files' })
 
       -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>sn', function()
+      vim.keymap.set('n', '<leader>fn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[S]earch [N]eovim files' })
+      end, { desc = '[F]ind [N]eovim files' })
     end,
   },
 

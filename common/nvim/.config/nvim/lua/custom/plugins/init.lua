@@ -25,8 +25,8 @@ return {
       vim.api.nvim_create_user_command('LoadSession', function()
         require('session_manager').load_last_session()
       end, { desc = 'Load last session' })
-      vim.api.nvim_set_keymap('n', '<Leader>ss', ':SaveSession<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<Leader>sl', ':LoadSession<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<Leader>mss', ':SaveSession<CR>', { desc = '[m]anaging [s]essions [s]ave', noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<Leader>msl', ':LoadSession<CR>', { desc = '[m]anaging [s]essions [l]oad', noremap = true, silent = true })
     end,
   },
 
