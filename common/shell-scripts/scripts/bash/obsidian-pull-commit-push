@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Function to handle commit and push for a vault
+commit_and_push() {
+    local vault_path=$1
+    local vault_name=$(basename "$vault_path")
+
+    cd "$vault_path" || exit
+
+    # Pull the latest changes (will use merge due to config)
+    git pull origin main
+
+    # Add all changes
+    git add .
+
+    # Check if there are changes to commit
+    if ! git diff-index --quiet HEAD --; then
+        # Commit changes with a timestamp message
+        git commit -m "Auto-commit for $vault_name on $(date)"
+        # Push changes to the remote repository
+        git push origin main
+    else
+        echo "No changes to commit in $vault_name"
+    fi
+}
+
+# Commit and push changes for personal
+commit_and_push "$HOME/nextcloud/obsidian-vaults/personal/"
+
+# Commit and push changes for work
+commit_and_push "$HOME/nextcloud/obsidian-vaults/work"
+

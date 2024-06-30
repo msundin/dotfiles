@@ -1,0 +1,2 @@
+*/30 * * * * $HOME/scripts/bash/obsidian-pull-commit-push
+
