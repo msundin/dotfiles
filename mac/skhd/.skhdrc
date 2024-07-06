@@ -99,7 +99,7 @@ alt - f : yabai -m window --toggle zoom-fullscreen; IS_FULLSCREEN=$(yabai -m que
 
 # toggle window split type
 #####
-ctrl - e : yabai -m window --toggle split
+alt - e : yabai -m window --toggle split
 # balance size of windows
 alt - b : yabai -m space --balance
 # key remaps
