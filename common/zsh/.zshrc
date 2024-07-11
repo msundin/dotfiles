@@ -74,7 +74,7 @@ HIST_STAMPS="yyyy-mm-dd"
 ## zsh-vi-mode plugin
 # NOTE: Has to be placed before the 'ZVM_INIT_MODE=sourcing', otherwise 'jk' will not work
 # Bind jk to ESC
-ZVM_VI_INSERT_ESCAPE_BINDKEY='jk'
+# ZVM_VI_INSERT_ESCAPE_BINDKEY='jk'
 
 # NOTE: Without this zsh-vi-mode plugin breaks command history search CTRL-R, enabled by fzf plugin
 # NOTE: zsh-vi-mode also has to be placed before fzf amongst the plugins
@@ -169,6 +169,7 @@ export VISUAL=nvim
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias rm='echo "use trash instead"; false'
 alias zshconfig='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias tmux='TERM=screen-256color tmux'

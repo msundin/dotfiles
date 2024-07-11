@@ -287,7 +287,7 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- Needed for markdown in Obsidian
 vim.opt.conceallevel = 2
 
-vim.keymap.set('i', 'jk', '<esc>', { desc = 'Escape from insert mode' })
+-- vim.keymap.set('i', 'jk', '<esc>', { desc = 'Escape from insert mode' })
 
 -- Window Navigation
 -- vim.keymap.set('n', '<left>', '<c-w><c-h>', { desc = 'escape from insert mode' })

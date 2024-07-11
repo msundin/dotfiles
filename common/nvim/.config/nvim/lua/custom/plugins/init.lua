@@ -6,6 +6,13 @@ return {
   -- using lazy.nvim
 
   {
+    'max397574/better-escape.nvim',
+    config = function()
+      require('better_escape').setup()
+    end,
+  },
+
+  {
     'Shatur/neovim-session-manager',
     dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
