@@ -290,10 +290,10 @@ vim.opt.conceallevel = 2
 vim.keymap.set('i', 'jk', '<esc>', { desc = 'Escape from insert mode' })
 
 -- Window Navigation
-vim.keymap.set('n', '<left>', '<C-w><C-h>', { desc = 'Escape from insert mode' })
-vim.keymap.set('n', '<down>', '<C-w><C-j>', { desc = 'Escape from insert mode' })
-vim.keymap.set('n', '<up>', '<C-w><C-k>', { desc = 'Escape from insert mode' })
-vim.keymap.set('n', '<right>', '<C-w><C-l>', { desc = 'Escape from insert mode' })
+-- vim.keymap.set('n', '<left>', '<c-w><c-h>', { desc = 'escape from insert mode' })
+-- vim.keymap.set('n', '<down>', '<c-w><c-j>', { desc = 'escape from insert mode' })
+-- vim.keymap.set('n', '<up>', '<c-w><c-k>', { desc = 'escape from insert mode' })
+-- vim.keymap.set('n', '<right>', '<c-w><c-l>', { desc = 'escape from insert mode' })
 
 vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'Escape from insert mode' })
 
