@@ -23,9 +23,13 @@ alt - return : open -n /Applications/Alacritty.app
 ### FOCUS ###
 # focus window
 alt - h : yabai -m window --focus west || $(yabai -m display --focus west)
+alt - left : yabai -m window --focus west || $(yabai -m display --focus west)
 alt - j : yabai -m window --focus south || $(yabai -m display --focus south)
+alt - down : yabai -m window --focus south || $(yabai -m display --focus south)
 alt - k : yabai -m window --focus north || $(yabai -m display --focus north)
+alt - up : yabai -m window --focus north || $(yabai -m display --focus north)
 alt - l : yabai -m window --focus east || $(yabai -m display --focus east)
+alt - right : yabai -m window --focus east || $(yabai -m display --focus east)
 # focus desktop
 #alt - 0x1B : yabai -m space --focus recent
 alt - 1 : yabai -m space --focus 1
@@ -43,15 +47,23 @@ alt - 0 : yabai -m space --focus 10
 ### MOVE ###
 # swap focused window
 shift + alt - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west) 
+shift + alt - left : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west) 
 shift + alt - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south) 
+shift + alt - down : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south) 
 shift + alt - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north) 
+shift + alt - up : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north) 
 shift + alt - l : yabai -m window --swap east || $(yabai -m config window_placement first_child; yabai -m window --display east; yabai -m display --focus east; yabai -m config window_placement second_child) 
+shift + alt - right : yabai -m window --swap east || $(yabai -m config window_placement first_child; yabai -m window --display east; yabai -m display --focus east; yabai -m config window_placement second_child) 
 # move focused window
 #####
 shift + ctrl - h : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west) 
+shift + ctrl - left : yabai -m window --warp west || $(yabai -m window --display west; yabai -m display --focus west) 
 shift + ctrl - j : yabai -m window --warp south || $(yabai -m window --display south; yabai -m display --focus south) 
+shift + ctrl - down : yabai -m window --warp south || $(yabai -m window --display south; yabai -m display --focus south) 
 shift + ctrl - k : yabai -m window --warp north || $(yabai -m window --display north; yabai -m display --focus north) 
+shift + ctrl - up : yabai -m window --warp north || $(yabai -m window --display north; yabai -m display --focus north) 
 shift + ctrl - l : yabai -m window --warp east || $(yabai -m config window_placement first_child; yabai -m window --display east; yabai -m display --focus east; yabai -m config window_placement second_child) 
+shift + ctrl - right : yabai -m window --warp east || $(yabai -m config window_placement first_child; yabai -m window --display east; yabai -m display --focus east; yabai -m config window_placement second_child) 
 # send focused window to next/prev workspace
 shift + alt - 0x1B : yabai -m window --space recent
 shift + alt - 1 : yabai -m window --space 1
