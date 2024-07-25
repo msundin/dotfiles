@@ -75,6 +75,37 @@ y = 0
 x = 0
 y = 0
 
+[keyboard]
+# Map Cmd+C to Ctrl+C
+[[keyboard.bindings]]
+key = "C"
+mods = "Command"
+chars = "\u0003"
+
+# Map Cmd+V to Ctrl+V
+[[keyboard.bindings]]
+key = "V"
+mods = "Command"
+chars = "\u0016"
+
+# Map Cmd+X to Ctrl+X
+[[keyboard.bindings]]
+key = "X"
+mods = "Command"
+chars = "\u0018"
+
+# Map Cmd+Z to Ctrl+Z
+[[keyboard.bindings]]
+key = "Z"
+mods = "Command"
+chars = "\u001A"
+
+# Map Cmd+Shift+Z to Ctrl+Shift+Z
+[[keyboard.bindings]]
+key = "Z"
+mods = "Command|Shift"
+chars = "\u001A"
+
 [mouse]
 hide_when_typing = true
 
