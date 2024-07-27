@@ -81,7 +81,8 @@ HIST_STAMPS="yyyy-mm-dd"
 ZVM_INIT_MODE=sourcing
 
 plugins=(
-  zsh-vi-mode
+# NOTE: I run the run 'bindkey -v' command instead below to enable vi mode since zsh-vi-plugin here breaks 'p' for pasting!
+# zsh-vi-mode
   zsh-syntax-highlighting
   history-substring-search
   colored-man-pages
@@ -114,9 +115,20 @@ eval "$(zoxide init --cmd cd zsh)"
 # eval "$(zoxide init zsh)"
 
 export RANGER_LOAD_DEFAULT_RC="false"
+
 # Enable vi-mode
-# NOTE: I run the zsh-vi-mode plugin instead!
-# bindkey -v
+bindkey -v
+
+function vi-paste-from-clipboard() {
+  # echo "Attempting to paste from clipboard..." >> /tmp/zsh_debug.log
+  local clipboard_content=$(pbpaste)
+  # echo "Clipboard content: $clipboard_content" >> /tmp/zsh_debug.log
+  LBUFFER="$LBUFFER$clipboard_content"
+  zle redisplay
+}
+zle -N vi-paste-from-clipboard
+bindkey -M vicmd 'p' vi-paste-from-clipboard
+
 # set jk to ESC
 # bindkey -M viins 'jk' vi-cmd-mode
 # Set Backspace key to delete the character behind the cursor
@@ -189,7 +201,6 @@ alias va='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
 alias vl='NVIM_APPNAME=lvim lvim' # LunarVim
 
 # Restart Yabai
-
 
 # Define a function instead of an alias
 yr() {
