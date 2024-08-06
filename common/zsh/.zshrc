@@ -147,12 +147,25 @@ if [[ "$(uname)" == "Darwin" ]]; then
   export DISPLAY=:0
 
   export PATH=$HOME/.local/bin:$PATH
+
+function vi-yank-to-clipboard() {
+  BUFFER=$(cat)  # Read the current buffer content
+  echo "$BUFFER" | pbcopy  # Copy it to the system clipboard
+}
 else
   ### Commands specific elsewhere, e.g. Linux
 
   alias -s {png,jpg}=feh
   alias -s {pdf}=brave
+
+function vi-yank-to-clipboard() {
+  BUFFER=$(cat)  # Read the current buffer content
+  echo "$BUFFER" | xclip -selection clipboard  # Copy it to the system clipboard
+}
 fi
+
+# Bind the function to vi command mode keybinding
+bindkey -M vicmd 'yy' vi-yank-to-clipboard
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
