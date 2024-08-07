@@ -8,6 +8,12 @@ VAULT_DIR="$CURRENT_DIR"
 SOURCE_DIR="zettelkasten"
 DEST_DIR="notes"
 
+# Function to clean and extract hub value
+extract_hub() {
+  local line="$1"
+  echo "$line" | sed -E 's/^hub:\s*//; s/^-//; s/^\s*//; s/\s*$//; s/\[\[(.*)\]\]/\1/; s/[" ]//g'
+}
+
 # Iterate through all markdown files in the source directory
 find "$VAULT_DIR/$SOURCE_DIR" -type f -name "*.md" | while read -r file; do
   echo "Processing $file"
@@ -15,14 +21,15 @@ find "$VAULT_DIR/$SOURCE_DIR" -type f -name "*.md" | while read -r file; do
   # Initialize hub variable
   hub=""
 
-  # Extract the hub from the file. This assumes the hub is on the line immediately following "hub:"
+  # Extract the hub from the file
   while IFS= read -r line; do
     if [[ $line =~ ^hub: ]]; then
-      # Get the next line if it's on a new line or extract directly
-      IFS= read -r next_line
-      hub=$(echo "$next_line" | sed -e 's/^\s*-\s*//' -e 's/^\s*//' -e 's/\s*$//' -e 's/\[\[\(.*\)\]\]/\1/' -e 's/[" ]//g')
-      if [ -z "$hub" ]; then
-        hub=$(echo "$line" | sed -e 's/^hub:\s*//' -e 's/^\s*-\s*//' -e 's/\[\[\(.*\)\]\]/\1/' -e 's/[" ]//g')
+      # Handle the case where hub is on the next line or the same line
+      if [[ "$line" == "hub:" ]]; then
+        IFS= read -r next_line
+        hub=$(extract_hub "$next_line")
+      else
+        hub=$(extract_hub "$line")
       fi
       break
     fi
@@ -31,7 +38,7 @@ find "$VAULT_DIR/$SOURCE_DIR" -type f -name "*.md" | while read -r file; do
   echo "Found hub: $hub"
 
   # If a valid hub is found, proceed with moving the file
-  if [ ! -z "$hub" ] && [[ ! "$hub" =~ ^hubs?: ]]; then
+  if [[ -n "$hub" && ! "$hub" =~ ^(hub:|hubs:|\[\])$ ]]; then
     # Create the target directory if it doesn't exist
     TARGET_DIR="$VAULT_DIR/$DEST_DIR/$hub"
     mkdir -p "$TARGET_DIR"
