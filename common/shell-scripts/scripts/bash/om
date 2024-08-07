@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Directory containing markdown files
-
 # Get the current directory
 CURRENT_DIR=$(pwd)
 echo "Current directory path: $CURRENT_DIR"
@@ -14,13 +12,26 @@ DEST_DIR="notes"
 find "$VAULT_DIR/$SOURCE_DIR" -type f -name "*.md" | while read -r file; do
   echo "Processing $file"
 
+  # Initialize hub variable
+  hub=""
+
   # Extract the hub from the file. This assumes the hub is on the line immediately following "hub:"
-  hub=$(awk '/hub:/{getline; print; exit}' "$file" | sed -e 's/^ *- *//' -e 's/^ *//;s/ *$//' -e 's/\[\[\(.*\)\]\]/\1/' -e 's/[" ]//g')
+  while IFS= read -r line; do
+    if [[ $line =~ ^hub: ]]; then
+      # Get the next line if it's on a new line or extract directly
+      IFS= read -r next_line
+      hub=$(echo "$next_line" | sed -e 's/^\s*-\s*//' -e 's/^\s*//' -e 's/\s*$//' -e 's/\[\[\(.*\)\]\]/\1/' -e 's/[" ]//g')
+      if [ -z "$hub" ]; then
+        hub=$(echo "$line" | sed -e 's/^hub:\s*//' -e 's/^\s*-\s*//' -e 's/\[\[\(.*\)\]\]/\1/' -e 's/[" ]//g')
+      fi
+      break
+    fi
+  done < "$file"
 
-  echo "Found hub $hub"
+  echo "Found hub: $hub"
 
-  # If a hub is found, proceed with moving the file
-  if [ ! -z "$hub" ]; then
+  # If a valid hub is found, proceed with moving the file
+  if [ ! -z "$hub" ] && [[ ! "$hub" =~ ^hubs?: ]]; then
     # Create the target directory if it doesn't exist
     TARGET_DIR="$VAULT_DIR/$DEST_DIR/$hub"
     mkdir -p "$TARGET_DIR"
@@ -29,10 +40,9 @@ find "$VAULT_DIR/$SOURCE_DIR" -type f -name "*.md" | while read -r file; do
     mv "$file" "$TARGET_DIR/"
     echo "Moved $file to $TARGET_DIR"
   else
-    echo "No hub found for $file"
+    echo "No valid hub found for $file"
   fi
 
 done
 
 echo "Done 🪷"
-

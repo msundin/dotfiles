@@ -119,13 +119,6 @@ export RANGER_LOAD_DEFAULT_RC="false"
 # Enable vi-mode
 bindkey -v
 
-function vi-paste-from-clipboard() {
-  # echo "Attempting to paste from clipboard..." >> /tmp/zsh_debug.log
-  local clipboard_content=$(pbpaste)
-  # echo "Clipboard content: $clipboard_content" >> /tmp/zsh_debug.log
-  LBUFFER="$LBUFFER$clipboard_content"
-  zle redisplay
-}
 zle -N vi-paste-from-clipboard
 bindkey -M vicmd 'p' vi-paste-from-clipboard
 
@@ -148,23 +141,42 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
   export PATH=$HOME/.local/bin:$PATH
 
-function vi-yank-to-clipboard() {
-  BUFFER=$(cat)  # Read the current buffer content
-  echo "$BUFFER" | pbcopy  # Copy it to the system clipboard
-}
+  function vi-yank-to-clipboard() {
+    # Copy the entire current line to the clipboard
+    print -n "$BUFFER" | pbcopy
+  }
+  
+  function vi-paste-from-clipboard() {
+    # echo "Attempting to paste from clipboard..." >> /tmp/zsh_debug.log
+    local clipboard_content=$(pbpaste)
+    # echo "Clipboard content: $clipboard_content" >> /tmp/zsh_debug.log
+    LBUFFER="$LBUFFER$clipboard_content"
+    zle redisplay
+  }
+
 else
   ### Commands specific elsewhere, e.g. Linux
 
   alias -s {png,jpg}=feh
   alias -s {pdf}=brave
 
-function vi-yank-to-clipboard() {
-  BUFFER=$(cat)  # Read the current buffer content
-  echo "$BUFFER" | xclip -selection clipboard  # Copy it to the system clipboard
-}
+  function vi-yank-to-clipboard() {
+    # Copy the entire current line to the clipboard
+    print -n "$BUFFER" | xclip -selection clipboard
+  }
+  
+  function vi-paste-from-clipboard() {
+    # echo "Attempting to paste from clipboard..." >> /tmp/zsh_debug.log
+    local clipboard_content=$(xclip -selection clipboard -o)
+    # echo "Clipboard content: $clipboard_content" >> /tmp/zsh_debug.log
+    LBUFFER="$LBUFFER$clipboard_content"
+    zle redisplay
+  }
+
 fi
 
 # Bind the function to vi command mode keybinding
+zle -N vi-yank-to-clipboard
 bindkey -M vicmd 'yy' vi-yank-to-clipboard
 
 # export MANPATH="/usr/local/man:$MANPATH"
