@@ -161,7 +161,7 @@ return {
       -- vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
       -- Open parent directory in floating window
-      vim.keymap.set('n', '<space>-', require('oil').toggle_float)
+      vim.keymap.set('n', '-', require('oil').toggle_float)
     end,
   },
 
@@ -217,9 +217,9 @@ return {
           :find()
       end
 
-      vim.keymap.set('n', '<C-e>', function()
-        toggle_telescope(harpoon:list())
-      end, { desc = 'Open harpoon window' })
+      -- vim.keymap.set('n', '<C-e>', function()
+      --   toggle_telescope(harpoon:list())
+      -- end, { desc = 'Open harpoon window' })
 
       vim.keymap.set('n', '<leader>a', function()
         harpoon:list():add()

@@ -282,6 +282,10 @@ vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left wind
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set('n', '<C-m>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-i>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-n>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-e>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
 -- My custom keymaps:
 -- Needed for markdown in Obsidian
@@ -300,10 +304,14 @@ vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'Escape fro
 -- Buffer Navigation
 vim.keymap.set('n', '<leader>j', ':bprevious<CR>', { silent = true })
 vim.keymap.set('n', '<leader>k', ':bnext<CR>', { silent = true })
+vim.keymap.set('n', '<S-j>', ':bprevious<CR>', { silent = true })
+vim.keymap.set('n', '<S-k>', ':bnext<CR>', { silent = true })
 
 -- Jump List Navigation
 vim.keymap.set('n', '<leader>h', '<C-o>', { silent = true })
 vim.keymap.set('n', '<leader>l', '<C-i>', { silent = true })
+vim.keymap.set('n', '<S-h>', '<C-o>', { silent = true })
+vim.keymap.set('n', '<S-l>', '<C-i>', { silent = true })
 
 -- Handle splits
 vim.keymap.set('n', '<leader>s', '<cmd>split<cr>', { desc = '[s]plit horizontally' })
