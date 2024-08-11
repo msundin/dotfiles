@@ -24,6 +24,7 @@ set commentary
 set NERDTree
 set which-key
 set notimeout
+" set sneak
 
 inoremap <C-j> <Action>(PopupMenu-selectNext)
 inoremap <C-k> <Action>(PopupMenu-selectPrev)
@@ -67,7 +68,7 @@ nmap <leader>gt <action>(RecentChangedFiles)
 nmap <leader>x <action>(CloseEditor)
 
 " Special commands for Android Studio
-nmap <leader>b <action>(ToggleLineBreakpoint)
+nmap <leader>db <action>(ToggleLineBreakpoint)
 nmap <leader>p <action>(ShowSettings)
 nmap <leader>a <action>(HideAllWindows)
 nmap <leader>rr <action>(Run)
@@ -114,6 +115,10 @@ nmap <leader>h <action>(Back)
 nmap <leader>l <action>(Forward)
 nmap <leader>j <action>(PreviousTab)
 nmap <leader>k <action>(NextTab)
+nmap H <action>(Back)
+nmap L <action>(Forward)
+nmap J <action>(PreviousTab)
+nmap K <action>(NextTab)
 
 "nmap <leader>, <action>(GotoClass)
 nmap <leader>y <action>(CollapseRegion)
@@ -131,8 +136,8 @@ nmap <C-w>o <action>(CloseEditorsGroup)
  nmap <leader>wz <action>(ToggleZenMode)
 
 "nmap <A-a> <action>(HideAllWindows)
-nmap <Right> <action>(NextSplitter)
-nmap <Left> <action>(PrevSplitter)
+"nmap <Right> <action>(NextSplitter)
+"nmap <Left> <action>(PrevSplitter)
 "nmap <leader>ff <action>(ToggleFullScreen)
 
 " Find more examples here:
