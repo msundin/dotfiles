@@ -206,7 +206,7 @@ export VISUAL=nvim
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias rm='echo "use trash instead"; false'
+# alias rm='echo "use trash instead"; false'
 alias zshconfig='nvim ~/.zshrc'
 alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias tmux='TERM=screen-256color tmux'

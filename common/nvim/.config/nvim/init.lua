@@ -326,7 +326,7 @@ vim.keymap.set('t', '<C-t>', '<Cmd>ToggleTerm<CR>', { noremap = true, silent = t
 vim.api.nvim_set_keymap('n', '<Leader>rl', ':e!<CR>', { noremap = true, silent = true })
 
 -- Run applications
-vim.keymap.set('n', 'rrk', '<cmd>KotlinRun<CR>', { desc = 'Compile and run Kotlin code' })
+vim.keymap.set('n', '<leader>rrk', '<cmd>KotlinRun<CR>', { desc = 'Compile and run Kotlin code' })
 
 function RunKotlin()
   local filename = vim.fn.expand '%'
@@ -709,6 +709,8 @@ require('lazy').setup({
       --  - capabilities (table): Override fields in capabilities. Can be used to disable certain LSP features.
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
+
+      -- local jdk_home = '/usr/lib/jvm/java-11-openjdk' -- Your actual jdk path
       local servers = {
         clangd = {},
         -- gopls = {},
@@ -719,6 +721,12 @@ require('lazy').setup({
         jsonls = {},
         -- java_language_server = {},
         kotlin_language_server = {},
+        -- kotlin_language_server = {
+        --   cmd_env = {
+        --     PATH = jdk_home .. '/bin:' .. vim.env.PATH,
+        --     JAVA_HOME = jdk_home,
+        --   },
+        -- },
         docker_compose_language_service = {},
         dockerls = {},
         markdown_oxide = {},
@@ -1053,7 +1061,7 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  -- require 'kickstart.plugins.debug',
+  require 'kickstart.plugins.debug',
   -- require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',

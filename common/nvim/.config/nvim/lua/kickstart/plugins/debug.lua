@@ -23,7 +23,55 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+    'Mgenuit/nvim-dap-kotlin',
+    'mfussenegger/nvim-dap-python',
   },
+
+  -- opts = function()
+  --   local dap = require 'dap'
+  --   if not dap.adapters.kotlin then
+  --     dap.adapters.kotlin = {
+  --       type = 'executable',
+  --       command = 'kotlin-debug-adapter',
+  --       options = { auto_continue_if_many_stopped = false },
+  --     }
+  --   end
+  --
+  --   dap.configurations.kotlin = {
+  --     {
+  --       type = 'kotlin',
+  --       request = 'launch',
+  --       name = 'This file',
+  --       -- may differ, when in doubt, whatever your project structure may be,
+  --       -- it has to correspond to the class file located at `build/classes/`
+  --       -- and of course you have to build before you debug
+  --       mainClass = function()
+  --         local root = vim.fs.find('src', { path = vim.uv.cwd(), upward = true, stop = vim.env.HOME })[1] or ''
+  --         local fname = vim.api.nvim_buf_get_name(0)
+  --         -- src/main/kotlin/websearch/Main.kt -> websearch.MainKt
+  --         return fname:gsub(root, ''):gsub('main/kotlin/', ''):gsub('.kt', 'Kt'):gsub('/', '.'):sub(2, -1)
+  --       end,
+  --       projectRoot = '${workspaceFolder}',
+  --       jsonLogFile = '',
+  --       enableJsonLogging = false,
+  --     },
+  --     {
+  --       -- Use this for unit tests
+  --       -- First, run
+  --       -- ./gradlew --info cleanTest test --debug-jvm
+  --       -- then attach the debugger to it
+  --       type = 'kotlin',
+  --       request = 'attach',
+  --       name = 'Attach to debugging session',
+  --       port = 5005,
+  --       args = {},
+  --       projectRoot = vim.fn.getcwd,
+  --       hostName = 'localhost',
+  --       timeout = 2000,
+  --     },
+  --   }
+  -- end,
+
   config = function()
     local dap = require 'dap'
     local dapui = require 'dapui'
@@ -32,6 +80,7 @@ return {
       -- Makes a best effort to setup the various debuggers with
       -- reasonable debug configurations
       automatic_setup = true,
+      automatic_installation = true,
 
       -- You can provide additional configuration to the handlers,
       -- see mason-nvim-dap README for more information
@@ -46,12 +95,21 @@ return {
     }
 
     -- Basic debugging keymaps, feel free to change to your liking!
-    vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
-    vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
-    vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
-    vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
-    vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
-    vim.keymap.set('n', '<leader>B', function()
+    -- vim.keymap.set('n', '<F5>', dap.continue, { desc = 'Debug: Start/Continue' })
+    -- vim.keymap.set('n', '<F1>', dap.step_into, { desc = 'Debug: Step Into' })
+    -- vim.keymap.set('n', '<F2>', dap.step_over, { desc = 'Debug: Step Over' })
+    -- vim.keymap.set('n', '<F3>', dap.step_out, { desc = 'Debug: Step Out' })
+    -- vim.keymap.set('n', '<leader>b', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+    -- vim.keymap.set('n', '<leader>B', function()
+    --   dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+    -- end, { desc = 'Debug: Set Breakpoint' })
+    vim.keymap.set('n', '<leader>dt', dap.continue, { desc = ':DapUiToggle<CR>' })
+    vim.keymap.set('n', '<leader>dc', dap.continue, { desc = 'Debug: Start/Continue' })
+    vim.keymap.set('n', '<leader>dsi', dap.step_into, { desc = 'Debug: Step Into' })
+    vim.keymap.set('n', '<leader>dso', dap.step_over, { desc = 'Debug: Step Over' })
+    vim.keymap.set('n', '<leader>dsot', dap.step_out, { desc = 'Debug: Step Out' })
+    vim.keymap.set('n', '<leader>db', dap.toggle_breakpoint, { desc = 'Debug: Toggle Breakpoint' })
+    vim.keymap.set('n', '<leader>dbc', function()
       dap.set_breakpoint(vim.fn.input 'Breakpoint condition: ')
     end, { desc = 'Debug: Set Breakpoint' })
 
@@ -86,5 +144,52 @@ return {
 
     -- Install golang specific config
     require('dap-go').setup()
+    require('dap-python').setup '~/repos/python/python-debug-test/debug-test-env/bin/python'
+    -- require('nvim-dap-kotlin').setup {
+    --   dap_command = 'kotlin-debug-adapter',
+    --   project_root = '${workspaceFolder}',
+    --   enable_logging = false,
+    --   log_file_path = '',
+    -- }
+    -- require('dap').defaults.kotlin.auto_continue_if_many_stopped = false
+    -- dap.adapters.kotlin = {
+    --   type = 'executable',
+    --   command = 'kotlin-debug-adapter',
+    --   options = { auto_continue_if_many_stopped = false },
+    -- }
+    --
+    -- dap.configurations.kotlin = {
+    --   {
+    --     type = 'kotlin',
+    --     request = 'launch',
+    --     name = 'This file',
+    --     -- may differ, when in doubt, whatever your project structure may be,
+    --     -- it has to correspond to the class file located at `build/classes/`
+    --     -- and of course you have to build before you debug
+    --     mainClass = function()
+    --       local root = vim.fs.find('src', { path = vim.uv.cwd(), upward = true, stop = vim.env.HOME })[1] or ''
+    --       local fname = vim.api.nvim_buf_get_name(0)
+    --       -- src/main/kotlin/websearch/Main.kt -> websearch.MainKt
+    --       return fname:gsub(root, ''):gsub('main/kotlin/', ''):gsub('.kt', 'Kt'):gsub('/', '.'):sub(2, -1)
+    --     end,
+    --     projectRoot = '${workspaceFolder}',
+    --     jsonLogFile = '',
+    --     enableJsonLogging = false,
+    --   },
+    --   {
+    --     -- Use this for unit tests
+    --     -- First, run
+    --     -- ./gradlew --info cleanTest test --debug-jvm
+    --     -- then attach the debugger to it
+    --     type = 'kotlin',
+    --     request = 'attach',
+    --     name = 'Attach to debugging session',
+    --     port = 5005,
+    --     args = {},
+    --     projectRoot = vim.fn.getcwd,
+    --     hostName = 'localhost',
+    --     timeout = 2000,
+    --   },
+    -- }
   end,
 }

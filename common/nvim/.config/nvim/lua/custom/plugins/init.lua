@@ -5,6 +5,9 @@
 return {
   -- using lazy.nvim
 
+  -- see debug lua config file
+  -- { 'Mgenuit/nvim-dap-kotlin', config = function() end },
+
   {
     'max397574/better-escape.nvim',
     config = function()
