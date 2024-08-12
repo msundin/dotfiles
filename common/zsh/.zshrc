@@ -81,8 +81,7 @@ HIST_STAMPS="yyyy-mm-dd"
 ZVM_INIT_MODE=sourcing
 
 plugins=(
-# NOTE: I run the run 'bindkey -v' command instead below to enable vi mode since zsh-vi-plugin here breaks 'p' for pasting!
-# zsh-vi-mode
+  zsh-vi-mode
   zsh-syntax-highlighting
   history-substring-search
   colored-man-pages
@@ -115,7 +114,6 @@ eval "$(zoxide init --cmd cd zsh)"
 # eval "$(zoxide init zsh)"
 
 export RANGER_LOAD_DEFAULT_RC="false"
-
 # Enable vi-mode
 bindkey -v
 
@@ -226,6 +224,7 @@ alias va='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
 alias vl='NVIM_APPNAME=lvim lvim' # LunarVim
 
 # Restart Yabai
+
 
 # Define a function instead of an alias
 yr() {
