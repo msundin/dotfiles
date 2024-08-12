@@ -64,7 +64,7 @@ style = "Regular"
 opacity = 1.0
 dynamic_title = true
 decorations = "buttonless"
-option_as_alt = "Both"
+option_as_alt = "OnlyLeft"
 dynamic_padding = false
 
 [font.glyph_offset]
