@@ -149,7 +149,7 @@ alt - space : skhd --key "escape"
 # tiling/untiling (float/unfloat) window and center on screen
 shift + alt - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
 # kill focused window
-shift + alt - q : yabai -m window --close
+shift + lalt - q : yabai -m window --close
 
 ###########################
 ### COMMENTED OUT BELOW ###

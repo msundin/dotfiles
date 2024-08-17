@@ -530,8 +530,18 @@ return {
       ---@param url string
       follow_url_func = function(url)
         -- Open the URL in the default web browser.
-        vim.fn.jobstart { 'open', url } -- Mac OS
-        vim.fn.jobstart { 'xdg-open', url } -- linux
+        local os_name = vim.loop.os_uname().sysname
+
+        if os_name == 'Darwin' then
+          -- This block will execute if the operating system is macOS
+          vim.fn.jobstart { 'open', url } -- Mac OS
+        elseif os_name == 'Linux' then
+          -- This block will execute if the operating system is Linux
+          vim.fn.jobstart { 'xdg-open', url } -- linux
+        else
+          -- Optional: handle other operating systems if necessary
+          print 'Unsupported operating system'
+        end
       end,
 
       -- Optional, set to true if you use the Obsidian Advanced URI plugin.

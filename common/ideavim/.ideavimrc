@@ -139,8 +139,8 @@ nmap <leader>o <action>(CloseEditorsGroup)
  nmap <leader>wz <action>(ToggleZenMode)
 
 "nmap <A-a> <action>(HideAllWindows)
-"nmap <Right> <action>(NextSplitter)
-"nmap <Left> <action>(PrevSplitter)
+nmap <C-i> <action>(NextSplitter)
+nmap <C-m> <action>(PrevSplitter)
 "nmap <leader>ff <action>(ToggleFullScreen)
 
 " Find more examples here:
