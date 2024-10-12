@@ -100,6 +100,18 @@ key = "Z"
 mods = "Command"
 chars = "\u001A"
 
+# Map Control+Shift+C to copy
+[[keyboard.bindings]]
+key = "C"
+mods = "Control|Shift"
+action = "Copy"
+
+# Map Control+Shift+V to paste
+[[keyboard.bindings]]
+key = "V"
+mods = "Control|Shift"
+action = "PasteSelection"
+
 # Map Cmd+Shift+Z to Ctrl+Shift+Z
 [[keyboard.bindings]]
 key = "Z"
