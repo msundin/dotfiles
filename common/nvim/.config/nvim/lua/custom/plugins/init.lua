@@ -334,7 +334,7 @@ return {
         -- Optional, if you want to change the date format of the default alias of daily notes.
         alias_format = '%A, %-d %B %Y',
         -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-        template = nil,
+        template = 'templates/daily-note-nvim',
       },
 
       -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.

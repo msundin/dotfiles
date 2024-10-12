@@ -128,7 +128,7 @@ alt - e : yabai -m window --toggle split
 # balance size of windows
 alt - b : yabai -m space --balance
 # key remaps
-alt - space : skhd --key "escape"
+# alt - space : skhd --key "escape"
 
 # Conditional bindings in skhdrc that ignore neovim in Alacritty
 # ctrl - h : [[ $(~/check_nvim_in_alacritty.sh) == "neovim is not running" ]] && skhd --key "left"
