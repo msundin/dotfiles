@@ -23,6 +23,7 @@ return {
 
     -- Add your own debuggers here
     'leoluz/nvim-dap-go',
+    'sebdah/vim-delve',
     'Mgenuit/nvim-dap-kotlin',
     'mfussenegger/nvim-dap-python',
   },
