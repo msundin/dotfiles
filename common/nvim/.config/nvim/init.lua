@@ -106,6 +106,24 @@ local function switch_to_saved_layout()
   end
 end
 
+-- Define a global function to rename tags in all Markdown files, including YAML frontmatter
+_G.rename_tag_in_vault = function(old_tag, new_tag)
+  -- Set the arguments to all Markdown files in the vault
+  vim.cmd 'args **/*.md'
+
+  -- Replace inline tags like #old_tag
+  local inline_command = string.format('argdo %%s/#%s/#%s/ge | update', old_tag, new_tag)
+  vim.cmd(inline_command)
+
+  -- Replace tags in YAML frontmatter (detects lines under 'tags:' list format)
+  -- This command matches tags like `- old_tag` under `tags:` in YAML
+  local yaml_command = string.format([[argdo %%s/^\\(tags:\\n\\s*- \\)\\@<=%s\\(\\>\\)/%s/ge | update]], old_tag, new_tag)
+  vim.cmd(yaml_command)
+
+  -- Clear the argument list
+  vim.cmd 'args'
+end
+
 -- Autocommand to save the layout and switch to it when entering insert mode
 -- vim.api.nvim_create_autocmd('InsertEnter', {
 --   pattern = '*',
@@ -317,8 +335,19 @@ vim.keymap.set('n', '<S-l>', '<C-i>', { silent = true })
 vim.keymap.set('n', '<leader>s', '<cmd>split<cr>', { desc = '[s]plit horizontally' })
 vim.keymap.set('n', '<leader>v', '<cmd>vsplit<cr>', { desc = 'split [v]ertically' })
 
+-- Handle terminal
 vim.keymap.set('n', '<C-t>', ':ToggleTerm<CR>', { noremap = true, silent = true })
 vim.keymap.set('t', '<C-t>', '<Cmd>ToggleTerm<CR>', { noremap = true, silent = true })
+
+-- Misc
+vim.keymap.set('n', '<leader>x', ':bd<cr>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>ornt',
+  '<cmd>lua rename_tag_in_vault(vim.fn.input("Old tag: "), vim.fn.input("New tag: "))<CR>',
+  { noremap = true, silent = true, desc = '[O]bsidian [r]e[n]ame [t]ag everywhere in the vault' }
+)
+
 -- Tab Navigation
 -- vim.keymap.set('n', '<S-n>', ':tabnext<CR>', { silent = true })
 
