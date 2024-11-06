@@ -383,7 +383,6 @@ return {
       vim.keymap.set('n', '<leader>od', '<cmd>ObsidianDailies<CR>', { desc = 'Obsidian daily notes' }),
       vim.keymap.set('n', '<leader>ov', '<cmd>ObsidianWorkspace<CR>', { desc = 'Obsidian switch to other vault/workspace' }),
       vim.keymap.set('n', '<leader>ornf', '<cmd>ObsidianRename<CR>', { desc = '[O]bsidian [r]e[n]ame [f]ile e.g. hub name and all backlinks' }),
-      -- vim.keymap.set('n', '<leader>ornt', '<cmd>ObsidianRename<CR>', { desc = '[O]bsidian [r]e[n]ame [t]ag everywhere in the vault' }),
 
       --------------
       -- obsidian --

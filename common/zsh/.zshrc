@@ -152,6 +152,9 @@ if [[ "$(uname)" == "Darwin" ]]; then
     zle redisplay
   }
 
+  # Set $JAVA_HOME to the currently user by sdkman
+  export JAVA_HOME=$HOME/.sdkman/candidates/java/current/
+
 else
   ### Commands specific elsewhere, e.g. Linux
 
