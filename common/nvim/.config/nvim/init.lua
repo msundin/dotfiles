@@ -322,7 +322,8 @@ vim.keymap.set('n', '<C-t>', ':ToggleTerm<CR>', { noremap = true, silent = true 
 vim.keymap.set('t', '<C-t>', '<Cmd>ToggleTerm<CR>', { noremap = true, silent = true })
 
 -- Misc
--- vim.keymap.set('n', '<leader>x', ':bd<cr>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>x', ':bd<cr>', { noremap = true, silent = true })
+
 -- vim.api.nvim_set_keymap(
 --   'n',
 --   '<leader>ornt',
