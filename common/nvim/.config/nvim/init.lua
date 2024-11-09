@@ -324,12 +324,86 @@ vim.keymap.set('t', '<C-t>', '<Cmd>ToggleTerm<CR>', { noremap = true, silent = t
 -- Misc
 vim.keymap.set('n', '<leader>x', ':bd<cr>', { noremap = true, silent = true })
 
--- vim.api.nvim_set_keymap(
---   'n',
---   '<leader>ornt',
---   '<cmd>lua rename_tag_in_vault(vim.fn.input("Old tag: "), vim.fn.input("New tag: "))<CR>',
---   { noremap = true, silent = true, desc = '[O]bsidian [r]e[n]ame [t]ag everywhere in the vault' }
--- )
+-- Define a global function to rename tags in all Markdown files, including YAML frontmatter
+_G.rename_tag_in_vault = function(old_tag, new_tag)
+  -- Convert tags to lowercase to ensure matching is consistent
+  old_tag = old_tag:lower()
+  new_tag = new_tag:lower()
+
+  -- Get all markdown files in the vault
+  local files = vim.fn.glob('**/*.md', false, true)
+
+  for _, file in ipairs(files) do
+    -- Read the entire file content at once to preserve exact formatting
+    local file_handle = io.open(file, 'r')
+    local content = file_handle:read '*all'
+    file_handle:close()
+
+    -- Store original ending state
+    local ends_with_newline = content:match '\n$'
+
+    -- Split content into lines while preserving empty lines
+    local lines = {}
+    for line in content:gmatch '([^\n]*)\n?' do
+      table.insert(lines, line)
+    end
+
+    -- Update the lines with tag replacements
+    local in_frontmatter = false
+    local frontmatter_count = 0
+
+    for i, line in ipairs(lines) do
+      -- Detect the start and end of YAML frontmatter
+      if line:match '^%-%-%-%s*$' then
+        in_frontmatter = not in_frontmatter
+        frontmatter_count = frontmatter_count + 1
+      end
+
+      -- Replace tags in frontmatter under 'tags:' list
+      if in_frontmatter and frontmatter_count <= 2 and line:match '^%s*%- ' then
+        lines[i] = line:gsub('^(%s*%- )(' .. old_tag .. ')%s*$', '%1' .. new_tag)
+      end
+
+      -- Replace inline tags like #old_tag in the rest of the file
+      if not in_frontmatter or frontmatter_count > 2 then
+        -- Match whole tags, handling various boundary cases
+        lines[i] = line:gsub('#' .. old_tag .. '([^%w_%-])', '#' .. new_tag .. '%1')
+        -- Handle tag at end of line
+        lines[i] = line:gsub('#' .. old_tag .. '$', '#' .. new_tag)
+        -- Handle tag with space after it
+        lines[i] = line:gsub('#' .. old_tag .. '%s', '#' .. new_tag .. ' ')
+        -- Handle standalone tag
+        if lines[i] == '#' .. old_tag then
+          lines[i] = '#' .. new_tag
+        end
+      end
+    end
+
+    -- Write the updated content back to the file
+    file_handle = io.open(file, 'w')
+
+    -- Join lines with newlines, respecting original ending
+    local output = table.concat(lines, '\n')
+    if ends_with_newline and not output:match '\n$' then
+      output = output .. '\n'
+    elseif not ends_with_newline and output:match '\n$' then
+      output = output:sub(1, -2)
+    end
+
+    file_handle:write(output)
+    file_handle:close()
+  end
+
+  print 'Tag rename complete!'
+end
+
+-- Key mapping using the global function
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader>ornt',
+  '<cmd>lua rename_tag_in_vault(vim.fn.input("Old tag: "), vim.fn.input("New tag: "))<CR>',
+  { noremap = true, silent = true, desc = '[O]bsidian [r]e[n]ame [t]ag everywhere in the vault' }
+)
 
 -- Tab Navigation
 -- vim.keymap.set('n', '<S-n>', ':tabnext<CR>', { silent = true })
