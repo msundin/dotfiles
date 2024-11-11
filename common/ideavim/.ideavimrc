@@ -144,21 +144,37 @@ nmap <C-i> <action>(NextSplitter)
 nmap <C-m> <action>(PrevSplitter)
 "nmap <leader>ff <action>(ToggleFullScreen)
 
-"HarpoonIJ
+" HarpoonIJ
+"nmap 1 :action GotoHarpoon1<cr>
+"nmap 2 :action GotoHarpoon2<cr>
+"nmap 3 :action GotoHarpoon3<cr>
+"nmap 4 :action GotoHarpoon4<cr>
+"nmap 5 :action GotoHarpoon5<cr>
+"nmap 6 :action GotoHarpoon6<cr>
+"nmap 7 :action GotoHarpoon7<cr>
+"nmap 8 :action GotoHarpoon8<cr>
+"nmap 9 :action GotoHarpoon9<cr>
+"nmap 0 :action GotoHarpoon0<cr>
 
-nmap 1 :action GotoHarpoon1<cr>
-nmap 2 :action GotoHarpoon2<cr>
-nmap 3 :action GotoHarpoon3<cr>
-nmap 4 :action GotoHarpoon4<cr>
-nmap 5 :action GotoHarpoon4<cr>
-nmap 6 :action GotoHarpoon4<cr>
-nmap 7 :action GotoHarpoon4<cr>
-nmap 8 :action GotoHarpoon4<cr>
-nmap 9 :action GotoHarpoon4<cr>
-nmap 0 :action GotoHarpoon4<cr>
+"nmap <leader>b :action ShowHarpoon<cr>
+"nmap <leader>i :action AddToHarpoon<cr>
 
-nmap <leader>b :action ShowHarpoon<cr>
-nmap <leader>i :action AddToHarpoon<cr>
+" Harpooner
+nmap 1 :action HarpoonerOpenFile0<cr>
+nmap 2 :action HarpoonerOpenFile1<cr>
+nmap 3 :action HarpoonerOpenFile2<cr>
+nmap 4 :action HarpoonerOpenFile3<cr>
+nmap 5 :action HarpoonerOpenFile4<cr>
+nmap 6 :action HarpoonerOpenFile5<cr>
+nmap 7 :action HarpoonerOpenFile6<cr>
+nmap 8 :action HarpoonerOpenFile7<cr>
+nmap 9 :action HarpoonerOpenFile8<cr>
+"nmap 0 :action HarpoonerOpenFile9<cr>
+
+nmap 0 :action HarpoonerQuickMenu<cr>
+nmap <leader>i :action HarpoonerAddFile<cr>
+nmap <leader>n :action HarpoonerNextFileAction<cr>
+nmap <leader>e :action HarpoonerPreviousFileAction<cr>
 
 " Find more examples here:
 " https://www.cyberwizard.io/posts/the-ultimate-ideavim-setup/
