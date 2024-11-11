@@ -95,8 +95,8 @@ nmap ]d <action>(GotoNextError)
 nmap s <action>(flash.search)
 
 
-nmap <leader>\ <action>(SelectInProjectView)
-vmap <leader>\ <action>(SelectInProjectView)
+nmap \ <action>(SelectInProjectView)
+vmap \ <action>(SelectInProjectView)
 "nmap <leader>e <action>(GotoNextError)
 "nmap <leader>f <action>(SelectInProjectView)
 
