@@ -92,10 +92,11 @@ nmap T <action>(QuickImplementations)
 nmap [d <action>(GotoPreviousError)
 nmap ]d <action>(GotoNextError)
 "nmap gt <action>(GotoTest)
+nmap s <action>(flash.search)
 
 
-nmap <leader>e <action>(SelectInProjectView)
-vmap <leader>e <action>(SelectInProjectView)
+nmap <leader>\ <action>(SelectInProjectView)
+vmap <leader>\ <action>(SelectInProjectView)
 "nmap <leader>e <action>(GotoNextError)
 "nmap <leader>f <action>(SelectInProjectView)
 
@@ -142,6 +143,22 @@ nmap <leader>o <action>(CloseEditorsGroup)
 nmap <C-i> <action>(NextSplitter)
 nmap <C-m> <action>(PrevSplitter)
 "nmap <leader>ff <action>(ToggleFullScreen)
+
+"HarpoonIJ
+
+nmap 1 :action GotoHarpoon1<cr>
+nmap 2 :action GotoHarpoon2<cr>
+nmap 3 :action GotoHarpoon3<cr>
+nmap 4 :action GotoHarpoon4<cr>
+nmap 5 :action GotoHarpoon4<cr>
+nmap 6 :action GotoHarpoon4<cr>
+nmap 7 :action GotoHarpoon4<cr>
+nmap 8 :action GotoHarpoon4<cr>
+nmap 9 :action GotoHarpoon4<cr>
+nmap 0 :action GotoHarpoon4<cr>
+
+nmap <leader>b :action ShowHarpoon<cr>
+nmap <leader>i :action AddToHarpoon<cr>
 
 " Find more examples here:
 " https://www.cyberwizard.io/posts/the-ultimate-ideavim-setup/
