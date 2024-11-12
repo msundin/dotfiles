@@ -160,18 +160,18 @@ nmap <C-m> <action>(PrevSplitter)
 "nmap <leader>i :action AddToHarpoon<cr>
 
 " Harpooner
-nmap 1 :action HarpoonerOpenFile0<cr>
-nmap 2 :action HarpoonerOpenFile1<cr>
-nmap 3 :action HarpoonerOpenFile2<cr>
-nmap 4 :action HarpoonerOpenFile3<cr>
-nmap 5 :action HarpoonerOpenFile4<cr>
-nmap 6 :action HarpoonerOpenFile5<cr>
-nmap 7 :action HarpoonerOpenFile6<cr>
-nmap 8 :action HarpoonerOpenFile7<cr>
-nmap 9 :action HarpoonerOpenFile8<cr>
+nmap <C-1> :action HarpoonerOpenFile0<cr>
+nmap <C-2> :action HarpoonerOpenFile1<cr>
+nmap <C-3> :action HarpoonerOpenFile2<cr>
+nmap <C-4> :action HarpoonerOpenFile3<cr>
+nmap <C-5> :action HarpoonerOpenFile4<cr>
+nmap <C-6> :action HarpoonerOpenFile5<cr>
+nmap <C-7> :action HarpoonerOpenFile6<cr>
+nmap <C-8> :action HarpoonerOpenFile7<cr>
+nmap <C-9> :action HarpoonerOpenFile8<cr>
 "nmap 0 :action HarpoonerOpenFile9<cr>
 
-nmap 0 :action HarpoonerQuickMenu<cr>
+nmap <C-0> :action HarpoonerQuickMenu<cr>
 nmap <leader>i :action HarpoonerAddFile<cr>
 nmap <leader>n :action HarpoonerNextFileAction<cr>
 nmap <leader>e :action HarpoonerPreviousFileAction<cr>
