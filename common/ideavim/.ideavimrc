@@ -171,7 +171,7 @@ nmap <C-8> :action HarpoonerOpenFile7<cr>
 nmap <C-9> :action HarpoonerOpenFile8<cr>
 "nmap 0 :action HarpoonerOpenFile9<cr>
 
-nmap <C-0> :action HarpoonerQuickMenu<cr>
+nmap <leader>b :action HarpoonerQuickMenu<cr>
 nmap <leader>i :action HarpoonerAddFile<cr>
 nmap <leader>n :action HarpoonerNextFileAction<cr>
 nmap <leader>e :action HarpoonerPreviousFileAction<cr>

@@ -247,10 +247,9 @@ return {
       vim.keymap.set('n', '<leader>i', function()
         harpoon:list():add()
       end)
-      vim.keymap.set('n', '<c-0>', function()
+      vim.keymap.set('n', '<leader>b', function()
         harpoon.ui:toggle_quick_menu(harpoon:list())
       end)
-
       vim.keymap.set('n', '<c-1>', function()
         harpoon:list():select(1)
       end)
