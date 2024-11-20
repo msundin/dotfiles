@@ -173,9 +173,21 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Function to check if file is in special directory
+local function is_in_special_dir(filepath)
+  local special_dir = vim.fn.expand '~/nextcloud/obsidian-vaults'
+  special_dir = vim.fn.fnamemodify(special_dir, ':p') -- Get full path
+  filepath = vim.fn.fnamemodify(filepath, ':p') -- Get full path of file
+  return string.sub(filepath, 1, #special_dir) == special_dir
+end
+
 -- Function to toggle between default wrap, smart wrap, and no wrap
 local wrap_state = 0
 vim.api.nvim_create_user_command('ToggleWrap', function()
+  local current_file = vim.fn.expand '%:p'
+  local in_special_dir = is_in_special_dir(current_file)
+
+  -- Simple increment for all cases
   wrap_state = (wrap_state + 1) % 3
 
   if wrap_state == 0 then -- Default wrap
@@ -238,14 +250,6 @@ vim.api.nvim_set_keymap('n', '<leader>tw', ':ToggleWrap<CR>', { noremap = true, 
 vim.api.nvim_set_keymap('n', '<leader>tn', ':ToggleNumber<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tc', ':ToggleColorColumn<CR>', { noremap = true, silent = true })
 
--- Function to check if file is in special directory
-local function is_in_special_dir(filepath)
-  local special_dir = vim.fn.expand '~/nextcloud/obsidian-vaults'
-  special_dir = vim.fn.fnamemodify(special_dir, ':p') -- Get full path
-  filepath = vim.fn.fnamemodify(filepath, ':p') -- Get full path of file
-  return string.sub(filepath, 1, #special_dir) == special_dir
-end
-
 -- Initialize default settings for all buffers
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufWinEnter' }, {
   pattern = '*',
@@ -261,7 +265,7 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufWinEnter' }, {
       vim.bo.textwidth = 80
       vim.wo.number = true
       vim.wo.relativenumber = true
-      vim.wo.colorcolumn = '80'
+      vim.wo.colorcolumn = '' -- Color column off by default
       wrap_state = 1 -- Set to Smart wrap
       print 'Applied Smart wrap settings (Obsidian vault)'
     else
@@ -271,6 +275,7 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufWinEnter' }, {
       vim.wo.breakindent = false
       vim.wo.showbreak = ''
       vim.bo.textwidth = 80
+      vim.wo.colorcolumn = '' -- Color column off by default
       wrap_state = 0 -- Set to Default wrap
       print 'Applied Default wrap settings (other directory)'
     end
