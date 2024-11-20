@@ -173,6 +173,72 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+-- Function to toggle wrap-related settings
+vim.api.nvim_create_user_command('ToggleWrap', function()
+  local wrap = not vim.wo.wrap
+  vim.wo.wrap = wrap
+  vim.wo.linebreak = wrap -- Break at word boundaries
+  vim.wo.breakindent = wrap -- Preserve indentation when wrapping
+  -- Show break symbols
+  if wrap then
+    vim.wo.showbreak = '↪ '
+  else
+    vim.wo.showbreak = ''
+  end
+  print('Wrap is ' .. (wrap and 'ON' or 'OFF'))
+end, {})
+
+-- Function to cycle through number settings
+local number_state = 0
+vim.api.nvim_create_user_command('ToggleNumber', function()
+  number_state = (number_state + 1) % 3
+  if number_state == 0 then -- No numbers
+    vim.wo.number = false
+    vim.wo.relativenumber = false
+    print 'Line numbers OFF'
+  elseif number_state == 1 then -- Absolute numbers
+    vim.wo.number = true
+    vim.wo.relativenumber = false
+    print 'Absolute line numbers'
+  else -- Relative numbers with current line number
+    vim.wo.number = true
+    vim.wo.relativenumber = true
+    print 'Relative line numbers'
+  end
+end, {})
+
+-- Function to toggle color column
+vim.api.nvim_create_user_command('ToggleColorColumn', function()
+  if vim.wo.colorcolumn == '80' then
+    vim.wo.colorcolumn = ''
+    print 'Color column OFF'
+  else
+    vim.wo.colorcolumn = '80'
+    print 'Color column ON'
+  end
+end, {})
+
+-- Key mappings
+vim.g.mapleader = ' ' -- Set space as leader key
+vim.api.nvim_set_keymap('n', '<leader>tw', ':ToggleWrap<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tn', ':ToggleNumber<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<leader>tc', ':ToggleColorColumn<CR>', { noremap = true, silent = true })
+
+-- Directory-specific settings using autocmd
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = { '*/your/specific/directory/*' }, -- Replace with your directory path
+  callback = function()
+    -- Set your default settings for this directory
+    vim.wo.wrap = true
+    vim.wo.linebreak = true
+    vim.wo.breakindent = true
+    vim.wo.showbreak = '↪ '
+    vim.wo.number = true
+    vim.wo.relativenumber = true
+    vim.wo.colorcolumn = '80'
+  end,
+})
+
 -- Open images with feh
 vim.api.nvim_create_user_command('OpenImage', function(opts)
   vim.fn.system('feh ' .. opts.args)
