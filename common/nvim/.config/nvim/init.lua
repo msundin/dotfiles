@@ -176,19 +176,30 @@ vim.api.nvim_create_autocmd('FileType', {
 -- Function to check if file is in special directory
 local function is_in_special_dir(filepath)
   local special_dir = vim.fn.expand '~/nextcloud/obsidian-vaults'
-  special_dir = vim.fn.fnamemodify(special_dir, ':p') -- Get full path
-  filepath = vim.fn.fnamemodify(filepath, ':p') -- Get full path of file
+  special_dir = vim.fn.fnamemodify(special_dir, ':p')
+  filepath = vim.fn.fnamemodify(filepath, ':p')
   return string.sub(filepath, 1, #special_dir) == special_dir
 end
 
 -- Function to toggle between default wrap, smart wrap, and no wrap
-local wrap_state = 0
 vim.api.nvim_create_user_command('ToggleWrap', function()
   local current_file = vim.fn.expand '%:p'
   local in_special_dir = is_in_special_dir(current_file)
 
-  -- Simple increment for all cases
-  wrap_state = (wrap_state + 1) % 3
+  -- Get buffer-local wrap state
+  local wrap_state = vim.b.wrap_state or 0
+
+  -- For all directories: ensure sequence Default -> Smart -> No wrap
+  if wrap_state == 0 then -- Currently Default
+    wrap_state = 1 -- Go to Smart
+  elseif wrap_state == 1 then -- Currently Smart
+    wrap_state = 2 -- Go to No wrap
+  elseif wrap_state == 2 then -- Currently No wrap
+    wrap_state = 0 -- Back to Default
+  end
+
+  -- Save the new state back to buffer-local variable
+  vim.b.wrap_state = wrap_state
 
   if wrap_state == 0 then -- Default wrap
     vim.wo.wrap = true
@@ -196,51 +207,54 @@ vim.api.nvim_create_user_command('ToggleWrap', function()
     vim.wo.breakindent = false
     vim.wo.showbreak = ''
     vim.bo.textwidth = 80
-    print 'Default wrap ON'
+    vim.notify 'Default wrap ON'
   elseif wrap_state == 1 then -- Smart wrap
     vim.wo.wrap = true
     vim.wo.linebreak = true
     vim.wo.breakindent = true
     vim.wo.showbreak = '↪ '
     vim.bo.textwidth = 80
-    print 'Smart wrap ON'
+    vim.notify 'Smart wrap ON'
   else -- No wrap (state 2)
     vim.wo.wrap = false
     vim.wo.linebreak = false
     vim.wo.breakindent = false
     vim.wo.showbreak = ''
     vim.bo.textwidth = 0
-    print 'Wrap OFF'
+    vim.notify 'Wrap OFF'
   end
 end, {})
 
 -- Function to cycle through number settings
-local number_state = 0
 vim.api.nvim_create_user_command('ToggleNumber', function()
+  local number_state = vim.b.number_state or 0
   number_state = (number_state + 1) % 3
+
   if number_state == 0 then -- No numbers
     vim.wo.number = false
     vim.wo.relativenumber = false
-    print 'Line numbers OFF'
+    vim.notify 'Line numbers OFF'
   elseif number_state == 1 then -- Absolute numbers
     vim.wo.number = true
     vim.wo.relativenumber = false
-    print 'Absolute line numbers'
+    vim.notify 'Absolute line numbers'
   else -- Relative numbers with current line number
     vim.wo.number = true
     vim.wo.relativenumber = true
-    print 'Relative line numbers'
+    vim.notify 'Relative line numbers'
   end
+
+  vim.b.number_state = number_state
 end, {})
 
 -- Function to toggle color column
 vim.api.nvim_create_user_command('ToggleColorColumn', function()
   if vim.wo.colorcolumn == '80' then
     vim.wo.colorcolumn = ''
-    print 'Color column OFF'
+    vim.notify 'Color column OFF'
   else
     vim.wo.colorcolumn = '80'
-    print 'Color column ON'
+    vim.notify 'Color column ON'
   end
 end, {})
 
@@ -250,8 +264,12 @@ vim.api.nvim_set_keymap('n', '<leader>tw', ':ToggleWrap<CR>', { noremap = true, 
 vim.api.nvim_set_keymap('n', '<leader>tn', ':ToggleNumber<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>tc', ':ToggleColorColumn<CR>', { noremap = true, silent = true })
 
+-- Create augroup
+local defaultSettings = vim.api.nvim_create_augroup('DefaultSettings', { clear = true })
+
 -- Initialize default settings for all buffers
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufWinEnter' }, {
+  group = defaultSettings,
   pattern = '*',
   callback = function()
     local filepath = vim.fn.expand '%:p'
@@ -266,8 +284,8 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufWinEnter' }, {
       vim.wo.number = true
       vim.wo.relativenumber = true
       vim.wo.colorcolumn = '' -- Color column off by default
-      wrap_state = 1 -- Set to Smart wrap
-      print 'Applied Smart wrap settings (Obsidian vault)'
+      vim.b.wrap_state = 1 -- Set to Smart wrap
+      vim.b.number_state = 2 -- Set to relative numbers
     else
       -- Default settings for other files (Default wrap)
       vim.wo.wrap = true
@@ -276,9 +294,11 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufWinEnter' }, {
       vim.wo.showbreak = ''
       vim.bo.textwidth = 80
       vim.wo.colorcolumn = '' -- Color column off by default
-      wrap_state = 0 -- Set to Default wrap
-      print 'Applied Default wrap settings (other directory)'
+      vim.b.wrap_state = 0 -- Set to Default wrap
+      vim.b.number_state = 0 -- Set to no numbers
     end
+    vim.cmd 'redraw' -- Try to force a redraw
+    return 0
   end,
 })
 
