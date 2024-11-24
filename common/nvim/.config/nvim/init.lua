@@ -183,9 +183,6 @@ end
 
 -- Function to toggle between default wrap, smart wrap, and no wrap
 vim.api.nvim_create_user_command('ToggleWrap', function()
-  local current_file = vim.fn.expand '%:p'
-  local in_special_dir = is_in_special_dir(current_file)
-
   -- Get buffer-local wrap state
   local wrap_state = vim.b.wrap_state or 0
 
@@ -206,22 +203,19 @@ vim.api.nvim_create_user_command('ToggleWrap', function()
     vim.wo.linebreak = false
     vim.wo.breakindent = false
     vim.wo.showbreak = ''
-    vim.bo.textwidth = 80
-    vim.notify 'Default wrap ON'
+    vim.cmd 'echo "Default wrap ON"'
   elseif wrap_state == 1 then -- Smart wrap
     vim.wo.wrap = true
     vim.wo.linebreak = true
     vim.wo.breakindent = true
     vim.wo.showbreak = '↪ '
-    vim.bo.textwidth = 80
-    vim.notify 'Smart wrap ON'
+    vim.cmd 'echo "Smart wrap ON"'
   else -- No wrap (state 2)
     vim.wo.wrap = false
     vim.wo.linebreak = false
     vim.wo.breakindent = false
     vim.wo.showbreak = ''
-    vim.bo.textwidth = 0
-    vim.notify 'Wrap OFF'
+    vim.cmd 'echo "Wrap OFF"'
   end
 end, {})
 
@@ -233,15 +227,15 @@ vim.api.nvim_create_user_command('ToggleNumber', function()
   if number_state == 0 then -- No numbers
     vim.wo.number = false
     vim.wo.relativenumber = false
-    vim.notify 'Line numbers OFF'
+    vim.cmd 'echo "Line numbers OFF"'
   elseif number_state == 1 then -- Absolute numbers
     vim.wo.number = true
     vim.wo.relativenumber = false
-    vim.notify 'Absolute line numbers'
+    vim.cmd 'echo "Absolute line numbers"'
   else -- Relative numbers with current line number
     vim.wo.number = true
     vim.wo.relativenumber = true
-    vim.notify 'Relative line numbers'
+    vim.cmd 'echo "Relative line numbers"'
   end
 
   vim.b.number_state = number_state
@@ -251,10 +245,10 @@ end, {})
 vim.api.nvim_create_user_command('ToggleColorColumn', function()
   if vim.wo.colorcolumn == '80' then
     vim.wo.colorcolumn = ''
-    vim.notify 'Color column OFF'
+    vim.cmd 'echo "Color column OFF"'
   else
     vim.wo.colorcolumn = '80'
-    vim.notify 'Color column ON'
+    vim.cmd 'echo "Color column ON"'
   end
 end, {})
 
@@ -276,29 +270,45 @@ vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufWinEnter' }, {
 
     if is_in_special_dir(filepath) then
       -- Special directory settings (Smart wrap)
+      -- Set up visual wrapping only
       vim.wo.wrap = true
       vim.wo.linebreak = true
       vim.wo.breakindent = true
       vim.wo.showbreak = '↪ '
-      vim.bo.textwidth = 80
+      -- Prevent any automatic text wrapping
+      vim.bo.textwidth = 0
+      vim.bo.wrapmargin = 0
+      -- Remove ALL format options
+      vim.cmd 'set formatoptions='
+      -- Other settings
       vim.wo.number = true
       vim.wo.relativenumber = true
-      vim.wo.colorcolumn = '' -- Color column off by default
-      vim.b.wrap_state = 1 -- Set to Smart wrap
-      vim.b.number_state = 2 -- Set to relative numbers
+      vim.wo.colorcolumn = ''
+      vim.b.wrap_state = 1
+      vim.b.number_state = 2
     else
-      -- Default settings for other files (Default wrap)
+      -- Default settings for other files
       vim.wo.wrap = true
       vim.wo.linebreak = false
       vim.wo.breakindent = false
       vim.wo.showbreak = ''
-      vim.bo.textwidth = 80
-      vim.wo.colorcolumn = '' -- Color column off by default
-      vim.b.wrap_state = 0 -- Set to Default wrap
-      vim.b.number_state = 0 -- Set to no numbers
+      vim.bo.textwidth = 0
+      vim.bo.wrapmargin = 0
+      -- Remove ALL format options
+      vim.cmd 'set formatoptions='
+      vim.wo.colorcolumn = ''
+      vim.b.wrap_state = 0
+      vim.b.number_state = 0
     end
-    vim.cmd 'redraw' -- Try to force a redraw
-    return 0
+  end,
+})
+
+-- Ensure format options stay cleared after FileType events
+vim.api.nvim_create_autocmd('FileType', {
+  group = defaultSettings,
+  pattern = '*',
+  callback = function()
+    vim.cmd 'set formatoptions='
   end,
 })
 
