@@ -261,45 +261,46 @@ vim.api.nvim_set_keymap('n', '<leader>tc', ':ToggleColorColumn<CR>', { noremap =
 -- Create augroup
 local defaultSettings = vim.api.nvim_create_augroup('DefaultSettings', { clear = true })
 
+-- Function to apply settings
+local function apply_settings(filepath)
+  if is_in_special_dir(filepath) then
+    -- Special directory settings (Smart wrap)
+    vim.wo.wrap = true
+    vim.wo.linebreak = true
+    vim.wo.breakindent = true
+    vim.wo.showbreak = '↪ '
+    vim.bo.textwidth = 0
+    vim.bo.wrapmargin = 0
+    vim.opt_local.formatoptions = ''
+    vim.wo.number = true
+    vim.wo.relativenumber = true
+    vim.wo.colorcolumn = ''
+    vim.b.wrap_state = 1
+    vim.b.number_state = 2
+  else
+    -- Default settings for other files
+    vim.wo.wrap = true
+    vim.wo.linebreak = false
+    vim.wo.breakindent = false
+    vim.wo.showbreak = ''
+    vim.bo.textwidth = 0
+    vim.bo.wrapmargin = 0
+    vim.opt_local.formatoptions = ''
+    vim.wo.colorcolumn = ''
+    vim.b.wrap_state = 0
+    vim.b.number_state = 0
+  end
+end
+
 -- Initialize default settings for all buffers
 vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile', 'BufWinEnter' }, {
   group = defaultSettings,
   pattern = '*',
   callback = function()
     local filepath = vim.fn.expand '%:p'
-
-    if is_in_special_dir(filepath) then
-      -- Special directory settings (Smart wrap)
-      -- Set up visual wrapping only
-      vim.wo.wrap = true
-      vim.wo.linebreak = true
-      vim.wo.breakindent = true
-      vim.wo.showbreak = '↪ '
-      -- Prevent any automatic text wrapping
-      vim.bo.textwidth = 0
-      vim.bo.wrapmargin = 0
-      -- Remove ALL format options
-      vim.cmd 'set formatoptions='
-      -- Other settings
-      vim.wo.number = true
-      vim.wo.relativenumber = true
-      vim.wo.colorcolumn = ''
-      vim.b.wrap_state = 1
-      vim.b.number_state = 2
-    else
-      -- Default settings for other files
-      vim.wo.wrap = true
-      vim.wo.linebreak = false
-      vim.wo.breakindent = false
-      vim.wo.showbreak = ''
-      vim.bo.textwidth = 0
-      vim.bo.wrapmargin = 0
-      -- Remove ALL format options
-      vim.cmd 'set formatoptions='
-      vim.wo.colorcolumn = ''
-      vim.b.wrap_state = 0
-      vim.b.number_state = 0
-    end
+    vim.schedule(function()
+      apply_settings(filepath)
+    end)
   end,
 })
 
@@ -308,7 +309,12 @@ vim.api.nvim_create_autocmd('FileType', {
   group = defaultSettings,
   pattern = '*',
   callback = function()
-    vim.cmd 'set formatoptions='
+    local filepath = vim.fn.expand '%:p'
+    vim.schedule(function()
+      if is_in_special_dir(filepath) then
+        vim.opt_local.formatoptions = ''
+      end
+    end)
   end,
 })
 
