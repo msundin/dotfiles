@@ -14,17 +14,19 @@ if [ ! -f /tmp/yabai_softrestart_flag ]; then
   # Get the number of connected displays
   display_count=$(count_displays)
   
-  # Define the applications to open based on display count
-  if [ "$display_count" -gt 1 ]; then
-    # More than one display (e.g., laptop screen + external display)
-    source ~/.private-yabai-start-multi-display-apps
+  # # Define the applications to open based on display count
+  # if [ "$display_count" -gt 1 ]; then
+  #   # More than one display (e.g., laptop screen + external display)
+  #   source ~/.private-yabai-start-multi-display-apps
+  #
+  # else
+  #   # Only laptop screen
+  #   source ~/.private-yabai-start-single-display-apps
+  #
+  # fi
 
-  else
-    # Only laptop screen
-    source ~/.private-yabai-start-single-display-apps
-
-  fi
-
+  # Only laptop screen
+  source ~/.private-yabai-start-single-display-apps
   # Both external displays and only laptop display
   source ~/.private-yabai-start-all-displays-apps
 
