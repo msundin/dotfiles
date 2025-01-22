@@ -226,8 +226,17 @@ alias vk='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
 alias va='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
 alias vl='NVIM_APPNAME=lvim lvim' # LunarVim
 
-# Restart Yabai
+# Yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
+# Restart Yabai
 
 # Define a function instead of an alias
 yr() {
