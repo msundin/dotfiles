@@ -214,9 +214,9 @@ alias tmux='TERM=screen-256color tmux'
 alias clip='xclip -selection clipboard'
 alias cl='clear'
 # Obsidian
-alias ow='cd ~/nextcloud/obsidian-vaults/work/'
-alias op='cd ~/nextcloud/obsidian-vaults/personal/'
-alias od='cd ~/nextcloud/obsidian-vaults/dev/'
+alias ow='cd ~/obsidian-vaults/work/'
+alias op='cd ~/obsidian-vaults/personal/'
+alias od='cd ~/obsidian-vaults/dev/'
 alias or='nvim $(pwd)/inbox/*.md'
 
 alias v='nvim' # default Neovim config
