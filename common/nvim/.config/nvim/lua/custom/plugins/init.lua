@@ -359,11 +359,11 @@ return {
       workspaces = {
         {
           name = 'personal',
-          path = '~/nextcloud/obsidian-vaults/personal',
+          path = '~/obsidian-vaults/personal',
         },
         {
           name = 'work',
-          path = '~/nextcloud/obsidian-vaults/work',
+          path = '~/obsidian-vaults/work',
         },
       },
       -- Optional, if you keep notes in a specific subdirectory of your vault.
@@ -452,8 +452,8 @@ return {
       -- >>> ou # sync local with Notion
       --
       -- navigate to vault
-      vim.keymap.set('n', '<leader>op', ':cd ~/nextcloud/obsidian-vaults/personal/<cr>', { desc = 'Obsidian switch to personal vault/workspace' }),
-      vim.keymap.set('n', '<leader>ow', ':cd ~/nextcloud/obsidian-vaults/work/<cr>', { desc = 'Obsidian switch to work vault/workspace' }),
+      vim.keymap.set('n', '<leader>op', ':cd ~/obsidian-vaults/personal/<cr>', { desc = 'Obsidian switch to personal vault/workspace' }),
+      vim.keymap.set('n', '<leader>ow', ':cd ~/obsidian-vaults/work/<cr>', { desc = 'Obsidian switch to work vault/workspace' }),
       --
       -- strip date from note title and replace dashes with spaces
       -- must have cursor on title
