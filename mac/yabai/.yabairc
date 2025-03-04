@@ -25,10 +25,11 @@ if [ ! -f /tmp/yabai_softrestart_flag ]; then
   #
   # fi
 
+  source ~/.private-yabai-start-apps
   # Only laptop screen
-  source ~/.private-yabai-start-single-display-apps
+  # source ~/.private-yabai-start-single-display-apps
   # Both external displays and only laptop display
-  source ~/.private-yabai-start-all-displays-apps
+  # source ~/.private-yabai-start-all-displays-apps
 
 fi # softrestart
 
