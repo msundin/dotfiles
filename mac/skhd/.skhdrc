@@ -2,7 +2,12 @@
 # open new iTerm2 terminal
 # alt - c : osascript /Users/msundin2/dev/scripts/new-alacritty-window.scpt
 # open terminal
+# ctrl + alt + cmd - r : open -na Terminal.app && zsh -c "nKLyr"
+# ctrl + alt + cmd - r : osascript -e 'tell application "Terminal" do script "yr; exit" delay 0.5 close front window end tell'
 
+# ctrl + alt + cmd - r : osascript -e 'tell application "Terminal" to do script "yr; exit"'
+# ctrl + alt + cmd - r : osascript -e 'tell application "Terminal" to do script "yr; exit"' -e 'delay 1.5' -e 'tell application "Terminal" to close (every window whose name contains "yr")'
+ctrl + alt + cmd - r : osascript -e 'tell application "Terminal" to do script "yr; exit"' -e 'delay 0.5' -e 'tell application "Terminal" to quit'
 # ctrl - c : skhd --key "alt - c"
 # ctrl - v : skhd --key "alt - v"
 # ctrl - z : skhd --key "alt - z"
@@ -94,12 +99,16 @@ alt - v : yabai -m window --insert east
 
 ### RESIZE ###
 # change window size to the left
+alt + ctrl - left : yabai -m window --resize left:-20:0 || yabai -m window --resize right:-20:0
 alt - n : yabai -m window --resize left:-20:0 || yabai -m window --resize right:-20:0
 # change window size upwards
+alt + ctrl - up : yabai -m window --resize top:0:-20 || yabai -m window --resize bottom:0:-20
 alt - 0x2B : yabai -m window --resize top:0:-20 || yabai -m window --resize bottom:0:-20
 # change window size to the right
+alt + ctrl - right : yabai -m window --resize left:20:0 || yabai -m window --resize right:20:0
 alt - 0x2F : yabai -m window --resize left:20:0 || yabai -m window --resize right:20:0
 # change window size downwards
+alt  + ctrl - down: yabai -m window --resize top:0:20 || yabai -m window --resize bottom:0:20
 alt - m : yabai -m window --resize top:0:20 || yabai -m window --resize bottom:0:20
 
 ### CUSTOM COMMANDS ###
