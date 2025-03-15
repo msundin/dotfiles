@@ -12,7 +12,7 @@ return {
     keys = {
       -- 👇 in this section, choose your own keymappings!
       {
-        '\\',
+        '-',
         mode = { 'n', 'v' },
         '<cmd>Yazi<cr>',
         desc = 'Open yazi at the current file',
@@ -220,7 +220,7 @@ return {
       -- vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
 
       -- Open parent directory in floating window
-      vim.keymap.set('n', '-', require('oil').toggle_float)
+      vim.keymap.set('n', '_', require('oil').toggle_float)
     end,
   },
 
