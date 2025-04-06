@@ -328,7 +328,7 @@ return {
   },
 
   {
-    'epwalsh/obsidian.nvim',
+    'obsidian-nvim/obsidian.nvim',
     version = '*', -- recommended, use latest release instead of latest commit
     lazy = false,
     -- ft = 'markdown',
@@ -419,8 +419,9 @@ return {
       },
 
       vim.keymap.set('n', '<leader>onn', '<cmd>ObsidianNew<CR>', { desc = 'Obsidian new note' }),
-      vim.keymap.set('n', '<leader>ont', '<cmd>ObsidianTemplate<CR>', { desc = 'Obsidian new template note' }),
+      vim.keymap.set('n', '<leader>ont', '<cmd>ObsidianNewFromTemplate<CR>', { desc = 'Obsidian new template note' }),
       vim.keymap.set('n', '<leader>ond', '<cmd>ObsidianToday<CR>', { desc = 'Obsidian new daily note for today' }),
+      vim.keymap.set('n', '<leader>onl', '<cmd>ObsidianLinkNew<CR>', { desc = 'Obsidian new link' }),
       vim.keymap.set('n', '<leader>off', '<cmd>ObsidianQuickSwitch<CR>', { desc = 'Obsidian find file' }),
       vim.keymap.set('n', '<leader>ofg', '<cmd>ObsidianSearch<CR>', { desc = 'Obsidian find in file and filename with grep' }),
       vim.keymap.set('n', '<leader>oo', '<cmd>ObsidianOpen<CR>', { desc = 'Obsidian open note in app' }),
