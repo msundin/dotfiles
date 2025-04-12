@@ -155,6 +155,12 @@ if [[ "$(uname)" == "Darwin" ]]; then
   # Set $JAVA_HOME to the currently user by sdkman
   export JAVA_HOME=$HOME/.sdkman/candidates/java/current/
 
+  # Set Android SDK path
+  export PATH=$PATH:~/Library/Android/sdk/platform-tools
+
+  # Alias to refresh Artifactory OIDC token
+  alias refresh-artifactory-token='~/TokenUpdater/TokenUpdater refresh && awk '\''/machine ara-artifactory.volvocars.biz/{flag=1;next}/machine/{flag=0}flag && $1 == "password" {print "ARTIFACTORY_OIDC_TOKEN=" $2}'\'' ~/.netrc'
+
 else
   ### Commands specific elsewhere, e.g. Linux
 

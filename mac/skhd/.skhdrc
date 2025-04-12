@@ -7,7 +7,7 @@
 
 # ctrl + alt + cmd - r : osascript -e 'tell application "Terminal" to do script "yr; exit"'
 # ctrl + alt + cmd - r : osascript -e 'tell application "Terminal" to do script "yr; exit"' -e 'delay 1.5' -e 'tell application "Terminal" to close (every window whose name contains "yr")'
-ctrl + alt + cmd - r : osascript -e 'tell application "Terminal" to do script "yr; exit"' -e 'delay 0.5' -e 'tell application "Terminal" to quit'
+shift + ctrl - r : osascript -e 'tell application "Terminal" to do script "yr; exit"' -e 'delay 0.5' -e 'tell application "Terminal" to quit'
 # ctrl - c : skhd --key "alt - c"
 # ctrl - v : skhd --key "alt - v"
 # ctrl - z : skhd --key "alt - z"
