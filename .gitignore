@@ -1,3 +1,5 @@
-common/.DS_Store
+# Ignore all .DS_Store files
+.DS_Store
+**/.DS_Store
 common/shell-scripts/scripts/bash/auto_commit.log
 
