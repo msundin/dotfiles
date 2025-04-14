@@ -175,7 +175,7 @@ vim.api.nvim_create_autocmd('FileType', {
 
 -- Function to check if file is in special directory
 local function is_in_special_dir(filepath)
-  local special_dir = vim.fn.expand '~/nextcloud/obsidian-vaults'
+  local special_dir = vim.fn.expand '~/obsidian-vaults'
   special_dir = vim.fn.fnamemodify(special_dir, ':p')
   filepath = vim.fn.fnamemodify(filepath, ':p')
   return string.sub(filepath, 1, #special_dir) == special_dir

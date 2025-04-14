@@ -70,6 +70,7 @@ vim.keymap.set("t", "<C-t>", "<Cmd>ToggleTerm<CR>", { noremap = true, silent = t
 
 -- Misc
 vim.keymap.set("n", "<leader>x", ":bd<cr>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>pf", ':lua print(vim.fn.expand("%:p"))<CR>', { desc = "[p]rint [f]iles" })
 
 -- Tab Navigation
 -- vim.keymap.set('n', '<S-n>', ':tabnext<CR>', { silent = true })
@@ -216,7 +217,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Function to check if file is in special directory
 local function is_in_special_dir(filepath)
-  local special_dir = vim.fn.expand("~/nextcloud/obsidian-vaults")
+  local special_dir = vim.fn.expand("~/obsidian-vaults")
   special_dir = vim.fn.fnamemodify(special_dir, ":p")
   filepath = vim.fn.fnamemodify(filepath, ":p")
   return string.sub(filepath, 1, #special_dir) == special_dir
