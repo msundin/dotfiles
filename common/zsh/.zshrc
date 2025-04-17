@@ -198,9 +198,6 @@ bindkey -M vicmd 'yy' vi-yank-to-clipboard
 #   export EDITOR='mvim'
 # fi
 
-export EDITOR=nvim
-export VISUAL=nvim
-
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -225,12 +222,17 @@ alias op='cd ~/obsidian-vaults/personal/'
 alias od='cd ~/obsidian-vaults/dev/'
 alias or='nvim $(pwd)/inbox/*.md'
 
-alias v='nvim' # default Neovim config
+# alias nvim='nvim' # default Neovim config
+alias nvim='nvim'
+alias v='NVIM_APPNAME=nvim-lazyvim nvim' # LazyVim
 alias vz='NVIM_APPNAME=nvim-lazyvim nvim' # LazyVim
 alias vc='NVIM_APPNAME=nvim-nvchad nvim' # NvChad
 alias vk='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
 alias va='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
 alias vl='NVIM_APPNAME=lvim lvim' # LunarVim
+
+export EDITOR='NVIM_APPNAME=nvim-lazyvim nvim' # LazyVim
+export VISUAL='NVIM_APPNAME=nvim-lazyvim nvim' # LazyVim
 
 # Yazi
 function y() {

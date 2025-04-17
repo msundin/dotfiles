@@ -49,20 +49,20 @@ vim.opt.conceallevel = 2
 -- vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'Escape from insert mode' })
 
 -- Buffer Navigation
-vim.keymap.set("n", "<leader>j", ":bprevious<CR>", { silent = true })
-vim.keymap.set("n", "<leader>k", ":bnext<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>j", ":bprevious<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>k", ":bnext<CR>", { silent = true })
 vim.keymap.set("n", "J", ":bprevious<CR>", { silent = true })
 vim.keymap.set("n", "K", ":bnext<CR>", { silent = true })
 
 -- Jump List Navigation
-vim.keymap.set("n", "<leader>h", "<C-o>", { silent = true })
-vim.keymap.set("n", "<leader>l", "<C-i>", { silent = true })
+-- vim.keymap.set("n", "<leader>h", "<C-o>", { silent = true })
+-- vim.keymap.set("n", "<leader>l", "<C-i>", { silent = true })
 vim.keymap.set("n", "H", "<C-o>", { silent = true })
 vim.keymap.set("n", "L", "<C-i>", { silent = true })
 
 -- Handle splits
-vim.keymap.set("n", "<leader>s", "<cmd>split<cr>", { desc = "[s]plit horizontally" })
-vim.keymap.set("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "split [v]ertically" })
+-- vim.keymap.set("n", "<leader>s", "<cmd>split<cr>", { desc = "[s]plit horizontally" })
+-- vim.keymap.set("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "split [v]ertically" })
 
 -- Handle terminal
 vim.keymap.set("n", "<C-t>", ":ToggleTerm<CR>", { noremap = true, silent = true })
