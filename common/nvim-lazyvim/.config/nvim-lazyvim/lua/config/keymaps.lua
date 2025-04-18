@@ -10,8 +10,6 @@ vim.api.nvim_set_keymap("n", "<leader>tw", ":ToggleWrap<CR>", { noremap = true, 
 vim.api.nvim_set_keymap("n", "<leader>tn", ":ToggleNumber<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>tc", ":ToggleColorColumn<CR>", { noremap = true, silent = true })
 
-map("i", "jk", "<esc>", { desc = "Escape from insert mode" })
-
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
