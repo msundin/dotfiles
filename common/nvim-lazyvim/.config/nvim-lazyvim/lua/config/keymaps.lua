@@ -14,72 +14,72 @@ map("i", "jk", "<esc>", { desc = "Escape from insert mode" })
 
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- TIP: Disable arrow keys in normal mode
--- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+-- map('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+-- map('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+-- map('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+-- map('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
-vim.keymap.set("n", "<C-m>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-i>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-n>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-e>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+map("n", "<C-m>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+map("n", "<C-i>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map("n", "<C-n>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map("n", "<C-e>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- My custom keymaps:
 -- Needed for markdown in Obsidian
 vim.opt.conceallevel = 2
 
--- vim.keymap.set('i', 'jk', '<esc>', { desc = 'Escape from insert mode' })
+-- map('i', 'jk', '<esc>', { desc = 'Escape from insert mode' })
 
 -- Window Navigation
--- vim.keymap.set('n', '<left>', '<c-w><c-h>', { desc = 'escape from insert mode' })
--- vim.keymap.set('n', '<down>', '<c-w><c-j>', { desc = 'escape from insert mode' })
--- vim.keymap.set('n', '<up>', '<c-w><c-k>', { desc = 'escape from insert mode' })
--- vim.keymap.set('n', '<right>', '<c-w><c-l>', { desc = 'escape from insert mode' })
+-- map('n', '<left>', '<c-w><c-h>', { desc = 'escape from insert mode' })
+-- map('n', '<down>', '<c-w><c-j>', { desc = 'escape from insert mode' })
+-- map('n', '<up>', '<c-w><c-k>', { desc = 'escape from insert mode' })
+-- map('n', '<right>', '<c-w><c-l>', { desc = 'escape from insert mode' })
 
--- vim.keymap.set('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'Escape from insert mode' })
+-- map('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'Escape from insert mode' })
 
 -- Buffer Navigation
--- vim.keymap.set("n", "<leader>j", ":bprevious<CR>", { silent = true })
--- vim.keymap.set("n", "<leader>k", ":bnext<CR>", { silent = true })
-vim.keymap.set("n", "J", ":bprevious<CR>", { silent = true })
-vim.keymap.set("n", "K", ":bnext<CR>", { silent = true })
+-- map("n", "<leader>j", ":bprevious<CR>", { silent = true })
+-- map("n", "<leader>k", ":bnext<CR>", { silent = true })
+map("n", "J", ":bprevious<CR>", { silent = true })
+map("n", "K", ":bnext<CR>", { silent = true })
 
 -- Jump List Navigation
--- vim.keymap.set("n", "<leader>h", "<C-o>", { silent = true })
--- vim.keymap.set("n", "<leader>l", "<C-i>", { silent = true })
-vim.keymap.set("n", "H", "<C-o>", { silent = true })
-vim.keymap.set("n", "L", "<C-i>", { silent = true })
+-- map("n", "<leader>h", "<C-o>", { silent = true })
+-- map("n", "<leader>l", "<C-i>", { silent = true })
+map("n", "H", "<C-o>", { silent = true })
+map("n", "L", "<C-i>", { silent = true })
 
 -- Handle splits
--- vim.keymap.set("n", "<leader>s", "<cmd>split<cr>", { desc = "[s]plit horizontally" })
--- vim.keymap.set("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "split [v]ertically" })
+-- map("n", "<leader>s", "<cmd>split<cr>", { desc = "[s]plit horizontally" })
+-- map("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "split [v]ertically" })
 
 -- Handle terminal
-vim.keymap.set("n", "<C-t>", ":ToggleTerm<CR>", { noremap = true, silent = true })
-vim.keymap.set("t", "<C-t>", "<Cmd>ToggleTerm<CR>", { noremap = true, silent = true })
+map("n", "<C-t>", ":ToggleTerm<CR>", { noremap = true, silent = true })
+map("t", "<C-t>", "<Cmd>ToggleTerm<CR>", { noremap = true, silent = true })
 
 -- Misc
-vim.keymap.set("n", "<leader>x", ":bd<cr>", { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>pf", ':lua print(vim.fn.expand("%:p"))<CR>', { desc = "[p]rint [f]iles" })
+map("n", "<leader>x", ":bd<cr>", { noremap = true, silent = true })
+map("n", "<leader>pf", ':lua print(vim.fn.expand("%:p"))<CR>', { desc = "[p]rint [f]iles" })
 
 -- Tab Navigation
--- vim.keymap.set('n', '<S-n>', ':tabnext<CR>', { silent = true })
+-- map('n', '<S-n>', ':tabnext<CR>', { silent = true })
 
 -- Key mapping to reload the current buffer
 vim.api.nvim_set_keymap("n", "<Leader>rl", ":e!<CR>", { noremap = true, silent = true })
 
 -- Run applications
-vim.keymap.set("n", "<leader>rrk", "<cmd>KotlinRun<CR>", { desc = "Compile and run Kotlin code" })
+map("n", "<leader>rrk", "<cmd>KotlinRun<CR>", { desc = "Compile and run Kotlin code" })
 
 -- Key mapping using the global function
 vim.api.nvim_set_keymap(
