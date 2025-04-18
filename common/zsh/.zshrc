@@ -222,8 +222,7 @@ alias op='cd ~/obsidian-vaults/personal/'
 alias od='cd ~/obsidian-vaults/dev/'
 alias or='nvim $(pwd)/inbox/*.md'
 
-# alias nvim='nvim' # default Neovim config
-alias nvim='nvim'
+alias nvim='nvim' # default Neovim config
 alias v='NVIM_APPNAME=nvim-lazyvim nvim' # LazyVim
 alias vz='NVIM_APPNAME=nvim-lazyvim nvim' # LazyVim
 alias vc='NVIM_APPNAME=nvim-nvchad nvim' # NvChad
