@@ -3,6 +3,11 @@
 "" See all available commands
 " :actionlist
 
+""""" New 250418
+nmap <leader>ss <action>(FileStructurePopup)
+
+"""""
+
 set scrolloff=5
 set incsearch
 set hlsearch
