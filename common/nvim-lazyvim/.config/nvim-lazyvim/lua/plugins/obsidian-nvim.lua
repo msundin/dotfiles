@@ -305,7 +305,8 @@ return {
 
     picker = {
       -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
-      name = "fzf-lua",
+      -- name = "fzf-lua",
+      name = "snacks.pick",
       -- Optional, configure key mappings for the picker. These are the defaults.
       -- Not all pickers support all mappings.
       mappings = {
