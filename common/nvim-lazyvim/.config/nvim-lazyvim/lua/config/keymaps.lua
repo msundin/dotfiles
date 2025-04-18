@@ -31,24 +31,20 @@ map("n", "H", "<C-o>", { silent = true })
 map("n", "L", "<C-i>", { silent = true })
 
 -- Misc
-map("n", "<leader>x", ":bd<cr>", { noremap = true, silent = true })
 map("n", "<leader>pf", ':lua print(vim.fn.expand("%:p"))<CR>', { desc = "[p]rint [f]iles" })
 
--- Tab Navigation
--- map('n', '<S-n>', ':tabnext<CR>', { silent = true })
-
 -- Key mapping to reload the current buffer
-map("n", "<Leader>rl", ":e!<CR>", { noremap = true, silent = true })
+map("n", "<Leader>rl", ":e!<CR>", { silent = true })
 
 -- Run applications
 map("n", "<leader>rrk", "<cmd>KotlinRun<CR>", { desc = "Compile and run Kotlin code" })
 
--- Key mapping using the global function
+-- Obsidian rename tag
 map(
   "n",
   "<leader>ornt",
   '<cmd>lua rename_tag_in_vault(vim.fn.input("Old tag: "), vim.fn.input("New tag: "))<CR>',
-  { noremap = true, silent = true, desc = "[O]bsidian [r]e[n]ame [t]ag everywhere in the vault" }
+  { silent = true, desc = "[O]bsidian [r]e[n]ame [t]ag everywhere in the vault" }
 )
 
 -- TODO: Move to scripts file
