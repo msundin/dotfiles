@@ -1,32 +1,22 @@
-local scripts = require("config.scripts")
-
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 local map = vim.keymap.set
 
-vim.g.mapleader = " " -- Set space as leader key
-vim.api.nvim_set_keymap("n", "<leader>tw", ":ToggleWrap<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>tn", ":ToggleNumber<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>tc", ":ToggleColorColumn<CR>", { noremap = true, silent = true })
+-- Wrap handling
+map("n", "<leader>tw", ":ToggleWrap<CR>", { silent = true })
+map("n", "<leader>tn", ":ToggleNumber<CR>", { silent = true })
+map("n", "<leader>tc", ":ToggleColorColumn<CR>", { silent = true })
 
--- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
--- or just use <C-\><C-n> to exit terminal mode
-map("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-
--- TIP: Disable arrow keys in normal mode
--- map('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
--- map('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
--- map('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
--- map('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 -- Keybinds to make split navigation easier.
 --  Use CTRL+<hjkl> to switch between windows
---
 --  See `:help wincmd` for a list of all window commands
+-- qwerty
 map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- Colmak-DH
 map("n", "<C-m>", "<C-w><C-h>", { desc = "Move focus to the left window" })
 map("n", "<C-i>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 map("n", "<C-n>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
@@ -74,13 +64,13 @@ map("n", "<leader>pf", ':lua print(vim.fn.expand("%:p"))<CR>', { desc = "[p]rint
 -- map('n', '<S-n>', ':tabnext<CR>', { silent = true })
 
 -- Key mapping to reload the current buffer
-vim.api.nvim_set_keymap("n", "<Leader>rl", ":e!<CR>", { noremap = true, silent = true })
+map("n", "<Leader>rl", ":e!<CR>", { noremap = true, silent = true })
 
 -- Run applications
 map("n", "<leader>rrk", "<cmd>KotlinRun<CR>", { desc = "Compile and run Kotlin code" })
 
 -- Key mapping using the global function
-vim.api.nvim_set_keymap(
+map(
   "n",
   "<leader>ornt",
   '<cmd>lua rename_tag_in_vault(vim.fn.input("Old tag: "), vim.fn.input("New tag: "))<CR>',
