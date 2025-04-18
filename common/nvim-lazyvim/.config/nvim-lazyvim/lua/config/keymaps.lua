@@ -22,39 +22,13 @@ map("n", "<C-i>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 map("n", "<C-n>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 map("n", "<C-e>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
--- My custom keymaps:
--- Needed for markdown in Obsidian
-vim.opt.conceallevel = 2
-
--- map('i', 'jk', '<esc>', { desc = 'Escape from insert mode' })
-
--- Window Navigation
--- map('n', '<left>', '<c-w><c-h>', { desc = 'escape from insert mode' })
--- map('n', '<down>', '<c-w><c-j>', { desc = 'escape from insert mode' })
--- map('n', '<up>', '<c-w><c-k>', { desc = 'escape from insert mode' })
--- map('n', '<right>', '<c-w><c-l>', { desc = 'escape from insert mode' })
-
--- map('n', '<leader>e', '<cmd>Neotree toggle<CR>', { desc = 'Escape from insert mode' })
-
 -- Buffer Navigation
--- map("n", "<leader>j", ":bprevious<CR>", { silent = true })
--- map("n", "<leader>k", ":bnext<CR>", { silent = true })
 map("n", "J", ":bprevious<CR>", { silent = true })
 map("n", "K", ":bnext<CR>", { silent = true })
 
 -- Jump List Navigation
--- map("n", "<leader>h", "<C-o>", { silent = true })
--- map("n", "<leader>l", "<C-i>", { silent = true })
 map("n", "H", "<C-o>", { silent = true })
 map("n", "L", "<C-i>", { silent = true })
-
--- Handle splits
--- map("n", "<leader>s", "<cmd>split<cr>", { desc = "[s]plit horizontally" })
--- map("n", "<leader>v", "<cmd>vsplit<cr>", { desc = "split [v]ertically" })
-
--- Handle terminal
-map("n", "<C-t>", ":ToggleTerm<CR>", { noremap = true, silent = true })
-map("t", "<C-t>", "<Cmd>ToggleTerm<CR>", { noremap = true, silent = true })
 
 -- Misc
 map("n", "<leader>x", ":bd<cr>", { noremap = true, silent = true })
