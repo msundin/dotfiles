@@ -216,6 +216,9 @@ alias ohmyzsh='nvim ~/.oh-my-zsh'
 alias tmux='TERM=screen-256color tmux'
 alias clip='xclip -selection clipboard'
 alias cl='clear'
+
+alias l='lazygit'
+
 # Obsidian
 alias ow='cd ~/obsidian-vaults/work/'
 alias op='cd ~/obsidian-vaults/personal/'
