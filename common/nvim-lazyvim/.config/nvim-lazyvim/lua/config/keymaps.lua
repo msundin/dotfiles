@@ -31,7 +31,7 @@ map("n", "H", "<C-o>", { silent = true })
 map("n", "L", "<C-i>", { silent = true })
 
 -- Misc
-map("n", "<leader>pf", ':lua print(vim.fn.expand("%:p"))<CR>', { desc = "[p]rint [f]iles" })
+map("n", "<leader>fs", ':lua print(vim.fn.expand("%:p"))<CR>', { desc = "[f]ile [s]how path" })
 
 -- Key mapping to reload the current buffer
 map("n", "<Leader>rl", ":e!<CR>", { silent = true })
