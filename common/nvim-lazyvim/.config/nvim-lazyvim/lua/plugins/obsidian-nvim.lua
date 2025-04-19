@@ -1,7 +1,50 @@
 return {
   "obsidian-nvim/obsidian.nvim",
+  -- event = "FileType markdown",
+  -- cond = function()
+  --   local path = vim.api.nvim_buf_get_name(0)
+  --   local home = vim.fn.expand("~")
+  --   return path:match(home .. "/obsidian%-vaults/")
+  -- end,
+  -- event = { "BufReadPre", "BufNewFile" },
+  -- cond = function()
+  --   local path = vim.api.nvim_buf_get_name(0) -- full path of the buffer
+  --   local cwd = vim.fn.getcwd()
+  --   local home = vim.fn.expand("~")
+  --
+  --   local in_vault_path = path:match(home .. "/obsidian%-vaults/")
+  --   local in_vault_cwd = cwd:match(home .. "/obsidian%-vaults/personal") or cwd:match(home .. "/obsidian%-vaults/work")
+  --
+  --   return in_vault_path or in_vault_cwd
+  -- end,
+  -- cond = function()
+  --   local cwd = vim.fn.getcwd()
+  --   local home = vim.fn.expand("~")
+  --   return cwd:match(home .. "/obsidian%-vaults/personal") ~= nil or cwd:match(home .. "/obsidian%-vaults/work") ~= nil
+  -- end,
+  -- -- event = {
+  -- --   --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+  -- --   --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+  -- --   "BufReadPre " .. vim.fn.expand("~") .. "/obsidian-vaults/**",
+  -- --   "BufNewFile " .. vim.fn.expand("~") .. "/obsidian-vaults/**",
+  -- --   --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
+  -- --   --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
+  -- -- },
+  -- event = "BufReadPre",
+  -- cond = function()
+  --   local path = vim.api.nvim_buf_get_name(0) -- full path of the buffer
+  --   local home = vim.fn.expand("~")
+  --   return path:match(home .. "/obsidian%-vaults/")
+  -- end,
+  -- event = function()
+  --   local home = vim.fn.expand("~")
+  --   return {
+  --     "BufReadPre " .. home .. "/obsidian-vaults/**",
+  --     "BufNewFile " .. home .. "/obsidian-vaults/**",
+  --   }
+  -- end,
   version = "*", -- recommended, use latest release instead of latest commit
-  lazy = false,
+  event = "VeryLazy",
   -- ft = 'markdown',
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   -- event = {
@@ -305,6 +348,7 @@ return {
 
     picker = {
       -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
+      -- name = "telescope.nvim",
       -- name = "fzf-lua",
       name = "snacks.pick",
       -- Optional, configure key mappings for the picker. These are the defaults.
