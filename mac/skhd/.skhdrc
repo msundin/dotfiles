@@ -12,7 +12,8 @@ shift + ctrl - r : osascript -e 'tell application "Terminal" to do script "yr; e
 # ctrl - v : skhd --key "alt - v"
 # ctrl - z : skhd --key "alt - z"
 # ctrl - f : skhd --key "alt - f"
-alt - return : open -n /Applications/Alacritty.app 
+# alt - return : open -n /Applications/Alacritty.app 
+alt - return : open -n /Applications/kitty.app 
 
 #tell application "Brave Browser"
 #    make new window
@@ -171,6 +172,7 @@ alt - b : yabai -m space --balance
 # tiling/untiling (float/unfloat) window and center on screen
 shift + alt - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
 # kill focused window
+# shift + lalt - q : osascript -e 'tell application "System Events" to keystroke "q" using {option down, shift down}'
 shift + lalt - q : yabai -m window --close
 
 ###########################
