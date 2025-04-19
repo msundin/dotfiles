@@ -44,7 +44,8 @@ return {
   --   }
   -- end,
   version = "*", -- recommended, use latest release instead of latest commit
-  event = "VeryLazy",
+  lazy = false,
+  -- event = "VeryLazy",
   -- ft = 'markdown',
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   -- event = {
