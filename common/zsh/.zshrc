@@ -218,6 +218,7 @@ alias clip='xclip -selection clipboard'
 alias cl='clear'
 
 alias l='lazygit'
+alias f='fzf'
 
 # Obsidian
 alias ow='cd ~/obsidian-vaults/work/'
