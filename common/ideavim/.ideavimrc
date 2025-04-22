@@ -42,6 +42,10 @@ map L <action>(Forward)
 map J <action>(PreviousTab)
 map K <action>(NextTab)
 
+""" SPLIT """
+nmap <leader>- <action>(SplitHorizontally)
+nmap <leader>\| <action>(SplitVertically)
+
 """ FIND """
 " Find Everything
 map <leader>fe <action>(SearchEverywhere)
@@ -93,22 +97,23 @@ nmap <leader>db <action>(ToggleLineBreakpoint)
 """ MISC """
 map <leader>bd <action>(CloseEditor)
 map <leader>bo <action>(CloseEditorsGroup)
+map <leader>uZ <action>(HideAllWindows)
+map <leader>wd <action>(Unsplit)
 
 map zc <action>(CollapseRegion)
 map zo <action>(ExpandRegion)
-map <leader>cm <action>(ShowPopupMenu)
-
 map <leader>e :NERDTreeToggle<CR>
+map <leader>uz <action>(ToggleZenMode)
+
+""" LOOK INTO """
+map <leader>cm <action>(ShowPopupMenu)
 
 " Special commands for Android Studio
 map <leader>p <action>(ShowSettings)
-map <leader>a <action>(HideAllWindows)
 map <leader>rr <action>(Run)
 map <leader>rd <action>(Debug)
 map <leader>rs <action>(Stop)
-
-map <leader>wd <action>(ToggleDistractionFreeMode)
-map <leader>wz <action>(ToggleZenMode)
+"map <leader>wd <action>(ToggleDistractionFreeMode)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 """ CLEANUP """
