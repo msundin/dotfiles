@@ -119,18 +119,18 @@ map <leader>uz <action>(ToggleZenMode)
 "map <leader>8 :action HarpoonerOpenFile7<cr>
 "map <leader>9 :action HarpoonerOpenFile8<cr>
 
-nmap <leader>h :action ShowHarpoon<cr>
-nmap <leader>H :action AddToHarpoon<cr>
+map <leader>h :action ShowHarpoon<cr>
+map <leader>H :action AddToHarpoon<cr>
 
-nmap <leader>1 :action GotoHarpoon1<cr>
-nmap <leader>2 :action GotoHarpoon2<cr>
-nmap <leader>3 :action GotoHarpoon3<cr>
-nmap <leader>4 :action GotoHarpoon4<cr>
-nmap <leader>5 :action GotoHarpoon5<cr>
-nmap <leader>6 :action GotoHarpoon6<cr>
-nmap <leader>7 :action GotoHarpoon7<cr>
-nmap <leader>8 :action GotoHarpoon8<cr>
-nmap <leader>9 :action GotoHarpoon9<cr>
+map <leader>1 :action GotoHarpoon1<cr>
+map <leader>2 :action GotoHarpoon2<cr>
+map <leader>3 :action GotoHarpoon3<cr>
+map <leader>4 :action GotoHarpoon4<cr>
+map <leader>5 :action GotoHarpoon5<cr>
+map <leader>6 :action GotoHarpoon6<cr>
+map <leader>7 :action GotoHarpoon7<cr>
+map <leader>8 :action GotoHarpoon8<cr>
+map <leader>9 :action GotoHarpoon9<cr>
 
 """ LOOK INTO """
 map <leader>cm <action>(ShowPopupMenu)

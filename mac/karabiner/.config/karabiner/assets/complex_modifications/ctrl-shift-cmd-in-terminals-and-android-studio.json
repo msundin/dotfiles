@@ -1,8 +1,8 @@
 {
-  "title": "Control+Shift+C/X/V/Z to Command+C/X/V/Z (only in Kitty and Alacritty)",
+  "title": "Control+Shift+C/X/V/Z to Command+C/X/V/Z (only in Kitty, Alacritty, and Android Studio)",
   "rules": [
     {
-      "description": "Control+Shift+C/X/V/Z to Command+C/X/V/Z (only in Kitty and Alacritty)",
+      "description": "Control+Shift+C/X/V/Z to Command+C/X/V/Z (only in Kitty, Alacritty, and Android Studio)",
       "manipulators": [
         {
           "type": "basic",
@@ -28,7 +28,8 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^net\\.kovidgoyal\\.kitty$",
-                "^org\\.alacritty$"
+                "^org\\.alacritty$",
+                "^com\\.google\\.android\\.studio$"
               ]
             }
           ]
@@ -57,7 +58,8 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^net\\.kovidgoyal\\.kitty$",
-                "^org\\.alacritty$"
+                "^org\\.alacritty$",
+                "^com\\.google\\.android\\.studio$"
               ]
             }
           ]
@@ -86,7 +88,8 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^net\\.kovidgoyal\\.kitty$",
-                "^org\\.alacritty$"
+                "^org\\.alacritty$",
+                "^com\\.google\\.android\\.studio$"
               ]
             }
           ]
@@ -115,7 +118,8 @@
               "type": "frontmost_application_if",
               "bundle_identifiers": [
                 "^net\\.kovidgoyal\\.kitty$",
-                "^org\\.alacritty$"
+                "^org\\.alacritty$",
+                "^com\\.google\\.android\\.studio$"
               ]
             }
           ]
