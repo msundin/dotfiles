@@ -3,7 +3,31 @@
 "" See all available commands
 " :actionlist
 
-""""" New 250418
+""" SETTINGS """
+let mapleader = " "
+
+set scrolloff=5
+set incsearch
+set hlsearch
+nnoremap <esc> :noh<return><esc>
+set linenumber
+set highlightedyank
+set showmode
+set showcmd
+set visualbell
+set clipboard+=unnamed
+set relativenumber
+set number
+set ignorecase
+set smartcase
+set easymotion
+set surround
+set commentary
+set NERDTree
+set which-key
+set notimeout
+set clipboard+=unnamed
+set idearefactormode=keep
 
 """ MOVE """
 map <C-i> <action>(NextSplitter)
@@ -50,6 +74,7 @@ map ]d <action>(GotoNextError)
 """ GIT """
 map <leader>gb <action>(Annotate)
 
+""" TEST """
 map <leader>q <action>(GotoTest)
 
 """ CODE """
@@ -62,127 +87,31 @@ map <leader>cf <action>(ReformatCode)
 " Code Rename
 map <leader>cr <action>(RenameElement)
 
-"""""
+""" DEBUG """
+nmap <leader>db <action>(ToggleLineBreakpoint)
+
+""" MISC """
 map <leader>bd <action>(CloseEditor)
+map <leader>bo <action>(CloseEditorsGroup)
+
 map zc <action>(CollapseRegion)
 map zo <action>(ExpandRegion)
 map <leader>cm <action>(ShowPopupMenu)
 
-map <leader>o <action>(CloseEditorsGroup)
-map <leader>e <action>(SelectInProjectView)
-
-set scrolloff=5
-set incsearch
-set hlsearch
-nnoremap <esc> :noh<return><esc>
-set linenumber
-set highlightedyank
-set showmode
-set showcmd
-set visualbell
-set clipboard+=unnamed
-set relativenumber
-set number
-set ignorecase
-set smartcase
-set easymotion
-set surround
-set commentary
-set NERDTree
-set which-key
-set notimeout
-" set sneak
-
-"inoremap <C-j> <Action>(PopupMenu-selectNext)
-"inoremap <C-k> <Action>(PopupMenu-selectPrev)
-"nmap ; :
-let g:NERDTreeMapActivateNode='l'
-let g:NERDTreeMapJumpParent='h'
-"vnoremap < <gv
-"vnoremap > >gv
-
-" map ESC to jk
-" inoremap jk <esc>
-" vnoremap jk <esc>
-let mapleader = " "
-" yank to clipboard
-set clipboard+=unnamed
-set idearefactormode=keep
-" these create newlines like o and O but stay in normal mode
-"nmap zj o<Esc>k
-"nmap zk O<Esc>j
-
-"nmap <leader>fo <action>(RecentFiles)
-"nmap <leader>m <action>(RecentFiles)
-"nmap <leader>ff <action>(GotoClass)
-"vmap <leader>ff <action>(GotoClass)
-"nmap <leader>fw <action>(FindInPath)
-"vmap <leader>fw <action>(FindInPath)
-"nmap [d <action>(MethodUp)
-"nmap ]d <action>(MethodDown)
-"nmap <leader>/ <action>(CommentByLineComment)
-"vmap <leader>/ <action>(CommentByLineComment)
-"nmap <leader>fe <action>(ExtractFunction)
-"vmap <leader>fe <action>(ExtractFunction)
-"nmap <leader>x <action>(CloseEditor)
+map <leader>e :NERDTreeToggle<CR>
 
 " Special commands for Android Studio
-nmap <leader>db <action>(ToggleLineBreakpoint)
-nmap <leader>p <action>(ShowSettings)
-nmap <leader>a <action>(HideAllWindows)
-nmap <leader>rr <action>(Run)
-nmap <leader>rd <action>(Debug)
-nmap <leader>rs <action>(Stop)
+map <leader>p <action>(ShowSettings)
+map <leader>a <action>(HideAllWindows)
+map <leader>rr <action>(Run)
+map <leader>rd <action>(Debug)
+map <leader>rs <action>(Stop)
 
+map <leader>wd <action>(ToggleDistractionFreeMode)
+map <leader>wz <action>(ToggleZenMode)
 
-"nmap gt <action>(GotoTypeDeclaration)
-"nmap <leader>D <action>(GotoTypeDeclaration)
-"nmap <leader>u <action>(FindUsages)
-"nmap <leader>i <action>(GotoImplementation)
-"nmap <leader>d <action>(GotoDeclaration)
-"nmap T <action>(QuickImplementations)
-"nmap gD <action>(GotoTypeDeclaration)
-"nmap <leader>; <action>(QuickJavaDoc)
-"nmap <leader>t <action>(ExpressionTypeInfo)
-"nmap gt <action>(GotoTest)
-
-
-"nmap \ <action>(SelectInProjectView)
-"vmap \ <action>(SelectInProjectView)
-"nmap <leader>e <action>(GotoNextError)
-"nmap <leader>f <action>(SelectInProjectView)
-
-"nmap <leader>z <action>(ReformatCode)
-"nmap <leader>ra <action>(RenameElement)
-"nmap <leader>c <action>(RenameElement)
-
-"nmap <leader>n <action>(PrevSplitter)
-"nmap <leader>h <action>(Back)
-"nmap <leader>l <action>(Forward)
-"nmap <leader>j <action>(PreviousTab)
-"nmap <leader>k <action>(NextTab)
-
-
-"nmap <leader>, <action>(GotoClass)
-"nmap <leader>y <action>(CollapseRegion)
-"nmap <leader>o <action>(ExpandRegion)
-"nmap <leader>q <action>(GotoTest)
-
-"nmap <C-w>s <action>(SplitHorizontally)
-"nmap <leader>s <action>(SplitHorizontally)
-"nmap <leader>ws <action>(SplitHorizontally)
-"nmap <C-w>v <action>(SplitVertically)
-"nmap <leader>v <action>(SplitVertically)
-"nmap <leader>wv <action>(SplitVertically)
-"nmap <C-w>o <action>(CloseAllTabsInGroup)
-"nmap <C-w>o <action>(CloseEditorsGroup)
-"nmap <leader>o <action>(CloseEditorsGroup)
-
- nmap <leader>wd <action>(ToggleDistractionFreeMode)
- nmap <leader>wz <action>(ToggleZenMode)
-
-"nmap <A-a> <action>(HideAllWindows)
-"nmap <leader>ff <action>(ToggleFullScreen)
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+""" CLEANUP """
 
 " HarpoonIJ
 "nmap 1 :action GotoHarpoon1<cr>
@@ -214,7 +143,7 @@ nmap <C-9> :action HarpoonerOpenFile8<cr>
 "nmap <leader>b :action HarpoonerQuickMenu<cr>
 nmap <leader>i :action HarpoonerAddFile<cr>
 nmap <leader>n :action HarpoonerNextFileAction<cr>
-nmap <leader>e :action HarpoonerPreviousFileAction<cr>
+"nmap <leader>e :action HarpoonerPreviousFileAction<cr>
 
 " Find more examples here:
 " https://www.cyberwizard.io/posts/the-ultimate-ideavim-setup/
