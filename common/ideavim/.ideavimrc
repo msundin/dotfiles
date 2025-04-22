@@ -105,6 +105,33 @@ map zo <action>(ExpandRegion)
 map <leader>e :NERDTreeToggle<CR>
 map <leader>uz <action>(ToggleZenMode)
 
+""" HARPOONER """
+"map <leader>h :action HarpoonerToggleQuickMenu<cr>
+"map <leader>H :action HarpoonerAddFile<cr>
+
+"map <leader>1 :action HarpoonerOpenFile0<cr>
+"map <leader>2 :action HarpoonerOpenFile1<cr>
+"map <leader>3 :action HarpoonerOpenFile2<cr>
+"map <leader>4 :action HarpoonerOpenFile3<cr>
+"map <leader>5 :action HarpoonerOpenFile4<cr>
+"map <leader>6 :action HarpoonerOpenFile5<cr>
+"map <leader>7 :action HarpoonerOpenFile6<cr>
+"map <leader>8 :action HarpoonerOpenFile7<cr>
+"map <leader>9 :action HarpoonerOpenFile8<cr>
+
+nmap <leader>h :action ShowHarpoon<cr>
+nmap <leader>H :action AddToHarpoon<cr>
+
+nmap <leader>1 :action GotoHarpoon1<cr>
+nmap <leader>2 :action GotoHarpoon2<cr>
+nmap <leader>3 :action GotoHarpoon3<cr>
+nmap <leader>4 :action GotoHarpoon4<cr>
+nmap <leader>5 :action GotoHarpoon5<cr>
+nmap <leader>6 :action GotoHarpoon6<cr>
+nmap <leader>7 :action GotoHarpoon7<cr>
+nmap <leader>8 :action GotoHarpoon8<cr>
+nmap <leader>9 :action GotoHarpoon9<cr>
+
 """ LOOK INTO """
 map <leader>cm <action>(ShowPopupMenu)
 
@@ -134,20 +161,11 @@ map <leader>rs <action>(Stop)
 "nmap <leader>i :action AddToHarpoon<cr>
 
 " Harpooner
-nmap <C-1> :action HarpoonerOpenFile0<cr>
-nmap <C-2> :action HarpoonerOpenFile1<cr>
-nmap <C-3> :action HarpoonerOpenFile2<cr>
-nmap <C-4> :action HarpoonerOpenFile3<cr>
-nmap <C-5> :action HarpoonerOpenFile4<cr>
-nmap <C-6> :action HarpoonerOpenFile5<cr>
-nmap <C-7> :action HarpoonerOpenFile6<cr>
-nmap <C-8> :action HarpoonerOpenFile7<cr>
-nmap <C-9> :action HarpoonerOpenFile8<cr>
 "nmap 0 :action HarpoonerOpenFile9<cr>
 
 "nmap <leader>b :action HarpoonerQuickMenu<cr>
-nmap <leader>i :action HarpoonerAddFile<cr>
-nmap <leader>n :action HarpoonerNextFileAction<cr>
+"nmap <leader>i :action HarpoonerAddFile<cr>
+"nmap <leader>n :action HarpoonerNextFileAction<cr>
 "nmap <leader>e :action HarpoonerPreviousFileAction<cr>
 
 " Find more examples here:
