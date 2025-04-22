@@ -10,10 +10,10 @@ if [ ! -f /tmp/yabai_softrestart_flag ]; then
   count_displays() {
     yabai -m query --displays | jq '. | length'
   }
-  
+
   # Get the number of connected displays
   display_count=$(count_displays)
-  
+
   # # Define the applications to open based on display count
   # if [ "$display_count" -gt 1 ]; then
   #   # More than one display (e.g., laptop screen + external display)
@@ -25,7 +25,9 @@ if [ ! -f /tmp/yabai_softrestart_flag ]; then
   #
   # fi
 
-  source ~/.private-yabai-start-apps
+  ### START APPS AT BOOT ###
+  # source ~/.private-yabai-start-apps
+
   # Only laptop screen
   # source ~/.private-yabai-start-single-display-apps
   # Both external displays and only laptop display
@@ -44,9 +46,12 @@ fi # softrestart
 #yabai -m config window_border_width 4
 ## If blurring on, e.g. Brave Browser gets blurred window out of nowhere somtimes
 #yabai -m config window_border_blur off
-#yabai -m config active_window_border_color 0xFF88C0D0 
+#yabai -m config active_window_border_color 0xFF88C0D0
 #yabai -m config normal_window_border_color 0x002E3440
 #yabai -m config insert_feedback_color 0xFFA3BE8C
+
+window_origin_display focused
+# window_origin_display cursor
 
 # Space for spacebar
 yabai -m config external_bar all:32:0
@@ -54,15 +59,18 @@ yabai -m config external_bar all:32:0
 # bsp or float (default: float)
 yabai -m config layout bsp
 
+# mirror
+# yabai -m config mirror y-axis on
+
 # Override default layout for space 9 only
 # yabai -m config --space 9 layout float
 
 # Set all padding and gaps to 10pt (default: 0)
-yabai -m config top_padding    10
+yabai -m config top_padding 10
 yabai -m config bottom_padding 10
-yabai -m config left_padding   10
-yabai -m config right_padding  10
-yabai -m config window_gap     10
+yabai -m config left_padding 10
+yabai -m config right_padding 10
+yabai -m config window_gap 10
 
 # Override gaps for space 2 only
 # yabai -m config --space 2 window_gap 0
@@ -95,6 +103,8 @@ yabai -m config mouse_follows_focus on
 # modify window shadows (default: on, options: on, off, float)
 # example: show shadows only for floating windows
 yabai -m config window_shadow float
+
+# yabai -m config window_placement first_child
 # New window spawns to the right if vertical split, or bottom if horizontal split
 yabai -m config window_placement second_child
 
@@ -165,36 +175,36 @@ yabai -m rule --add title='Settings$' manage=off
 # borders active_color=0xfffa1e4e inactive_color=0xff2e3440 width=8.0 & # red
 borders active_color=0xff00b5ff inactive_color=0xff2e3440 width=8.0 & # blue
 
-sleep 10
+# sleep 10
 # Remove all rules after starting applications
-rules=$(yabai -m rule --list | jq -r '.[].id')
-for rule in $rules; do
-  yabai -m rule --remove "$rule"
-done
-# Function to remove all existing rules
-remove_all_rules() {
-  echo "Removing all existing rules..."
-  
-  while :; do
-    rule_indexes=$(yabai -m rule --list | jq -r '.[].index')
-    if [ -z "$rule_indexes" ]; then
-      break
-    fi
-    
-    echo "Rule indexes to remove:"
-    echo "$rule_indexes"  # Print rule indexes for debugging
-    
-    # Split rule_indexes into lines and iterate over each line
-    echo "$rule_indexes" | while IFS= read -r rule_index; do
-      if [ -n "$rule_index" ]; then
-        echo "Removing rule with index: $rule_index"
-        yabai -m rule --remove "$rule_index" 2>/dev/null
-      fi
-    done
-  done
-}
+# rules=$(yabai -m rule --list | jq -r '.[].id')
+# for rule in $rules; do
+#   yabai -m rule --remove "$rule"
+# done
+# # Function to remove all existing rules
+# remove_all_rules() {
+#   echo "Removing all existing rules..."
+#
+#   while :; do
+#     rule_indexes=$(yabai -m rule --list | jq -r '.[].index')
+#     if [ -z "$rule_indexes" ]; then
+#       break
+#     fi
+#
+#     echo "Rule indexes to remove:"
+#     echo "$rule_indexes" # Print rule indexes for debugging
+#
+#     # Split rule_indexes into lines and iterate over each line
+#     echo "$rule_indexes" | while IFS= read -r rule_index; do
+#       if [ -n "$rule_index" ]; then
+#         echo "Removing rule with index: $rule_index"
+#         yabai -m rule --remove "$rule_index" 2>/dev/null
+#       fi
+#     done
+#   done
+# }
 
 # Remove all existing rules
-remove_all_rules
+# remove_all_rules
 
 echo "yabai configuration loaded.."

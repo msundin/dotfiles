@@ -4,9 +4,72 @@
 " :actionlist
 
 """"" New 250418
-nmap <leader>ss <action>(FileStructurePopup)
+
+""" MOVE """
+map <C-i> <action>(NextSplitter)
+map <C-m> <action>(PrevSplitter)
+
+map <leader>h <action>(Back)
+map <leader>l <action>(Forward)
+map <leader>j <action>(PreviousTab)
+map <leader>k <action>(NextTab)
+map H <action>(Back)
+map L <action>(Forward)
+map J <action>(PreviousTab)
+map K <action>(NextTab)
+
+""" FIND """
+" Find Everything
+map <leader>fe <action>(SearchEverywhere)
+" Find Action
+map <leader>fa <action>(GotoAction)
+" Find Files
+map <leader>ff <action>(GotoFile)
+" Find Recent Files
+map <leader>fr <action>(RecentFiles)
+
+""" SEARCH
+" Search Grep
+map <leader>sg <action>(FindInPath)
+" Search Symbol
+map <leader>ss <action>(FileStructurePopup)
+" Search/jump in buffer
+map s <action>(flash.search)
+
+""" GOTO """
+map gh <action>(ShowHoverInfo)
+map gd <action>(GotoDeclarationOnly)
+map gr <action>(GotoDeclaration)
+map gI <action>(GotoImplementation)
+map gs <action>(GotoSuperMethod)
+map gK <action>(QuickImplementations)
+map gb <action>(GotoNextBookmark)
+map [d <action>(GotoPreviousError)
+map ]d <action>(GotoNextError)
+
+""" GIT """
+map <leader>gb <action>(Annotate)
+
+map <leader>q <action>(GotoTest)
+
+""" CODE """
+" Code Action
+map <leader>ca <action>(ShowIntentionActions)
+" Code CloseEditor
+map <leader>ce <action>(Refactorings.QuickListPopupAction)
+" Code Format
+map <leader>cf <action>(ReformatCode)
+" Code Rename
+map <leader>cr <action>(RenameElement)
 
 """""
+map <leader>bd <action>(CloseEditor)
+map zc <action>(CollapseRegion)
+map zo <action>(ExpandRegion)
+map <leader>cm <action>(ShowPopupMenu)
+
+map <leader>o <action>(CloseEditorsGroup)
+map <leader>e <action>(SelectInProjectView)
 
 set scrolloff=5
 set incsearch
@@ -30,46 +93,38 @@ set which-key
 set notimeout
 " set sneak
 
-inoremap <C-j> <Action>(PopupMenu-selectNext)
-inoremap <C-k> <Action>(PopupMenu-selectPrev)
-nmap ; :
+"inoremap <C-j> <Action>(PopupMenu-selectNext)
+"inoremap <C-k> <Action>(PopupMenu-selectPrev)
+"nmap ; :
 let g:NERDTreeMapActivateNode='l'
 let g:NERDTreeMapJumpParent='h'
-vnoremap < <gv
-vnoremap > >gv
+"vnoremap < <gv
+"vnoremap > >gv
 
 " map ESC to jk
-inoremap jk <esc>
-vnoremap jk <esc>
+" inoremap jk <esc>
+" vnoremap jk <esc>
 let mapleader = " "
 " yank to clipboard
 set clipboard+=unnamed
 set idearefactormode=keep
 " these create newlines like o and O but stay in normal mode
-nmap zj o<Esc>k
-nmap zk O<Esc>j
+"nmap zj o<Esc>k
+"nmap zk O<Esc>j
 
-nmap <leader>fo <action>(RecentFiles)
+"nmap <leader>fo <action>(RecentFiles)
 "nmap <leader>m <action>(RecentFiles)
 "nmap <leader>ff <action>(GotoClass)
 "vmap <leader>ff <action>(GotoClass)
-nmap <leader>ff <action>(SearchEverywhere)
-vmap <leader>ff <action>(SearchEverywhere)
-nmap <leader>fa <action>(GotoAction)
-vmap <leader>fa <action>(GotoAction)
-nmap <leader>fw <action>(FindInPath)
-vmap <leader>fw <action>(FindInPath)
-nmap <leader>fg <action>(FindInPath)
-vmap <leader>fg <action>(FindInPath)
-nmap [d <action>(MethodUp)
-nmap ]d <action>(MethodDown)
-nmap <leader>/ <action>(CommentByLineComment)
-vmap <leader>/ <action>(CommentByLineComment)
-nmap <leader>fe <action>(ExtractFunction)
-vmap <leader>fe <action>(ExtractFunction)
-nmap <leader>gb <action>(Annotate)
-nmap <leader>gt <action>(RecentChangedFiles)
-nmap <leader>x <action>(CloseEditor)
+"nmap <leader>fw <action>(FindInPath)
+"vmap <leader>fw <action>(FindInPath)
+"nmap [d <action>(MethodUp)
+"nmap ]d <action>(MethodDown)
+"nmap <leader>/ <action>(CommentByLineComment)
+"vmap <leader>/ <action>(CommentByLineComment)
+"nmap <leader>fe <action>(ExtractFunction)
+"vmap <leader>fe <action>(ExtractFunction)
+"nmap <leader>x <action>(CloseEditor)
 
 " Special commands for Android Studio
 nmap <leader>db <action>(ToggleLineBreakpoint)
@@ -78,37 +133,26 @@ nmap <leader>a <action>(HideAllWindows)
 nmap <leader>rr <action>(Run)
 nmap <leader>rd <action>(Debug)
 nmap <leader>rs <action>(Stop)
-nmap <leader>m <action>(ShowPopupMenu)
 
-nmap gd <action>(GotoDeclarationOnly)
-"nmap <leader>d <action>(GotoDeclaration)
-nmap gD <action>(GotoTypeDeclaration)
-nmap gt <action>(GotoTypeDeclaration)
+
+"nmap gt <action>(GotoTypeDeclaration)
 "nmap <leader>D <action>(GotoTypeDeclaration)
-nmap gr <action>(GotoDeclaration)
 "nmap <leader>u <action>(FindUsages)
-nmap gi <action>(GotoImplementation)
-nmap gs <action>(GotoSuperMethod)
 "nmap <leader>i <action>(GotoImplementation)
-nmap gK <action>(QuickImplementations)
-nmap T <action>(QuickImplementations)
+"nmap <leader>d <action>(GotoDeclaration)
+"nmap T <action>(QuickImplementations)
+"nmap gD <action>(GotoTypeDeclaration)
 "nmap <leader>; <action>(QuickJavaDoc)
 "nmap <leader>t <action>(ExpressionTypeInfo)
-nmap gb <action>(GotoNextBookmark)
-nmap [d <action>(GotoPreviousError)
-nmap ]d <action>(GotoNextError)
 "nmap gt <action>(GotoTest)
-nmap s <action>(flash.search)
 
 
-nmap \ <action>(SelectInProjectView)
-vmap \ <action>(SelectInProjectView)
+"nmap \ <action>(SelectInProjectView)
+"vmap \ <action>(SelectInProjectView)
 "nmap <leader>e <action>(GotoNextError)
 "nmap <leader>f <action>(SelectInProjectView)
 
-nmap <leader>fm <action>(ReformatCode)
 "nmap <leader>z <action>(ReformatCode)
-nmap <leader>rn <action>(RenameElement)
 "nmap <leader>ra <action>(RenameElement)
 "nmap <leader>c <action>(RenameElement)
 
@@ -118,19 +162,11 @@ nmap <leader>rn <action>(RenameElement)
 "nmap <leader>j <action>(PreviousTab)
 "nmap <leader>k <action>(NextTab)
 
-nmap <leader>h <action>(Back)
-nmap <leader>l <action>(Forward)
-nmap <leader>j <action>(PreviousTab)
-nmap <leader>k <action>(NextTab)
-nmap H <action>(Back)
-nmap L <action>(Forward)
-nmap J <action>(PreviousTab)
-nmap K <action>(NextTab)
 
 "nmap <leader>, <action>(GotoClass)
-nmap <leader>y <action>(CollapseRegion)
-nmap <leader>o <action>(ExpandRegion)
-nmap <leader>q <action>(GotoTest)
+"nmap <leader>y <action>(CollapseRegion)
+"nmap <leader>o <action>(ExpandRegion)
+"nmap <leader>q <action>(GotoTest)
 
 "nmap <C-w>s <action>(SplitHorizontally)
 "nmap <leader>s <action>(SplitHorizontally)
@@ -139,15 +175,13 @@ nmap <leader>q <action>(GotoTest)
 "nmap <leader>v <action>(SplitVertically)
 "nmap <leader>wv <action>(SplitVertically)
 "nmap <C-w>o <action>(CloseAllTabsInGroup)
-nmap <C-w>o <action>(CloseEditorsGroup)
-nmap <leader>o <action>(CloseEditorsGroup)
+"nmap <C-w>o <action>(CloseEditorsGroup)
+"nmap <leader>o <action>(CloseEditorsGroup)
 
  nmap <leader>wd <action>(ToggleDistractionFreeMode)
  nmap <leader>wz <action>(ToggleZenMode)
 
 "nmap <A-a> <action>(HideAllWindows)
-nmap <C-i> <action>(NextSplitter)
-nmap <C-m> <action>(PrevSplitter)
 "nmap <leader>ff <action>(ToggleFullScreen)
 
 " HarpoonIJ
@@ -177,7 +211,7 @@ nmap <C-8> :action HarpoonerOpenFile7<cr>
 nmap <C-9> :action HarpoonerOpenFile8<cr>
 "nmap 0 :action HarpoonerOpenFile9<cr>
 
-nmap <leader>b :action HarpoonerQuickMenu<cr>
+"nmap <leader>b :action HarpoonerQuickMenu<cr>
 nmap <leader>i :action HarpoonerAddFile<cr>
 nmap <leader>n :action HarpoonerNextFileAction<cr>
 nmap <leader>e :action HarpoonerPreviousFileAction<cr>

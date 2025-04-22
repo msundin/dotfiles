@@ -30,6 +30,17 @@ map("n", "K", ":bnext<CR>", { silent = true })
 map("n", "H", "<C-o>", { silent = true })
 map("n", "L", "<C-i>", { silent = true })
 
+-- AI
+vim.keymap.set("n", "<leader>ai", function()
+  local ok = pcall(function()
+    require("lazy").load({ plugins = { "copilot.lua" } })
+    require("copilot.suggestion").trigger()
+  end)
+  if not ok then
+    vim.notify("Copilot not available", vim.log.levels.WARN)
+  end
+end, { desc = "Trigger Copilot suggestion" })
+
 -- Misc
 map("n", "<leader>fs", ':lua print(vim.fn.expand("%:p"))<CR>', { desc = "[f]ile [s]how path" })
 
