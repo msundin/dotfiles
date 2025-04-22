@@ -106,31 +106,31 @@ map <leader>e :NERDTreeToggle<CR>
 map <leader>uz <action>(ToggleZenMode)
 
 """ HARPOONER """
-"map <leader>h :action HarpoonerToggleQuickMenu<cr>
-"map <leader>H :action HarpoonerAddFile<cr>
+map <leader>h :action HarpoonerToggleQuickMenu<cr>
+map <leader>H :action HarpoonerAddFile<cr>
 
-"map <leader>1 :action HarpoonerOpenFile0<cr>
-"map <leader>2 :action HarpoonerOpenFile1<cr>
-"map <leader>3 :action HarpoonerOpenFile2<cr>
-"map <leader>4 :action HarpoonerOpenFile3<cr>
-"map <leader>5 :action HarpoonerOpenFile4<cr>
-"map <leader>6 :action HarpoonerOpenFile5<cr>
-"map <leader>7 :action HarpoonerOpenFile6<cr>
-"map <leader>8 :action HarpoonerOpenFile7<cr>
-"map <leader>9 :action HarpoonerOpenFile8<cr>
+map <leader>1 :action HarpoonerOpenFile0<cr>
+map <leader>2 :action HarpoonerOpenFile1<cr>
+map <leader>3 :action HarpoonerOpenFile2<cr>
+map <leader>4 :action HarpoonerOpenFile3<cr>
+map <leader>5 :action HarpoonerOpenFile4<cr>
+map <leader>6 :action HarpoonerOpenFile5<cr>
+map <leader>7 :action HarpoonerOpenFile6<cr>
+map <leader>8 :action HarpoonerOpenFile7<cr>
+map <leader>9 :action HarpoonerOpenFile8<cr>
 
-map <leader>h :action ShowHarpoon<cr>
-map <leader>H :action AddToHarpoon<cr>
+"map <leader>h :action ShowHarpoon<cr>
+"map <leader>H :action AddToHarpoon<cr>
 
-map <leader>1 :action GotoHarpoon1<cr>
-map <leader>2 :action GotoHarpoon2<cr>
-map <leader>3 :action GotoHarpoon3<cr>
-map <leader>4 :action GotoHarpoon4<cr>
-map <leader>5 :action GotoHarpoon5<cr>
-map <leader>6 :action GotoHarpoon6<cr>
-map <leader>7 :action GotoHarpoon7<cr>
-map <leader>8 :action GotoHarpoon8<cr>
-map <leader>9 :action GotoHarpoon9<cr>
+"map <leader>1 :action GotoHarpoon1<cr>
+"map <leader>2 :action GotoHarpoon2<cr>
+"map <leader>3 :action GotoHarpoon3<cr>
+"map <leader>4 :action GotoHarpoon4<cr>
+"map <leader>5 :action GotoHarpoon5<cr>
+"map <leader>6 :action GotoHarpoon6<cr>
+"map <leader>7 :action GotoHarpoon7<cr>
+"map <leader>8 :action GotoHarpoon8<cr>
+"map <leader>9 :action GotoHarpoon9<cr>
 
 """ LOOK INTO """
 map <leader>cm <action>(ShowPopupMenu)
