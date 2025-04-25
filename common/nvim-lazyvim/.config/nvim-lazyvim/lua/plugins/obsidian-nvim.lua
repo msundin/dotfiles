@@ -27,8 +27,8 @@ return {
   -- --   --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
   -- --   "BufReadPre " .. vim.fn.expand("~") .. "/obsidian-vaults/**",
   -- --   "BufNewFile " .. vim.fn.expand("~") .. "/obsidian-vaults/**",
-  -- --   --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
-  -- --   --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
+  -- --   --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/obsidian-vaults/personal/**',
+  -- --   --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/obsidian-vaults/personal/**',
   -- -- },
   -- event = "BufReadPre",
   -- cond = function()
@@ -59,10 +59,10 @@ return {
   --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
   --   'BufReadPre '
   --     .. vim.fn.expand '~'
-  --     .. '/mattias/nextcloud/obsidian-vaults/work/**',
-  --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/work/**',
-  --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
-  --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
+  --     .. '/mattias/obsidian-vaults/work/**',
+  --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/obsidian-vaults/work/**',
+  --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/obsidian-vaults/personal/**',
+  --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/obsidian-vaults/personal/**',
   -- },
   dependencies = {
     -- Required.
