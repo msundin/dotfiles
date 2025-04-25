@@ -27,8 +27,8 @@ return {
   -- --   --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
   -- --   "BufReadPre " .. vim.fn.expand("~") .. "/obsidian-vaults/**",
   -- --   "BufNewFile " .. vim.fn.expand("~") .. "/obsidian-vaults/**",
-  -- --   --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/obsidian-vaults/personal/**',
-  -- --   --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/obsidian-vaults/personal/**',
+  -- --   --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
+  -- --   --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
   -- -- },
   -- event = "BufReadPre",
   -- cond = function()
@@ -59,10 +59,10 @@ return {
   --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
   --   'BufReadPre '
   --     .. vim.fn.expand '~'
-  --     .. '/mattias/obsidian-vaults/work/**',
-  --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/obsidian-vaults/work/**',
-  --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/obsidian-vaults/personal/**',
-  --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/obsidian-vaults/personal/**',
+  --     .. '/mattias/nextcloud/obsidian-vaults/work/**',
+  --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/work/**',
+  --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
+  --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
   -- },
   dependencies = {
     -- Required.
@@ -102,8 +102,8 @@ return {
     -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
     completion = {
       -- Set to false to disable completion
-      nvim_cmp = true,
-      blink = false,
+      nvim_cmp = false,
+      blink = true,
       -- Trigger completion at 2 chars.
       min_chars = 2,
     },
@@ -349,9 +349,9 @@ return {
 
     picker = {
       -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
-      name = "telescope.nvim",
+      -- name = "telescope.nvim",
       -- name = "fzf-lua",
-      -- name = "snacks.pick",
+      name = "snacks.pick",
       -- Optional, configure key mappings for the picker. These are the defaults.
       -- Not all pickers support all mappings.
       mappings = {
