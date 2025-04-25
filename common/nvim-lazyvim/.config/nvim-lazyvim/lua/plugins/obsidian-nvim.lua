@@ -1,15 +1,68 @@
 return {
   "obsidian-nvim/obsidian.nvim",
+  -- event = "FileType markdown",
+  -- cond = function()
+  --   local path = vim.api.nvim_buf_get_name(0)
+  --   local home = vim.fn.expand("~")
+  --   return path:match(home .. "/obsidian%-vaults/")
+  -- end,
+  -- event = { "BufReadPre", "BufNewFile" },
+  -- cond = function()
+  --   local path = vim.api.nvim_buf_get_name(0) -- full path of the buffer
+  --   local cwd = vim.fn.getcwd()
+  --   local home = vim.fn.expand("~")
+  --
+  --   local in_vault_path = path:match(home .. "/obsidian%-vaults/")
+  --   local in_vault_cwd = cwd:match(home .. "/obsidian%-vaults/personal") or cwd:match(home .. "/obsidian%-vaults/work")
+  --
+  --   return in_vault_path or in_vault_cwd
+  -- end,
+  -- cond = function()
+  --   local cwd = vim.fn.getcwd()
+  --   local home = vim.fn.expand("~")
+  --   return cwd:match(home .. "/obsidian%-vaults/personal") ~= nil or cwd:match(home .. "/obsidian%-vaults/work") ~= nil
+  -- end,
+  -- -- event = {
+  -- --   --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+  -- --   --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+  -- --   "BufReadPre " .. vim.fn.expand("~") .. "/obsidian-vaults/**",
+  -- --   "BufNewFile " .. vim.fn.expand("~") .. "/obsidian-vaults/**",
+  -- --   --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
+  -- --   --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
+  -- -- },
+  -- event = "BufReadPre",
+  -- cond = function()
+  --   local path = vim.api.nvim_buf_get_name(0) -- full path of the buffer
+  --   local home = vim.fn.expand("~")
+  --   return path:match(home .. "/obsidian%-vaults/")
+  -- end,
+  -- event = function()
+  --   local home = vim.fn.expand("~")
+  --   return {
+  --     "BufReadPre " .. home .. "/obsidian-vaults/**",
+  --     "BufNewFile " .. home .. "/obsidian-vaults/**",
+  --   }
+  -- end,
   version = "*", -- recommended, use latest release instead of latest commit
-  lazy = true,
-  ft = "markdown",
+  lazy = false,
+  -- event = "VeryLazy",
+  -- ft = 'markdown',
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
   -- event = {
   --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-  --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-  --   -- refer to `:h file-pattern` for more examples
-  --   "BufReadPre path/to/my-vault/*.md",
-  --   "BufNewFile path/to/my-vault/*.md",
+  --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+  --   "BufReadPre path/to/my-vault/**.md",
+  --   "BufNewFile path/to/my-vault/**.md",
+  -- },
+  -- event = {
+  --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+  --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+  --   'BufReadPre '
+  --     .. vim.fn.expand '~'
+  --     .. '/mattias/nextcloud/obsidian-vaults/work/**',
+  --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/work/**',
+  --   'BufReadPre ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
+  --   'BufNewFile ' .. vim.fn.expand '~' .. '/mattias/nextcloud/obsidian-vaults/personal/**',
   -- },
   dependencies = {
     -- Required.
@@ -18,13 +71,6 @@ return {
     -- see below for full list of optional dependencies 👇
   },
   opts = {
-
-    -- A list of workspace names, paths, and configuration overrides.
-    -- If you use the Obsidian app, the 'path' of a workspace should generally be
-    -- your vault root (where the `.obsidian` folder is located).
-    -- When obsidian.nvim is loaded by your plugin manager, it will automatically set
-    -- the workspace to the first workspace in the list whose `path` is a parent of the
-    -- current markdown file being edited.
     workspaces = {
       {
         name = "personal",
@@ -35,36 +81,28 @@ return {
         path = "~/obsidian-vaults/work",
       },
     },
-
-    -- Alternatively - and for backwards compatibility - you can set 'dir' to a single path instead of
-    -- 'workspaces'. For example:
-    -- dir = "~/vaults/work",
-
     -- Optional, if you keep notes in a specific subdirectory of your vault.
-    notes_subdir = "notes",
+    notes_subdir = "inbox",
 
     -- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
     -- levels defined by "vim.log.levels.*".
-    log_level = vim.log.levels.INFO,
+    -- log_level = vim.log.levels.INFO,
 
     daily_notes = {
       -- Optional, if you keep daily notes in a separate directory.
-      folder = "notes/dailies",
+      folder = "notes/_periodic/_daily",
       -- Optional, if you want to change the date format for the ID of daily notes.
-      date_format = "%Y-%m-%d",
+      date_format = "%y%m%d-%A",
       -- Optional, if you want to change the date format of the default alias of daily notes.
-      alias_format = "%B %-d, %Y",
-      -- Optional, default tags to add to each new daily note created.
-      default_tags = { "daily-notes" },
+      alias_format = "%A, %-d %B %Y",
       -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-      template = nil,
+      template = "templates/daily-note-nvim",
     },
 
     -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
     completion = {
-      -- Enables completion using nvim_cmp
+      -- Set to false to disable completion
       nvim_cmp = false,
-      -- Enables completion using blink.cmp
       blink = true,
       -- Trigger completion at 2 chars.
       min_chars = 2,
@@ -87,7 +125,7 @@ return {
         end,
         opts = { buffer = true },
       },
-      -- Smart action depending on context: follow link, show notes with tag, or toggle checkbox.
+      -- Smart action depending on context, either follow link or toggle checkbox.
       ["<cr>"] = {
         action = function()
           return require("obsidian").util.smart_action()
@@ -96,6 +134,91 @@ return {
       },
     },
 
+    vim.keymap.set("n", "<leader>onn", "<cmd>ObsidianNew<CR>", { desc = "Obsidian new note" }),
+    vim.keymap.set("n", "<leader>ont", "<cmd>ObsidianNewFromTemplate<CR>", { desc = "Obsidian new template note" }),
+    vim.keymap.set("n", "<leader>ond", "<cmd>ObsidianToday<CR>", { desc = "Obsidian new daily note for today" }),
+    vim.keymap.set("n", "<leader>onl", "<cmd>ObsidianLinkNew<CR>", { desc = "Obsidian new link" }),
+    vim.keymap.set("n", "<leader>off", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Obsidian find file" }),
+    vim.keymap.set(
+      "n",
+      "<leader>ofg",
+      "<cmd>ObsidianSearch<CR>",
+      { desc = "Obsidian find in file and filename with grep" }
+    ),
+    vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Obsidian open note in app" }),
+    vim.keymap.set("n", "<leader>ot", "<cmd>ObsidianTags<CR>", { desc = "Obsidian tags" }),
+    vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<CR>", { desc = "Obsidian links" }),
+    vim.keymap.set("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "Obsidian backlinks" }),
+    vim.keymap.set("n", "<leader>od", "<cmd>ObsidianDailies<CR>", { desc = "Obsidian daily notes" }),
+    vim.keymap.set(
+      "n",
+      "<leader>ov",
+      "<cmd>ObsidianWorkspace<CR>",
+      { desc = "Obsidian switch to other vault/workspace" }
+    ),
+    vim.keymap.set(
+      "n",
+      "<leader>ornf",
+      "<cmd>ObsidianRename<CR>",
+      { desc = "[O]bsidian [r]e[n]ame [f]ile e.g. hub name and all backlinks" }
+    ),
+
+    --------------
+    -- obsidian --
+    --------------
+    --
+    -- >>> op/ow/od # from shell, navigate to vault (optional)
+    --
+    -- # NEW NOTE
+    -- >>> ))) <leader>onn
+    -- >>> ))) # add tag, e.g. fact / blog / video / etc..
+    -- >>> ))) # add hubs, e.g. "[[python]]", "[[machine-learning]]", etc...
+    --
+    -- # END OF DAY/WEEK REVIEW
+    -- >>> or # review notes in inbox
+    -- >>>
+    -- >>> ))) <leader>ok # inside vim now, move to zettelkasten
+    -- >>> ))) <leader>od # or delete
+    -- >>>
+    -- >>> og # organize saved notes from zettelkasten into notes/[tag] folders
+    -- >>> ou # sync local with Notion
+    --
+    -- navigate to vault
+    vim.keymap.set(
+      "n",
+      "<leader>op",
+      ":cd ~/obsidian-vaults/personal/<cr>",
+      { desc = "Obsidian switch to personal vault/workspace" }
+    ),
+    vim.keymap.set(
+      "n",
+      "<leader>ow",
+      ":cd ~/obsidian-vaults/work/<cr>",
+      { desc = "Obsidian switch to work vault/workspace" }
+    ),
+    --
+    -- strip date from note title and replace dashes with spaces
+    -- must have cursor on title
+    -- vim.keymap.set("n", "<leader>of", ":s/\\(# \\)[^_]*_/\\1/ | s/-/ /g<cr>")
+    --
+    -- for review workflow
+    -- move file in current buffer to zettelkasten folder
+    vim.keymap.set("n", "<leader>ok", function()
+      local currentdir = vim.loop.cwd()
+      local filepath = vim.fn.expand("%:p")
+      local targetdir = currentdir .. "/zettelkasten"
+      local cmd = string.format("mv '%s' '%s'", filepath, targetdir)
+      vim.fn.system(cmd)
+      vim.cmd("bd")
+    end, { noremap = true, silent = true, desc = "Obsidian move reviewed OK file to zettelkasten directory" }),
+    vim.keymap.set(
+      "n",
+      "<leader>orm",
+      ":!mv '%:p' .trash<cr>:bd<cr>",
+      { desc = "Obsidian move reviewed NOK file to .trash directory" }
+    ),
+    -- vim.keymap.set('n', '<leader>otom', '<cmd>ObsidianTomorrow<CR>', { desc = 'Obsidian daily note for tomorrow' }),
+    -- vim.keymap.set('n', '<leader>oyes', '<cmd>ObsidianYesterday<CR>', { desc = 'Obsidian daily note for yesterday' }),
     -- Where to put new notes. Valid options are
     --  * "current_dir" - put new notes in same directory as the current buffer.
     --  * "notes_subdir" - put new notes in the default notes subdirectory.
@@ -111,14 +234,15 @@ return {
       local suffix = ""
       if title ~= nil then
         -- If title is given, transform it into valid file name.
-        suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+        suffix = title:gsub(" ", "-"):gsub("[^A-Öa-ö0-9-]", ""):lower()
       else
         -- If title is nil, just add 4 random uppercase letters to the suffix.
         for _ = 1, 4 do
           suffix = suffix .. string.char(math.random(65, 90))
         end
       end
-      return tostring(os.time()) .. "-" .. suffix
+      return os.date("%y%m%d-%H%M") .. "_" .. suffix
+      -- return tostring(os.time()) .. '-' .. suffix
     end,
 
     -- Optional, customize how note file names are generated given the ID, target directory, and title.
@@ -148,6 +272,14 @@ return {
     -- Either 'wiki' or 'markdown'.
     preferred_link_style = "wiki",
 
+    -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
+    ---@return string
+    image_name_func = function()
+      -- Prefix image names with timestamp.
+      -- return string.format('%s-', os.time())
+      return os.date("%y%m%d-%H%M_")
+    end,
+
     -- Optional, boolean or a function that takes a filename and returns a boolean.
     -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
     disable_frontmatter = false,
@@ -160,7 +292,14 @@ return {
         note:add_alias(note.title)
       end
 
-      local out = { id = note.id, aliases = note.aliases, tags = note.tags }
+      local out = {
+        id = note.id,
+        aliases = note.aliases,
+        tags = note.tags,
+        date = os.date("%Y-%m-%d"),
+        hub = "",
+        hubs = {},
+      }
 
       -- `note.metadata` contains any manually added fields in the frontmatter.
       -- So here we just make sure those fields are kept in the frontmatter.
@@ -187,19 +326,18 @@ return {
     ---@param url string
     follow_url_func = function(url)
       -- Open the URL in the default web browser.
-      vim.fn.jobstart({ "open", url }) -- Mac OS
-      -- vim.fn.jobstart({"xdg-open", url})  -- linux
-      -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
-      -- vim.ui.open(url) -- need Neovim 0.10.0+
-    end,
+      local os_name = vim.loop.os_uname().sysname
 
-    -- Optional, by default when you use `:ObsidianFollowLink` on a link to an image
-    -- file it will be ignored but you can customize this behavior here.
-    ---@param img string
-    follow_img_func = function(img)
-      vim.fn.jobstart({ "qlmanage", "-p", img }) -- Mac OS quick look preview
-      -- vim.fn.jobstart({"xdg-open", url})  -- linux
-      -- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
+      if os_name == "Darwin" then
+        -- This block will execute if the operating system is macOS
+        vim.fn.jobstart({ "open", url }) -- Mac OS
+      elseif os_name == "Linux" then
+        -- This block will execute if the operating system is Linux
+        vim.fn.jobstart({ "xdg-open", url }) -- linux
+      else
+        -- Optional: handle other operating systems if necessary
+        print("Unsupported operating system")
+      end
     end,
 
     -- Optional, set to true if you use the Obsidian Advanced URI plugin.
@@ -210,21 +348,17 @@ return {
     open_app_foreground = false,
 
     picker = {
-      -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'mini.pick' or 'snacks.pick'.
+      -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
+      -- name = "telescope.nvim",
+      -- name = "fzf-lua",
       name = "snacks.pick",
       -- Optional, configure key mappings for the picker. These are the defaults.
       -- Not all pickers support all mappings.
-      note_mappings = {
+      mappings = {
         -- Create a new note from your query.
         new = "<C-x>",
         -- Insert a link to the selected note.
         insert_link = "<C-l>",
-      },
-      tag_mappings = {
-        -- Add tag(s) to current note.
-        tag_note = "<C-x>",
-        -- Insert a tag at the current location.
-        insert_tag = "<C-l>",
       },
     },
 
@@ -320,15 +454,7 @@ return {
       -- The default folder to place images in via `:ObsidianPasteImg`.
       -- If this is a relative path it will be interpreted as relative to the vault root.
       -- You can always override this per image by passing a full path to the command instead of just a filename.
-      img_folder = "assets/imgs", -- This is the default
-
-      -- A function that determines default name or prefix when pasting images via `:ObsidianPasteImg`.
-      ---@return string
-      img_name_func = function()
-        -- Prefix image names with timestamp.
-        return string.format("Pasted image %s", os.date("%Y%m%d%H%M%S"))
-      end,
-
+      img_folder = "assets/images", -- This is the default
       -- A function that determines the text to insert in the note when pasting an image.
       -- It takes two arguments, the `obsidian.Client` and an `obsidian.Path` to the image file.
       -- This is the default implementation.
@@ -341,4 +467,28 @@ return {
       end,
     },
   },
+
+  -- {
+  --   "saghen/blink.cmp",
+  --   dependencies = { "saghen/blink.compat" },
+  --   opts = {
+  --     sources = {
+  --       default = { "obsidian", "obsidian_new", "obsidian_tags" },
+  --       providers = {
+  --         obsidian = {
+  --           name = "obsidian",
+  --           module = "blink.compat.source",
+  --         },
+  --         obsidian_new = {
+  --           name = "obsidian_new",
+  --           module = "blink.compat.source",
+  --         },
+  --         obsidian_tags = {
+  --           name = "obsidian_tags",
+  --           module = "blink.compat.source",
+  --         },
+  --       },
+  --     },
+  --   },
+  -- },
 }
