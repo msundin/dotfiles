@@ -84,7 +84,7 @@ map <leader>q <action>(GotoTest)
 """ CODE """
 " Code Action
 map <leader>ca <action>(ShowIntentionActions)
-" Code CloseEditor
+" Code R[e]factor
 map <leader>ce <action>(Refactorings.QuickListPopupAction)
 " Code Format
 map <leader>cf <action>(ReformatCode)
@@ -102,6 +102,9 @@ map <leader>wd <action>(Unsplit)
 
 map zc <action>(CollapseRegion)
 map zo <action>(ExpandRegion)
+map zC <action>(CollapseRegionRecursively)
+map zO <action>(ExpandRegionRecursively)
+map za <action>(ExpandCollapseToggleAction)
 map <leader>e :NERDTreeToggle<CR>
 map <leader>uz <action>(ToggleZenMode)
 
