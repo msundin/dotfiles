@@ -1,13 +1,13 @@
 return {
 
-  {
-    "saghen/blink.cmp",
-    opts = function(_, opts)
-      opts.enabled = function()
-        return vim.bo.filetype ~= "markdown"
-      end
-    end,
-  },
+  -- {
+  --   "saghen/blink.cmp",
+  --   opts = function(_, opts)
+  --     opts.enabled = function()
+  --       return vim.bo.filetype ~= "markdown"
+  --     end
+  --   end,
+  -- },
 
   {
     "zbirenbaum/copilot.lua",
