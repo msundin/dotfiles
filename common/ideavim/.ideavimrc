@@ -46,7 +46,7 @@ map K <action>(NextTab)
 nmap <leader>- <action>(SplitHorizontally)
 nmap <leader>\| <action>(SplitVertically)
 
-""" FIND """
+""" FIND/FILE """
 " Find Everything
 map <leader>fe <action>(SearchEverywhere)
 " Find Action
@@ -55,6 +55,8 @@ map <leader>fa <action>(GotoAction)
 map <leader>ff <action>(GotoFile)
 " Find Recent Files
 map <leader>fr <action>(RecentFiles)
+" New File
+map <leader>fn <action>(NewFile)
 
 """ SEARCH
 " Search Grep
