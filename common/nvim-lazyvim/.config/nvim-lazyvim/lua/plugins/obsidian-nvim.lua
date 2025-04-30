@@ -102,8 +102,8 @@ return {
     -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
     completion = {
       -- Set to false to disable completion
-      nvim_cmp = true,
-      blink = false,
+      nvim_cmp = false,
+      blink = true,
       -- Trigger completion at 2 chars.
       min_chars = 2,
     },
@@ -348,10 +348,10 @@ return {
     open_app_foreground = false,
 
     picker = {
-      -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
-      name = "telescope.nvim",
+      -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'snacks.pick' or 'mini.pick'.
+      -- name = "telescope.nvim",
       -- name = "fzf-lua",
-      -- name = "snacks.pick",
+      name = "snacks.pick",
       -- Optional, configure key mappings for the picker. These are the defaults.
       -- Not all pickers support all mappings.
       mappings = {
