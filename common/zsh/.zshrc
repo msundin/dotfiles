@@ -234,8 +234,13 @@ alias vk='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
 alias va='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
 alias vl='NVIM_APPNAME=lvim lvim' # LunarVim
 
-export EDITOR='NVIM_APPNAME=nvim-lazyvim nvim' # LazyVim
-export VISUAL='NVIM_APPNAME=nvim-lazyvim nvim' # LazyVim
+
+edit-lazyvim() {
+  NVIM_APPNAME=nvim-lazyvim nvim "$@"
+}
+export EDITOR=edit-lazyvim
+export VISUAL=edit-lazyvim
+export PATH="$HOME/.local/bin:$PATH"
 
 # Yazi
 function y() {
