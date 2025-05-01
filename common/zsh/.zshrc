@@ -234,6 +234,11 @@ alias vk='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
 alias va='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
 alias vl='NVIM_APPNAME=lvim lvim' # LunarVim
 
+# Fzf search and open files
+fv() {
+  local file
+  file=$(fzf --preview 'bat --style=numbers --color=always {} 2>/dev/null || cat {}' --preview-window=right:60%:wrap) && v "$file"
+}
 
 edit-lazyvim() {
   NVIM_APPNAME=nvim-lazyvim nvim "$@"
