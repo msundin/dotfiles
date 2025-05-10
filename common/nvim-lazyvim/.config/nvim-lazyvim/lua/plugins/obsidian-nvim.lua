@@ -141,7 +141,7 @@ return {
     vim.keymap.set("n", "<leader>off", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Obsidian find file" }),
     vim.keymap.set(
       "n",
-      "<leader>ofg",
+      "<leader>osg",
       "<cmd>ObsidianSearch<CR>",
       { desc = "Obsidian find in file and filename with grep" }
     ),
