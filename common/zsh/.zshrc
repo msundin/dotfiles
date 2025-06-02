@@ -211,8 +211,8 @@ bindkey -M vicmd 'yy' vi-yank-to-clipboard
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # alias rm='echo "use trash instead"; false'
-alias zshconfig='nvim ~/.zshrc'
-alias ohmyzsh='nvim ~/.oh-my-zsh'
+alias zshconfig='v ~/.zshrc'
+alias ohmyzsh='v ~/.oh-my-zsh'
 alias tmux='TERM=screen-256color tmux'
 alias clip='xclip -selection clipboard'
 alias cl='clear'
@@ -224,7 +224,7 @@ alias f='fzf'
 alias ow='cd ~/obsidian-vaults/work/'
 alias op='cd ~/obsidian-vaults/personal/'
 alias od='cd ~/obsidian-vaults/dev/'
-alias or='nvim $(pwd)/inbox/*.md'
+alias or='v $(pwd)/inbox/*.md'
 
 alias nvim='nvim' # default Neovim config
 alias v='NVIM_APPNAME=nvim-lazyvim nvim' # LazyVim
