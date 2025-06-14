@@ -216,6 +216,7 @@ alias ohmyzsh='v ~/.oh-my-zsh'
 alias tmux='TERM=screen-256color tmux'
 alias clip='xclip -selection clipboard'
 alias cl='clear'
+alias yt='yt-dlp'
 
 alias l='lazygit'
 alias f='fzf'
