@@ -6,7 +6,7 @@
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
-set $mod Mod1
+set $mod Mod4
 
 # Home row direction keys, like vim
 set $left h
@@ -30,7 +30,7 @@ set $file-manager nemo
 # And same goes for any browser, just replace the command with whatever command is used to launch your browser.
 # Brave browser users need to set command as brave-bin
 # Your preferred Browser
-set $web-browser brave
+set $web-browser floorp
 
 # lock screen
 set $lock 'swaylock \
@@ -80,7 +80,6 @@ exec rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 
 #set $blue  #7fbbb3
 #set $yellow #dbbc7f
 #set $gray  #868d80
-#set $blue  #81a1c1
 
 # Pastel TTY Colors
 #set $bg0    #282828
@@ -109,29 +108,12 @@ set $cyan   #8ec07c
 set $white  #ebdbb2
 set $orange #fe8019
 
-set $dark_blue_nord #0087bd
-set $blue_nord #81a1c1
+
 
 ### Output configuration
 #
 #
-workspace 3 output eDP-1
-workspace 2 output DP-2
-workspace 1 output DP-1
-
-output DP-1 pos 0 0
-output DP-2 pos 2560 0
-output eDP-1 pos 5120 0
-
-input * {
-    xkb_layout us
-    xkb_variant altgr-intl
-}
-
-# touchpad
-input type:touchpad {
-    tap enabled
-}
+output HDMI-A-1 resolution 1920x1080 position 1920,0
 
 ### Idle configuration
 #
@@ -179,7 +161,7 @@ exec autotiling -l 2
 exec flameshot
 
 ## Emacs Daemon
-# exec /usr/bin/emacs --daemon
+exec /usr/bin/emacs --daemon
 
 ## Clipboard
 exec wl-paste --type text --watch cliphist store &
@@ -206,13 +188,10 @@ exec nwg-wrapper -t sway.pango -p right -mr 10
 exec nwg-wrapper -s quick.sh -a end -p left -ml 10 -mb 10 -r 60
 exec nwg-wrapper -s quote.sh -p left -a end -mb 10 -ml 260
 
-# Start apps
-exec nextcloud &
-
 ## Autostart Applications
 
-# exec swaymsg "workspace 1; exec floorp"
-# exec swaymsg "workspace 3; exec kitty"
+exec swaymsg "workspace 1; exec floorp"
+exec swaymsg "workspace 3; exec kitty"
 
 
 ### Window Rules
@@ -229,16 +208,16 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position 
     bindsym $mod+Return exec $term
 
     # Start Emacs
-    # bindsym $mod+e exec emacsclient -c
+    bindsym $mod+e exec emacsclient -c
 
     # Sticky Mode
-    # bindsym $mod+a exec sticky enable
+    bindsym $mod+a exec sticky enable
 
     # Clipboard
     bindsym $mod+v exec cliphist list | rofi -dmenu -p "Clipboard" -theme ~/.config/rofi/clipboard.rasi | cliphist decode | wl-copy
 
     # Emoji Picker
-    bindsym $mod+a exec rofi -show emoji -modi emoji -matching regex -sorting-method levenshtein
+    bindsym $mod+s exec rofi -show emoji -modi emoji -matching regex -sorting-method levenshtein
 
 
     # Lock
@@ -260,7 +239,8 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position 
     bindsym $mod+b exec $web-browser
 
     # Kill focused window
-    bindsym $mod+shift+q kill
+    bindsym $mod+w kill
+
 
     # Wallpaper
     bindsym $mod+c exec ~/.config/sway/scripts/wallpaper.sh
@@ -355,16 +335,13 @@ bindsym --release $mod+0 exec "echo 0 > /tmp/sovpipe"
 #
 
     # Switch the current container between different layout styles
-#    bindsym $mod+shift+s layout stacking
+    bindsym $mod+shift+s layout stacking
     bindsym $mod+t floating toggle
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
 
 
     # Manual Tiling Modes
-    bindsym $mod+minus splith
-    bindsym $mod+bar splitv
+       bindsym $mod+p splith
+    bindsym $mod+o splitv
 
 
     # Make the current focus fullscreen
@@ -387,7 +364,7 @@ bindsym --release $mod+0 exec "echo 0 > /tmp/sovpipe"
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+ctrl+minus scratchpad show
+    bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
 #
@@ -447,15 +424,13 @@ bindsym $mod+r mode "resize"
    #}
  #}
 
-set $i3lowbatwarn sh ~/.config/i3/scripts/i3-battery-popup
-exec --no-startup-id $i3lowbatwarn
-
 include @sysconfdir@/sway/config.d/*
 
 ## Sway Borders
 
+
 # Focused window (active)
-client.focused $cyan $bg1 $fg $dark_blue_nord $blue_nord
+client.focused $cyan $bg1 $fg $yellow $cyan
 
 # Unfocused window (inactive)
 client.unfocused $bg0 $bg1 $gray $bg0 $bg1
