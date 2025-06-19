@@ -6,9 +6,13 @@
  */
 
 * {
-    yellow: #fabd2f;
+    background-nord: #2e3440;
     dark-blue-nord: #0087bd;
     blue-nord: #81a1c1;
+    white-nord: #d8dee9;
+    black-nord: #3b4252;
+
+    yellow: #fabd2f;
     white:  #ebdbb2;
     black:  #282828;
     grey:   #3c3836;
@@ -18,8 +22,8 @@
     background-light: #1d2021; /* Gruvbox dark background */
 
     spacing: 2;
-    background-color: #00000000;
-    border-color: #d79921; /* Gruvbox yellow border */
+    background-color: @background-nord; /* Dark background */
+    border-color: @blue-nord; /* Gruvbox blue border */
     anchor: north;
     location: center;
 }
@@ -40,10 +44,10 @@ message {
     border: 2px;
     padding: 1em;
     background-color: @background-light; /* Dark background */
-    text-color: @white; /* White text for contrast */
+    text-color: @dark-blue-nord; /* White text for contrast */
 }
 textbox normal {
-    text-color: @white;
+    text-color: @dark-blue-nord;
     padding: 0;
     border: 0;
 }
@@ -54,7 +58,7 @@ listview {
     reverse: false;
 
     columns: 1;
-    background-color: @background-light; /* Dark background */
+    background-color: @background-nord; /* Dark background */
 }
 element {
     border: 0;
@@ -66,8 +70,8 @@ element-text {
     text-color: inherit;
 }
 element normal.normal {
-    text-color: @white;
-    background-color: #00000000;
+    text-color: @white-nord;
+    background-color: @background-nord;
 }
 element normal.urgent {
     text-color: @red;
@@ -79,19 +83,19 @@ element normal.active {
 }
 element selected.normal {
     text-color: @black; /* Black selected foreground */
-    background-color: @yellow; /* Gruvbox yellow selected background */
+    background-color: @dark-blue-nord; /* Gruvbox yellow selected background */
 }
 element selected.urgent {
     text-color: @black;
-    background-color: @yellow;
+    background-color: @blue-nord;
 }
 element selected.active {
     text-color: @black;
-    background-color: @yellow;
+    background-color: @blue-nord;
 }
 element alternate.normal {
-    text-color: @white;
-    background-color: @grey; /* Gruvbox grey alternate */
+    text-color: @white-nord;
+    background-color: @black-nord; /* Gruvbox grey alternate */
 }
 element alternate.urgent {
     text-color: @red;
@@ -109,11 +113,11 @@ inputbar {
     spacing: 0;
     border: 2px;
     padding: 0.5em 1em;
-    background-color: @background-light;
+    background-color: @background-nord;
     index: 0;
 }
 inputbar normal {
-    foreground-color: @white;
+    foreground-color: @dark-blue-nord;
     background-color: #00000000;
 }
 mode-switcher {
@@ -123,21 +127,21 @@ mode-switcher {
     index: 10;
 }
 button selected {
-    text-color: @yellow; /* Gruvbox yellow for selected buttons */
+    text-color: @blue-nord; /* Gruvbox yellow for selected buttons */
 }
 inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 
 prompt, entry {
-    text-color: @white;
+    text-color: @blue-nord;
 }
 
 textbox-prompt-colon {
     expand:     false;
     str:        ":";
     margin:     0px 0.3em 0em 0em;
-    text-color: @white;
+    text-color: @blue-nord;
 }
 error-message {
     border: 2px;
