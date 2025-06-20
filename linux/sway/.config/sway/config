@@ -33,25 +33,57 @@ set $file-manager nemo
 set $web-browser brave
 
 # lock screen
+# set $lock 'swaylock \
+#     --color 2d353b \
+#     --inside-color 3a454a \
+#     --inside-clear-color 5c6a72 \
+#     --inside-ver-color 5a524c \
+#     --inside-wrong-color 543a3a \
+#     --ring-color 7a8478 \
+#     --ring-clear-color a7c080 \
+#     --ring-ver-color dbbc7f \
+#     --ring-wrong-color e67e80 \
+#     --key-hl-color d699b6 \
+#     --bs-hl-color e69875 \
+#     --separator-color 2d353b \
+#     --text-color d3c6aa \
+#     --text-clear-color d3c6aa \
+#     --text-ver-color d3c6aa \
+#     --text-wrong-color d3c6aa \
+#     --indicator-radius 100 \
+#     --indicator-thickness 10 \
+#     --font "Iosevka Nerd Font Mono"'
+#
+# set $lock 'swaylock \
+#     --screenshots \
+#     --clock \
+#     --indicator \
+#     --indicator-radius 100 \
+#     --indicator-thickness 7 \
+#     --effect-blur 7x5 \
+#     --effect-vignette 0.5:0.5 \
+#     --ring-color bb00cc \
+#     --key-hl-color 880033 \
+#     --line-color 00000000 \
+#     --inside-color 00000088 \
+#     --separator-color 00000000 \
+#     --grace 2 \
+#     --fade-in 0.2'
+#
 set $lock 'swaylock \
+    --screenshots \
+    --clock \
+    --indicator \
+    --indicator-radius 100 \
+    --indicator-thickness 7 \
+    --effect-blur 5x3 \
+    --effect-vignette 0.5:0.5 \
     --color 2d353b \
     --inside-color 3a454a \
-    --inside-clear-color 5c6a72 \
-    --inside-ver-color 5a524c \
-    --inside-wrong-color 543a3a \
     --ring-color 7a8478 \
-    --ring-clear-color a7c080 \
-    --ring-ver-color dbbc7f \
-    --ring-wrong-color e67e80 \
     --key-hl-color d699b6 \
-    --bs-hl-color e69875 \
-    --separator-color 2d353b \
     --text-color d3c6aa \
-    --text-clear-color d3c6aa \
-    --text-ver-color d3c6aa \
-    --text-wrong-color d3c6aa \
-    --indicator-radius 100 \
-    --indicator-thickness 10 \
+    --fade-in 0.2 \
     --font "Iosevka Nerd Font Mono"'
 
 ### OBS Fixes and XDG Desktop
@@ -135,31 +167,36 @@ input type:touchpad {
 
 ### Idle configuration
 #
+# exec swayidle -w \
+#     timeout 300 'swaylock \
+#         --color 2d353b \
+#         --inside-color 3a454a \
+#         --inside-clear-color 5c6a72 \
+#         --inside-ver-color 5a524c \
+#         --inside-wrong-color 543a3a \
+#         --ring-color 7a8478 \
+#         --ring-clear-color a7c080 \
+#         --ring-ver-color dbbc7f \
+#         --ring-wrong-color e67e80 \
+#         --key-hl-color d699b6 \
+#         --bs-hl-color e69875 \
+#         --separator-color 2d353b \
+#         --text-color d3c6aa \
+#         --text-clear-color d3c6aa \
+#         --text-ver-color d3c6aa \
+#         --text-wrong-color d3c6aa \
+#         --indicator-radius 100 \
+#         --indicator-thickness 10 \
+#         --font "Iosevka Nerd Font Mono"' \
+#     timeout 600 'swaymsg output "*" power off' \
+#     resume 'swaymsg output "*" power on' \
+#     before-sleep 'swaylock -f -c 000000'
+
 exec swayidle -w \
-    timeout 300 'swaylock \
-        --color 2d353b \
-        --inside-color 3a454a \
-        --inside-clear-color 5c6a72 \
-        --inside-ver-color 5a524c \
-        --inside-wrong-color 543a3a \
-        --ring-color 7a8478 \
-        --ring-clear-color a7c080 \
-        --ring-ver-color dbbc7f \
-        --ring-wrong-color e67e80 \
-        --key-hl-color d699b6 \
-        --bs-hl-color e69875 \
-        --separator-color 2d353b \
-        --text-color d3c6aa \
-        --text-clear-color d3c6aa \
-        --text-ver-color d3c6aa \
-        --text-wrong-color d3c6aa \
-        --indicator-radius 100 \
-        --indicator-thickness 10 \
-        --font "Iosevka Nerd Font Mono"' \
+    timeout 300 'swaylock --screenshots --effect-blur 5x3 --fade-in 0.2' \
     timeout 600 'swaymsg output "*" power off' \
     resume 'swaymsg output "*" power on' \
-    before-sleep 'swaylock -f -c 000000'
-
+    before-sleep 'swaylock-effects -f --screenshots --effect-blur 5x3'
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -424,7 +461,9 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    bindsym Print exec flameshot gui
+    # bindsym $mod+p exec flameshot gui
+    bindsym $mod+shift+s exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png  
+    bindsym ctrl+shift+s exec grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
 
 #
 # Status Bar:

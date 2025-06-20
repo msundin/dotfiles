@@ -76,28 +76,31 @@
 /* Text and border colors for modules */
 @define-color mode-color @orange;
 @define-color mpd-color @magenta;
-@define-color weather-color @magenta;
+@define-color weather-color @blue;
 @define-color playerctl-color @magenta;
 @define-color clock-color @blue;
-@define-color cpu-color @green;
-@define-color memory-color @magenta;
-@define-color temperature-color @yellow;
+@define-color cpu-color @magenta;
+@define-color memory-color @green;
+@define-color temperature-color @cyan;
 @define-color temperature-critical-color @red;
 @define-color battery-color @cyan;
-@define-color battery-charging-color @green;
+@define-color battery-charging-color @cyan;
 @define-color battery-warning-color @yellow;
 @define-color battery-critical-color @red;
-@define-color network-color @blue;
+@define-color network-color @green;
 @define-color network-disconnected-color @red;
-@define-color pulseaudio-color @orange;
+@define-color pulseaudio-color @red;
 @define-color pulseaudio-muted-color @red;
-@define-color backlight-color @yellow;
-@define-color disk-color @cyan;
-@define-color uptime-color @green;
-@define-color updates-color @orange;
+@define-color backlight-color @orange;
+@define-color disk-color @blue;
+@define-color uptime-color @cyan;
+@define-color updates-color @blue;
 @define-color quote-color @green;
 @define-color idle-inhibitor-color @foreground;
 @define-color idle-inhibitor-active-color @red;
+@define-color bluetooth-color @blue;
+@define-color bluetooth-connected-color @magenta;
+@define-color bluetooth-disconnected-color @red;
 
 * {
     /* Base styling for all modules */
@@ -120,7 +123,7 @@ window#waybar {
 #mode, #mpd, #custom-weather, #custom-playerctl, #clock, #cpu,
 #memory, #temperature, #battery, #network, #pulseaudio,
 #backlight, #disk, #custom-uptime, #custom-updates, #custom-quote,
-#idle_inhibitor, #tray {
+#idle_inhibitor, #tray, #bluetooth {
     padding: 0 10px;
     margin: 0 2px;
     border-bottom: 2px solid transparent;
@@ -290,6 +293,7 @@ window#waybar {
 
 #tray {
     background-color: transparent;
+    /* background-color: @blue; */
     padding: 0 10px;
     margin: 0 2px;
 }
@@ -302,4 +306,19 @@ window#waybar {
     -gtk-icon-effect: highlight;
     color: @red;
     border-bottom-color: @red;
+}
+
+#bluetooth {
+    color: @bluetooth-color;
+    border-bottom-color: @bluetooth-color;
+}
+
+#bluetooth.connected {
+    color: @bluetooth-connected-color;
+    border-bottom-color: @bluetooth-connected-color;
+}
+
+#bluetooth.disconnected {
+    color: @bluetooth-disconnected-color;
+    border-bottom-color: @bluetooth-disconnected-color;
 }

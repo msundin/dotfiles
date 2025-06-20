@@ -14,9 +14,9 @@
     "cpu",
     "memory",
     "temperature",
-    "disk",
-    "custom/uptime",
-    "custom/updates"
+    "disk"
+    // "custom/uptime",
+    // "custom/updates"
   ], //battery   //disk     // uptime      //updates        // systray
   // "modules-right": [
   //   "clock",
@@ -35,6 +35,7 @@
   "modules-right": [
     "pulseaudio",
     "backlight",
+    "bluetooth",
     "network",
     "battery",
     "clock",
@@ -148,6 +149,8 @@
     "on-click": "kitty -e htop"
   },
   "temperature": {
+    "thermal-zone": 12,
+    "inderval": 2,
     "critical-threshold": 80,
     "format": "{icon} {temperatureC}°C",
     "format-icons": [
@@ -179,7 +182,8 @@
       "󰂁",
       "󰂂",
       "󰁹"
-    ]
+    ],
+    "interval": 5
   },
   "network": {
     "format-wifi": "󰖩 {essid} ({signalStrength}%)",
@@ -189,6 +193,16 @@
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
     "tooltip-format": "{ifname}: {ipaddr}",
     "on-click": "kitty -e nmtui"
+  },
+  "bluetooth": {
+    "format": "\uf293 :{status}",
+    "format-connected": " \uf294 {device_alias}",
+    "format-connected-battery": "\uf294 {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "blueman-manager"
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
