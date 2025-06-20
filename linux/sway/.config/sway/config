@@ -363,8 +363,8 @@ bindsym --release $mod+0 exec "echo 0 > /tmp/sovpipe"
 
 
     # Manual Tiling Modes
-    bindsym $mod+minus splith
-    bindsym $mod+bar splitv
+    bindsym $mod+bar splith
+    bindsym $mod+minus splitv
 
 
     # Make the current focus fullscreen
