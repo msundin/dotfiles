@@ -213,7 +213,7 @@ font pango:Iosevka Nerd Font Mono 12
 exec autotiling -l 2
 
 ## Flameshot
-exec flameshot
+# exec flameshot
 
 ## Emacs Daemon
 # exec /usr/bin/emacs --daemon
@@ -229,11 +229,10 @@ exec nm-applet
 exec waybar
 
 ## SWWW Wallpaper Daemon
-exec swww-daemon
+# exec swww-daemon
 
 ## SWWW Random Wallpaper
-exec bash -c 'swww img "$(find ~/wallpapers-extra/flowers -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.webp" \) | shuf -n1)" -t none'
-
+# exec bash -c 'swww img "$(find ~/wallpapers-extra/flowers -type f \( -iname "*.png" -o -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.webp" \) | shuf -n1)" -t none'
 
 ## Mako Notification
 exec mako
@@ -277,9 +276,8 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position 
     # Emoji Picker
     bindsym $mod+a exec rofi -show emoji -modi emoji -matching regex -sorting-method levenshtein
 
-
     # Lock
-    bindsym $mod+shift+t exec $lock
+    # bindsym $mod+shift+t exec $lock
 
     # Tiling Modes
     bindsym $mod+u exec ~/.config/sway/scripts/tiling.sh
@@ -500,7 +498,7 @@ client.focused $cyan $bg1 $fg $dark_blue_nord $blue_nord
 client.unfocused $bg0 $bg1 $gray $bg0 $bg1
 
 # Urgent window (e.g., alerts)
-client.urgent $yellow $bg1 $fg $yellow $yellow
+client.urgent $red $bg1 $fg $red $red
 
 
 # Borders and Gaps.

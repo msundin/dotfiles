@@ -33,6 +33,7 @@
   //   "tray"
   // ],
   "modules-right": [
+    "pulseaudio#microphone",
     "pulseaudio",
     "backlight",
     "bluetooth",
@@ -41,6 +42,13 @@
     "clock",
     "tray"
   ],
+  "pulseaudio#microphone": {
+    "format": "{format_source}",
+    "format-source": "\uf130 {volume}%",
+    "format-source-muted": "\uf131 Muted",
+    "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
+    "tooltip": false
+  },
   "sway/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
