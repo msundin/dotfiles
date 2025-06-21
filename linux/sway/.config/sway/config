@@ -70,7 +70,7 @@ set $web-browser brave
 #     --grace 2 \
 #     --fade-in 0.2'
 #
-set $lock 'swaylock \
+set $lock 'LC_TIME=sv_SE.UTF-8 swaylock \
     --screenshots \
     --clock \
     --indicator \
@@ -193,10 +193,14 @@ input type:touchpad {
 #     before-sleep 'swaylock -f -c 000000'
 
 exec swayidle -w \
-    timeout 300 'swaylock --screenshots --effect-blur 5x3 --fade-in 0.2' \
-    timeout 600 'swaymsg output "*" power off' \
-    resume 'swaymsg output "*" power on' \
-    before-sleep 'swaylock-effects -f --screenshots --effect-blur 5x3'
+    timeout 300 $lock \
+    timeout 600 'swaymsg "output * power off"' \
+    timeout 900 'systemctl suspend' \
+    resume 'swaymsg "output * power on"' \
+    before-sleep $lock
+
+# Sleep shortcuts
+bindsym $mod+ctrl+h exec systemctl hibernate
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -277,7 +281,7 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position 
     bindsym $mod+a exec rofi -show emoji -modi emoji -matching regex -sorting-method levenshtein
 
     # Lock
-    # bindsym $mod+shift+t exec $lock
+    bindsym $mod+shift+t exec $lock
 
     # Tiling Modes
     bindsym $mod+u exec ~/.config/sway/scripts/tiling.sh
