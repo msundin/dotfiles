@@ -7,10 +7,11 @@
   // "modules-left": ["sway/workspaces", "sway/mode", "custom/weather", "custom/quote"],
   "modules-left": [
     "sway/workspaces",
-    "sway/mode",
+    "battery",
     "custom/weather"
   ],
   "modules-center": [
+    "sway/mode",
     "cpu",
     "memory",
     "temperature",
@@ -38,7 +39,6 @@
     "backlight",
     "bluetooth",
     "network",
-    "battery",
     "clock",
     "tray"
   ],
@@ -82,11 +82,11 @@
     "max-length": 40,
     "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{markup_escape(title)}}\", \"tooltip\": \"{{playerName}} : {{artist}} - {{markup_escape(title)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
     "on-click": "playerctl play-pause",
-    "on-click-right": "playerctl next",
+    "on-click-right": "playerctl next"
   },
   "custom/weather": {
     // "exec": "curl 'https://wttr.in/?format=1'",
-    "exec": "curl 'https://wttr.in/57.7089,11.9746?format=%c+%t+%w+%h&M'",
+    "exec": "curl 'https://wttr.in/57.7089,11.9746?format=%c%t+%w+%h&M'",
     "interval": 3600,
     "format": "{}",
     "tooltip": true

@@ -7,8 +7,8 @@
 
 * {
     background-nord: #2e3440;
-    dark-blue-nord: #0087bd;
-    blue-nord: #81a1c1;
+    dark-blue-nord: #5e81ac;
+    // blue-nord: #81a1c1;
     white-nord: #d8dee9;
     black-nord: #3b4252;
 
@@ -23,7 +23,7 @@
 
     spacing: 2;
     background-color: @background-nord; /* Dark background */
-    border-color: @blue-nord; /* Gruvbox blue border */
+    border-color: @dark-blue-nord; /* Gruvbox blue border */
     anchor: north;
     location: center;
 }
@@ -87,11 +87,11 @@ element selected.normal {
 }
 element selected.urgent {
     text-color: @black;
-    background-color: @blue-nord;
+    background-color: @dark-blue-nord;
 }
 element selected.active {
     text-color: @black;
-    background-color: @blue-nord;
+    background-color: @dark-blue-nord;
 }
 element alternate.normal {
     text-color: @white-nord;
@@ -127,21 +127,21 @@ mode-switcher {
     index: 10;
 }
 button selected {
-    text-color: @blue-nord; /* Gruvbox yellow for selected buttons */
+    text-color: @dark-blue-nord; /* Gruvbox yellow for selected buttons */
 }
 inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
 }
 
 prompt, entry {
-    text-color: @blue-nord;
+    text-color: @dark-blue-nord;
 }
 
 textbox-prompt-colon {
     expand:     false;
     str:        ":";
     margin:     0px 0.3em 0em 0em;
-    text-color: @blue-nord;
+    text-color: @dark-blue-nord;
 }
 error-message {
     border: 2px;

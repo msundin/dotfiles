@@ -141,8 +141,8 @@ set $cyan   #8ec07c
 set $white  #ebdbb2
 set $orange #fe8019
 
-set $dark_blue_nord #0087bd
-set $blue_nord #81a1c1
+set $cyan_nord #88c0d0
+set $blue_nord #5e81ac
 
 ### Output configuration
 #
@@ -496,7 +496,7 @@ include @sysconfdir@/sway/config.d/*
 ## Sway Borders
 
 # Focused window (active)
-client.focused $cyan $bg1 $fg $dark_blue_nord $blue_nord
+client.focused $cyan $bg1 $fg $cyan_nord $blue_nord
 
 # Unfocused window (inactive)
 client.unfocused $bg0 $bg1 $gray $bg0 $bg1

@@ -34,7 +34,6 @@
 /* Pastel TTY Colors */
 @define-color background #212121;
 @define-color background-light #3a3a3a;
-/* @define-color background-light #2e3440; */
 @define-color foreground #e0e0e0;
 @define-color black #5a5a5a;
 @define-color red #ff9a9e;
@@ -49,10 +48,8 @@
 
 
 /* Gruvbox Dark Colors */
-/* @define-color background #282828; */
-@define-color background #2e3440;
-/* @define-color background-light #3c3836; */
-@define-color background-light #2e3440;
+@define-color background #282828;
+@define-color background-light #3c3836;
 @define-color foreground #ebdbb2;
 @define-color black #32302f;
 @define-color red #cc241d;
@@ -64,42 +61,55 @@
 @define-color white #ebdbb2;
 @define-color orange #d65d0e;
 
+/* Nord Colors */
+@define-color background #2e3440;
+@define-color background-light #4c566a;
 
+@define-color foreground #d8dee9;
+@define-color black #3b4252;
+@define-color red #bf616a;
+@define-color green #a3be8c;
+@define-color yellow #ebcb8b;
+@define-color blue #5E81AC;
+@define-color magenta #b48ead;
+@define-color cyan #88c0d0;
+@define-color white #e5e9f0;
+@define-color orange #D08770;
 
 /* Module-specific colors */
 @define-color workspaces-color @foreground;
 @define-color workspaces-focused-bg @green;
-@define-color workspaces-focused-fg @cyan;
+@define-color workspaces-focused-fg @green;
 @define-color workspaces-urgent-bg @red;
 @define-color workspaces-urgent-fg @black;
 
 /* Text and border colors for modules */
 @define-color mode-color @orange;
 @define-color mpd-color @magenta;
-@define-color weather-color @blue;
+@define-color weather-color @cyan;
 @define-color playerctl-color @magenta;
-@define-color clock-color @blue;
-@define-color cpu-color @magenta;
-@define-color memory-color @green;
-@define-color temperature-color @cyan;
+@define-color clock-color @cyan;
+@define-color cpu-color @blue;
+@define-color memory-color @blue;
+@define-color temperature-color @blue;
 @define-color temperature-critical-color @red;
 @define-color battery-color @cyan;
-@define-color battery-charging-color @cyan;
+@define-color battery-charging-color @green;
 @define-color battery-warning-color @yellow;
 @define-color battery-critical-color @red;
-@define-color network-color @green;
+@define-color network-color @blue;
 @define-color network-disconnected-color @red;
-@define-color pulseaudio-color @red;
+@define-color pulseaudio-color @green;
 @define-color pulseaudio-muted-color @red;
-@define-color backlight-color @orange;
+@define-color backlight-color @yellow;
 @define-color disk-color @blue;
 @define-color uptime-color @cyan;
 @define-color updates-color @blue;
 @define-color quote-color @green;
 @define-color idle-inhibitor-color @foreground;
 @define-color idle-inhibitor-active-color @red;
-@define-color bluetooth-color @blue;
-@define-color bluetooth-connected-color @magenta;
+@define-color bluetooth-color @cyan;
+@define-color bluetooth-connected-color @blue;
 @define-color bluetooth-disconnected-color @red;
 
 * {
@@ -252,6 +262,16 @@ window#waybar {
 }
 
 #pulseaudio.muted {
+    color: @pulseaudio-muted-color;
+    border-bottom-color: @pulseaudio-muted-color;
+}
+
+#pulseaudio.microphone {
+    color: @pulseaudio-color;
+    border-bottom-color: @pulseaudio-color;
+}
+
+#pulseaudio.microphone.source-muted {
     color: @pulseaudio-muted-color;
     border-bottom-color: @pulseaudio-muted-color;
 }
