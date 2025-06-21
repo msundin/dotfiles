@@ -238,9 +238,9 @@ exec waybar
 exec mako
 
 ## NWG Wrapper keybinds
-exec nwg-wrapper -t sway.pango -p right -mr 10
-exec nwg-wrapper -s quick.sh -a end -p left -ml 10 -mb 10 -r 60
-exec nwg-wrapper -s quote.sh -p left -a end -mb 10 -ml 260
+# exec nwg-wrapper -t sway.pango -p right -mr 10
+# exec nwg-wrapper -s quick.sh -a end -p left -ml 10 -mb 10 -r 60
+# exec nwg-wrapper -s quote.sh -p left -a end -mb 10 -ml 260
 
 # Start apps
 exec nextcloud &
