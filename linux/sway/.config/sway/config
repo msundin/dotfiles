@@ -70,7 +70,24 @@ set $web-browser brave
 #     --grace 2 \
 #     --fade-in 0.2'
 #
-set $lock 'LC_TIME=sv_SE.UTF-8 swaylock -f \
+set $lock_fork 'LC_TIME=sv_SE.UTF-8 swaylock -f \
+    --screenshots \
+    --clock \
+    --indicator \
+    --indicator-radius 100 \
+    --indicator-thickness 7 \
+    --effect-blur 5x3 \
+    --effect-vignette 0.5:0.5 \
+    --color 2d353b \
+    --inside-color 3a454a \
+    --ring-color 7a8478 \
+    --key-hl-color d699b6 \
+    --text-color d3c6aa \
+    --fade-in 0.2 \
+    --font "Iosevka Nerd Font Mono"'
+
+
+set $lock_no_fork 'LC_TIME=sv_SE.UTF-8 swaylock \
     --screenshots \
     --clock \
     --indicator \
@@ -197,11 +214,11 @@ input type:touchpad {
 #     before-sleep 'swaylock -f -c 000000'
 
 exec swayidle -w \
-    timeout 300 $lock \
+    timeout 300 $lock_fork \
     timeout 600 'swaymsg "output * power off"' \
     timeout 900 'systemctl suspend' \
     resume 'swaymsg "output * power on"' \
-    before-sleep $lock
+    before-sleep $lock_no_fork
 
 # Sleep shortcuts
 bindsym $mod+ctrl+h exec systemctl hibernate
