@@ -83,8 +83,7 @@ set $lock_fork 'LC_TIME=sv_SE.UTF-8 swaylock -f \
     --ring-color 7a8478 \
     --key-hl-color d699b6 \
     --text-color d3c6aa \
-    --fade-in 0.2 \
-    --font "Iosevka Nerd Font Mono"'
+    --fade-in 0.2'
 
 
 set $lock_no_fork 'LC_TIME=sv_SE.UTF-8 swaylock \
@@ -100,8 +99,7 @@ set $lock_no_fork 'LC_TIME=sv_SE.UTF-8 swaylock \
     --ring-color 7a8478 \
     --key-hl-color d699b6 \
     --text-color d3c6aa \
-    --fade-in 0.2 \
-    --font "Iosevka Nerd Font Mono"'
+    --fade-in 0.2'
 
 ### OBS Fixes and XDG Desktop
 
@@ -215,8 +213,7 @@ input type:touchpad {
 
 exec swayidle -w \
     timeout 300 $lock_fork \
-    timeout 600 'swaymsg "output * power off"' \
-    timeout 900 'systemctl suspend' \
+    timeout 600 'systemctl suspend' \
     resume 'swaymsg "output * power on"' \
     before-sleep $lock_no_fork
 
