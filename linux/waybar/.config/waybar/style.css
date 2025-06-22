@@ -89,9 +89,9 @@
 @define-color weather-color @cyan;
 @define-color playerctl-color @magenta;
 @define-color clock-color @cyan;
-@define-color cpu-color @blue;
-@define-color memory-color @blue;
-@define-color temperature-color @blue;
+@define-color cpu-color @magenta;
+@define-color memory-color @magenta;
+@define-color temperature-color @magenta;
 @define-color temperature-critical-color @red;
 @define-color battery-color @cyan;
 @define-color battery-charging-color @green;
@@ -102,7 +102,7 @@
 @define-color pulseaudio-color @green;
 @define-color pulseaudio-muted-color @red;
 @define-color backlight-color @yellow;
-@define-color disk-color @blue;
+@define-color disk-color @magenta;
 @define-color uptime-color @cyan;
 @define-color updates-color @blue;
 @define-color quote-color @green;

@@ -7,15 +7,12 @@
   // "modules-left": ["sway/workspaces", "sway/mode", "custom/weather", "custom/quote"],
   "modules-left": [
     "sway/workspaces",
-    "battery",
-    "custom/weather"
+    "battery"
   ],
   "modules-center": [
     "sway/mode",
-    "cpu",
-    "memory",
-    "temperature",
-    "disk"
+    "custom/weather"
+    // "sway/window"
     // "custom/uptime",
     // "custom/updates"
   ], //battery   //disk     // uptime      //updates        // systray
@@ -34,14 +31,51 @@
   //   "tray"
   // ],
   "modules-right": [
-    "pulseaudio#microphone",
-    "pulseaudio",
+    "group/sound",
     "backlight",
-    "bluetooth",
-    "network",
+    "group/system",
+    "group/connectivity",
     "clock",
     "tray"
   ],
+  "group/system": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "drawer-child",
+      "transition-left-to-right": true
+    },
+    "modules": [
+      "disk",
+      "cpu",
+      "memory",
+      "temperature"
+    ]
+  },
+  "group/connectivity": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "drawer-child",
+      "transition-left-to-right": true
+    },
+    "modules": [
+      "network",
+      "bluetooth"
+    ]
+  },
+  "group/sound": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 500,
+      "children-class": "drawer-child",
+      "transition-left-to-right": true
+    },
+    "modules": [
+      "pulseaudio",
+      "pulseaudio#microphone"
+    ]
+  },
   "pulseaudio#microphone": {
     "format": "{format_source}",
     "format-source": "\uf130 {volume}%",

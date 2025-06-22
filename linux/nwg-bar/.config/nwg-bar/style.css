@@ -36,5 +36,5 @@ button:hover {
 
 button:focus {
     background-color: #4c5660;
-    outline: 2px solid #81a1c1; /* But add a border/outline */
+    outline: 2px solid #5e81ac;
 }
