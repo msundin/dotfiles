@@ -70,7 +70,7 @@ set $web-browser brave
 #     --grace 2 \
 #     --fade-in 0.2'
 #
-set $lock 'LC_TIME=sv_SE.UTF-8 swaylock \
+set $lock 'LC_TIME=sv_SE.UTF-8 swaylock -f \
     --screenshots \
     --clock \
     --indicator \
