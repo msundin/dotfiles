@@ -1,7 +1,4 @@
 [opener]
 edit = [
-  { run = [
-    "edit-lazyvim",
-    "$1",
-  ], desc = "Open in LazyVim", block = true },
+  { run = "NVIM_APPNAME=nvim-lazyvim nvim $1", desc = "Open in LazyVim", block = true },
 ]
