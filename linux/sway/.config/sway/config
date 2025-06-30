@@ -213,8 +213,8 @@ input type:touchpad {
 
 exec swayidle -w \
     timeout 300 $lock_fork \
-    timeout 600 'systemctl suspend' \
-    resume 'swaymsg "output * power on"' \
+    # timeout 600 'systemctl suspend' \
+    # resume 'swaymsg "output * power on"' \
     before-sleep $lock_no_fork
 
 # Sleep shortcuts
