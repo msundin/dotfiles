@@ -119,8 +119,7 @@
     "on-click-right": "playerctl next"
   },
   "custom/weather": {
-    // "exec": "curl 'https://wttr.in/?format=1'",
-    "exec": "curl 'https://wttr.in/57.7089,11.9746?format=%c%t+%w+%h&M'",
+    "exec": "ping -c 1 -W 2 8.8.8.8 >/dev/null 2>&1 && timeout 10 curl -s 'https://wttr.in/57.7089,11.9746?format=%c%t+%w+%h&M' 2>/dev/null || echo '🌐 Offline'",
     "interval": 3600,
     "format": "{}",
     "tooltip": true
@@ -234,7 +233,7 @@
     "format-disconnected": "󰖪 Disconnected",
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
     "tooltip-format": "{ifname}: {ipaddr}",
-    "on-click": "kitty -e nmtui"
+    "on-click": "nm-connection-editor"
   },
   "bluetooth": {
     "format": "\uf293 :{status}",
