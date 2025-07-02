@@ -76,7 +76,7 @@ set $lock_fork 'LC_TIME=sv_SE.UTF-8 swaylock -f \
     --indicator \
     --indicator-radius 100 \
     --indicator-thickness 7 \
-    --effect-blur 5x3 \
+    --effect-blur 7x5 \
     --effect-vignette 0.5:0.5 \
     --color 2d353b \
     --inside-color 3a454a \
@@ -92,7 +92,7 @@ set $lock_no_fork 'LC_TIME=sv_SE.UTF-8 swaylock \
     --indicator \
     --indicator-radius 100 \
     --indicator-thickness 7 \
-    --effect-blur 5x3 \
+    --effect-blur 7x5 \
     --effect-vignette 0.5:0.5 \
     --color 2d353b \
     --inside-color 3a454a \
@@ -212,7 +212,7 @@ input type:touchpad {
 #     before-sleep 'swaylock -f -c 000000'
 
 exec swayidle -w \
-    timeout 300 $lock_fork \
+    timeout 600 $lock_fork \
     timeout 86400 'systemctl suspend' \
     resume 'swaymsg "output * power on"' \
     before-sleep $lock_no_fork
