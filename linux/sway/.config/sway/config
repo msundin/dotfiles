@@ -166,9 +166,9 @@ set $red_nord     #bf616a
 ### Output configuration
 #
 #
-workspace 3 output eDP-1
-workspace 2 output DP-2
-workspace 1 output DP-1
+workspace 10 output eDP-1
+workspace 1 output DP-2
+workspace 9 output DP-1
 
 output DP-1 pos 0 0
 output DP-2 pos 2560 0
@@ -478,8 +478,8 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
     # bindsym $mod+p exec flameshot gui
-    bindsym $mod+shift+s exec grim -g "$(slurp)" ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png  
-    bindsym ctrl+shift+s exec grim ~/Pictures/screenshot-$(date +%Y%m%d-%H%M%S).png
+    bindsym $mod+shift+s exec grim -g "$(slurp)" ~/nextcloud/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png  
+    bindsym ctrl+shift+s exec grim ~/nextcloud/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png
 
 #
 # Status Bar:

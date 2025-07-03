@@ -120,7 +120,7 @@
   },
   "custom/weather": {
     "exec": "ping -c 1 -W 2 8.8.8.8 >/dev/null 2>&1 && timeout 10 curl -s 'https://wttr.in/57.7089,11.9746?format=%c%t+%w+%h&M' 2>/dev/null || echo '🌐 Offline'",
-    "interval": 3600,
+    "interval": 300,
     "format": "{}",
     "tooltip": true
   },
