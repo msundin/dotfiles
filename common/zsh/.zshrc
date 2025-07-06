@@ -235,6 +235,7 @@ alias vk='NVIM_APPNAME=nvim-kickstart nvim' # Kickstart
 alias va='NVIM_APPNAME=nvim-astrovim nvim' # AstroVim
 alias vl='NVIM_APPNAME=lvim lvim' # LunarVim
 
+export SUDO_EDITOR=~/scripts/bash/nvim-lazyvim
 
 # Find and open files by filename
 fv() {

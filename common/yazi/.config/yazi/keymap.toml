@@ -1,0 +1,9 @@
+[[mgr.prepend_keymap]]
+on = ["d"]
+run = "remove"
+desc = "Move to trash"
+
+[[mgr.prepend_keymap]]
+on = ["D"]
+run = "remove --permanently"
+desc = "Delete permanently"
