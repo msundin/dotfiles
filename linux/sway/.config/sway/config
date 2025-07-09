@@ -161,6 +161,7 @@ set $bg1          #3b4252
 set $fg           #d8dee9
 set $glacier_nord #81a1c1
 set $blue_nord    #5e81ac
+set $green_nord   #a3be8c
 set $red_nord     #bf616a
 
 ### Output configuration
@@ -510,7 +511,7 @@ include @sysconfdir@/sway/config.d/*
 ## Sway Borders
 
 # Focused window (active)
-client.focused $blue_nord $bg1 $fg $glacier_nord $blue_nord
+client.focused $green_nord $bg1 $fg $blue_nord $green_nord
 
 # Unfocused window (inactive)
 client.unfocused $bg0 $bg1 $gray $bg0 $bg1
