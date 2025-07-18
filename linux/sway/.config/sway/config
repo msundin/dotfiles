@@ -166,14 +166,19 @@ set $red_nord     #bf616a
 
 ### Output configuration
 #
+# Home
+# workspace 10 output eDP-1
+# workspace 1 output DP-2
+# workspace 9 output DP-1
 #
-workspace 10 output eDP-1
-workspace 1 output DP-2
-workspace 9 output DP-1
+# output DP-1 pos 0 0
+# output DP-2 pos 2560 0
+# output eDP-1 pos 5120 0
 
-output DP-1 pos 0 0
-output DP-2 pos 2560 0
-output eDP-1 pos 5120 0
+# Away
+workspace 1 output eDP-1
+
+output eDP-1 pos 0 0
 
 input * {
     xkb_layout us
@@ -511,7 +516,7 @@ include @sysconfdir@/sway/config.d/*
 ## Sway Borders
 
 # Focused window (active)
-client.focused $green_nord $bg1 $fg $blue_nord $green_nord
+client.focused $green_nord $bg1 $fg $glacier_nord $green_nord
 
 # Unfocused window (inactive)
 client.unfocused $bg0 $bg1 $gray $bg0 $bg1
