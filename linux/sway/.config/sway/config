@@ -176,9 +176,9 @@ set $red_nord     #bf616a
 # output eDP-1 pos 5120 0
 
 # Away
-workspace 1 output eDP-1
-
-output eDP-1 pos 0 0
+# workspace 1 output eDP-1
+#
+# output eDP-1 pos 0 0
 
 input * {
     xkb_layout us
