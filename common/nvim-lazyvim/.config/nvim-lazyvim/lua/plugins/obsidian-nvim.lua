@@ -443,6 +443,10 @@ return {
       },
     },
 
+    checkbox = {
+      order = { " ", "x", ">", "~", "!" },
+    },
+
     -- Specify how to handle attachments.
     attachments = {
       -- The default folder to place images in via `:ObsidianPasteImg`.
