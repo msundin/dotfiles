@@ -483,9 +483,18 @@ bindsym $mod+r mode "resize"
     bindsym --locked XF86MonBrightnessDown exec brightnessctl set 5%-
     bindsym --locked XF86MonBrightnessUp exec brightnessctl set 5%+
     # Special key to take a screenshot with grim
-    # bindsym $mod+p exec flameshot gui
-    bindsym $mod+shift+s exec grim -g "$(slurp)" ~/nextcloud/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png  
-    bindsym ctrl+shift+s exec grim ~/nextcloud/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png
+    # Screenshots dir (ensure it exists at login)
+    exec test -d "$HOME/nextcloud/screenshots" || mkdir -p "$HOME/nextcloud/screenshots"
+    
+    # Area screenshot → save + copy (PNG), freeze frame while selecting
+    bindsym $mod+shift+s exec sh -c 'f="$HOME/nextcloud/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"; \
+      grim -g "$(slurp -d)" - | tee "$f" | wl-copy --type image/png && \
+      notify-send "📸 Area screenshot saved & copied" "$f"'
+    
+    # Fullscreen screenshot → save + copy (PNG)
+    bindsym ctrl+shift+s exec sh -c 'f="$HOME/nextcloud/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"; \
+      grim - | tee "$f" | wl-copy --type image/png && \
+      notify-send "📸 Fullscreen screenshot saved & copied" "$f"'
 
 #
 # Status Bar:
