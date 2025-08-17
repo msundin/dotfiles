@@ -167,6 +167,17 @@ else
   alias -s {png,jpg}=feh
   alias -s {pdf}=brave
 
+  # /etc etckeeper helpers
+  etcgit() { sudo -E git -C /etc "$@"; }
+  
+  # completions like normal git
+  compdef _git etcgit=git
+  
+  # quick views
+  etcstatus() { etcgit status; }
+  etclog()    { etcgit log --oneline --decorate --graph -n 20; }
+  etcdiff()   { etcgit -c color.ui=always log -p -n 1; }  # last change
+
   function vi-yank-to-clipboard() {
     # Copy the entire current line to the clipboard
     print -n "$BUFFER" | xclip -selection clipboard
