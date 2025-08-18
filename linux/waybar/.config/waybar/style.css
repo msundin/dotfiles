@@ -183,9 +183,9 @@ window#waybar {
 }
 
 #custom-weather {
-    font-family: "JetBrainsMono Nerd Font", "Noto Sans Symbols2", monospace;
-    color: @weather-color;
-    border-bottom-color: @weather-color;
+  font-family: "JetBrainsMono Nerd Font", "Noto Sans Symbols2", monospace;
+  color: @weather-color;
+  border-bottom-color: @weather-color;
 }
 
 #custom-playerctl {
