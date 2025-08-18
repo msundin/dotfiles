@@ -119,8 +119,8 @@
     "on-click-right": "playerctl next"
   },
   "custom/weather": {
-    "exec": "ping -c 1 -W 2 8.8.8.8 >/dev/null 2>&1 && timeout 10 curl -s 'https://wttr.in/57.7089,11.9746?format=%c%t+%w+%h&M' 2>/dev/null || echo '🌐 Offline'",
-    "interval": 300,
+    "exec": "bash -lc 'lat=57.7089; lon=11.9746; ua=\"WaybarWeather/1.0 (olle@example.com)\"; url=\"https://api.met.no/weatherapi/locationforecast/2.0/compact?lat=${lat}&lon=${lon}\"; json=$(curl -fsS -4 --connect-timeout 6 --max-time 12 -H \"User-Agent: $ua\" \"$url\") || { echo \"🌐 Offline\"; exit 0; }; t=$(printf %s \"$json\" | jq -r \".properties.timeseries[0].data.instant.details.air_temperature\"); hum=$(printf %s \"$json\" | jq -r \".properties.timeseries[0].data.instant.details.relative_humidity\"); wind=$(printf %s \"$json\" | jq -r \".properties.timeseries[0].data.instant.details.wind_speed\"); deg=$(printf %s \"$json\" | jq -r \".properties.timeseries[0].data.instant.details.wind_from_direction\"); d=${deg%.*}; if (( d<0 )); then d=$((d+360)); fi; if (( d<23 || d>=338 )); then ar=\"↑\"; elif (( d<68 )); then ar=\"↗\"; elif (( d<113 )); then ar=\"→\"; elif (( d<158 )); then ar=\"↘\"; elif (( d<203 )); then ar=\"↓\"; elif (( d<248 )); then ar=\"↙\"; elif (( d<293 )); then ar=\"←\"; else ar=\"↖\"; fi; printf \"🌤 +%s°C %s%sm/s %s%%\\n\" \"$t\" \"$ar\" \"$wind\" \"$hum\"'",
+    "interval": 603,
     "format": "{}",
     "tooltip": true
   },
