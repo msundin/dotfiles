@@ -16,7 +16,7 @@ configuration {
     window-format: "{w} · {c} · {t}";
 
     /* Settings */
-    terminal: "kitty";
+    terminal: "ghostty";
     sidebar-mode: false;
     combi-modi: "window,drun,run";
     click-to-exit: true;
