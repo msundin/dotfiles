@@ -8,6 +8,8 @@
 * {
     background-nord: #2e3440;
     dark-blue-nord: #5e81ac;
+    selection-bg-nord: #4c566a;
+    selection-fg-nord: #eceff4;
     grey-nord: #3b4252;
     // blue-nord: #81a1c1;
     white-nord: #d8dee9;
@@ -86,8 +88,8 @@ element normal.active {
     background-color: @background-light;
 }
 element selected.normal {
-    text-color: @black; /* Black selected foreground */
-    background-color: @dark-blue-nord; /* Gruvbox yellow selected background */
+    text-color: @selection-fg-nord; /* Black selected foreground */
+    background-color: @selection-bg-nord; /* Gruvbox yellow selected background */
 }
 element selected.urgent {
     text-color: @black;
@@ -99,7 +101,7 @@ element selected.active {
 }
 element alternate.normal {
     text-color: @white-nord;
-    background-color: @black-nord; /* Gruvbox grey alternate */
+    background-color: @background-nord; /* Gruvbox grey alternate */
 }
 element alternate.urgent {
     text-color: @red;
@@ -138,14 +140,14 @@ inputbar {
 }
 
 prompt, entry {
-    text-color: @dark-blue-nord;
+    text-color: @white-nord;
 }
 
 textbox-prompt-colon {
     expand:     false;
     str:        ":";
     margin:     0px 0.3em 0em 0em;
-    text-color: @dark-blue-nord;
+    text-color: @white-nord;
 }
 error-message {
     border: 2px;

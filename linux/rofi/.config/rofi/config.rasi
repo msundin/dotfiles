@@ -2,7 +2,7 @@
 /* https://github.com/arkboix/dotfiles */
 configuration {
     modi: "drun,run,window,ssh,combi";
-    font: "Iosevka Nerd Font 12";
+    font: "JetBrainsMono Nerd Font 14";
     me-select-entry: "w";
     me-accept-entry: "MousePrimary";
     show-icons: true;
