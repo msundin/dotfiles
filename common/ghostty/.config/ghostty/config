@@ -53,7 +53,7 @@ theme = nord-alt
 
 # === General ===
 shell-integration = zsh
-background-opacity = 1.0
+# background-opacity = 1
 window-padding-x = 6
 window-padding-y = 6
 confirm-close-surface = false

@@ -6,7 +6,7 @@
  */
 
 * {
-    background-nord: #2e3440;
+    background-nord: #3b4252;
     dark-blue-nord: #5e81ac;
     selection-bg-nord: #4c566a;
     selection-fg-nord: #eceff4;

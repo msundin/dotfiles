@@ -71,19 +71,26 @@ set $web-browser brave
 #     --fade-in 0.2'
 #
 set $lock_fork 'LC_TIME=sv_SE.UTF-8 swaylock -f \
+    --screenshots \
     --clock \
     --indicator \
     --indicator-radius 100 \
     --indicator-thickness 7 \
-    --effect-blur x5 \
+    --effect-blur 7x5 \
     --effect-vignette 0.5:0.5 \
-    --color 2d353b \
-    --inside-color #2e3440 \
-    --ring-color #3b4252 \
-    --key-hl-color d699b6 \
-    --text-color d3c6aa \
-    --fade-in 0.2'
-
+    --color 2e3440 \
+    --inside-color 2e3440 \
+    --ring-color 3b4252 \
+    --key-hl-color b48ead \
+    --text-color 88c0d0 \
+    --inside-wrong-color bf616a \
+    --ring-wrong-color 3b4252 \
+    --inside-ver-color 81a1c1 \
+    --ring-ver-color 3b4252 \
+    --inside-clear-color ebcb8b \
+    --ring-clear-color 3b4252 \
+    --fade-in 0.2 \
+    --font "Iosevka Nerd Font Mono"'
 
 set $lock_no_fork 'LC_TIME=sv_SE.UTF-8 swaylock \
     --screenshots \
@@ -93,12 +100,19 @@ set $lock_no_fork 'LC_TIME=sv_SE.UTF-8 swaylock \
     --indicator-thickness 7 \
     --effect-blur 7x5 \
     --effect-vignette 0.5:0.5 \
-    --color 2d353b \
+    --color 2e3440 \
     --inside-color 2e3440 \
     --ring-color 3b4252 \
-    --key-hl-color d699b6 \
-    --text-color d3c6aa \
-    --fade-in 0.2'
+    --key-hl-color b48ead \
+    --text-color 88c0d0 \
+    --inside-wrong-color bf616a \
+    --ring-wrong-color 3b4252 \
+    --inside-ver-color 81a1c1 \
+    --ring-ver-color 3b4252 \
+    --inside-clear-color ebcb8b \
+    --ring-clear-color 3b4252 \
+    --fade-in 0.2 \
+    --font "Iosevka Nerd Font Mono"'
 
 ### OBS Fixes and XDG Desktop
 
@@ -233,11 +247,16 @@ bindsym $mod+ctrl+h exec systemctl hibernate
 
 ### Font Configuration
 
-# font pango:Iosevka Nerd Font Mono 12
-font pango:JetBrainsMono Nerd Font  12
+font pango:Iosevka Nerd Font Mono 14
+# font pango:JetBrainsMono Nerd Font 12
 
 ### Autostart
 
+# Make all windows slightly transparent
+# for_window [class=".*"] opacity 0.97
+
+# Set background for all outputs
+exec swaybg -i /home/mattias/Downloads/nord-theme-bg-1.jpg -m fill
 
 ## Sway Automatic Tiling
 exec autotiling -l 2
@@ -307,7 +326,7 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position 
     bindsym $mod+a exec rofi -show emoji -modi emoji -matching regex -sorting-method levenshtein
 
     # Lock
-    bindsym $mod+shift+t exec $lock
+    bindsym $mod+shift+t exec $lock_fork
 
     # Tiling Modes
     bindsym $mod+u exec ~/.config/sway/scripts/tiling.sh

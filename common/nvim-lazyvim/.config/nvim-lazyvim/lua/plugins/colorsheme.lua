@@ -1,6 +1,13 @@
 return {
 
-  { "rmehri01/onenord.nvim" },
+  {
+    "rmehri01/onenord.nvim",
+    opts = {
+      disable = {
+        background = true, -- Disable setting the background color
+      },
+    },
+  },
 
   { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 

@@ -117,8 +117,8 @@
     border: none;
     border-radius: 0;
     /* font-family: "Iosevka Nerd Font"; */
-    font-family: "JetBrainsMono Nerd Font", "Noto Sans Symbols2", monospace;
-    font-size: 14px;
+    font-family: "Iosevka Nerd Font", "Noto Sans Symbols2", monospace;
+    font-size: 16px;
     min-height: 0;
 }
 
@@ -183,7 +183,7 @@ window#waybar {
 }
 
 #custom-weather {
-  font-family: "JetBrainsMono Nerd Font", "Noto Sans Symbols2", monospace;
+  font-family: "Iosevka Nerd Font", "Noto Sans Symbols2", monospace;
   color: @weather-color;
   border-bottom-color: @weather-color;
 }

@@ -1,40 +1,55 @@
 window {
-        background-color: rgba (0, 0, 0, 1.0)
+    background-color: rgba(46, 52, 64, 1.0); /* Nord0 - Polar Night */
 }
 
 /* Outer bar container, takes all the window width/height */
 #outer-box {
-	margin: 0px
+    margin: 0px
 }
 
 /* Inner bar container, surrounds buttons */
 #inner-box {
-	background-color: rgba (0, 0, 0, 0.85);
-	border-radius: 10px;
-	border-style: none;
-	border-width: 1px;
-	border-color: rgba (156, 142, 122, 0.7);
-	padding: 5px;
-	margin: 5px
+    background-color: rgba(59, 66, 82, 0.95); /* Nord1 - Polar Night with transparency */
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(76, 86, 106, 0.8); /* Nord2 - Polar Night border */
+    padding: 5px;
+    margin: 5px
 }
 
 button, image {
-	background: none;
-	border: none;
-	box-shadow: none
+    background: none;
+    border: none;
+    box-shadow: none
 }
 
 button {
-	padding-left: 10px;
-	padding-right: 10px;
-	margin: 5px
+    color: #eceff4; /* Nord5 - Snow Storm text */
+    font-family: "Iosevka Nerd Font", "Iosevka", monospace;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 5px;
+    border-radius: 6px;
+    transition: all 0.2s ease-in-out;
 }
 
 button:hover {
-	background-color: rgba (255, 255, 255, 0.1)
+    background-color: rgba(67, 76, 94, 0.6); /* Nord2 with transparency */
+    color: #88c0d0; /* Nord8 - Frost blue for accent */
 }
 
 button:focus {
-    background-color: #4c5660;
-    outline: 2px solid #5e81ac;
+    background-color: #434c5e; /* Nord2 - Polar Night */
+    outline: 2px solid #5e81ac; /* Nord10 - Frost blue */
+    color: #eceff4; /* Nord5 - Snow Storm */
 }
+
+/* Optional: Style for active/pressed state */
+button:active {
+    background-color: #4c566a; /* Nord3 - Polar Night */
+    color: #88c0d0; /* Nord8 - Frost blue */
+}
+
