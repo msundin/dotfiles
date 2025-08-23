@@ -44,6 +44,12 @@
 #
 
 theme = nord
+# theme = onenord
+# theme = catppuccin-frappe
+# theme = catppuccin-macchiato
+# theme = catppuccin-mocha
+# theme = tokyonight
+
 
 # === General ===
 shell-integration = zsh
