@@ -8,6 +8,7 @@
 * {
     background-nord: #2e3440;
     dark-blue-nord: #5e81ac;
+    grey-nord: #3b4252;
     // blue-nord: #81a1c1;
     white-nord: #d8dee9;
     black-nord: #3b4252;
@@ -25,7 +26,7 @@
 
     // background-color: @background-nord; /* Dark background */
     background-color: transparent;
-    border-color: @dark-blue-nord; /* Gruvbox blue border */
+    border-color: @grey-nord; /* Gruvbox blue border */
     anchor: north;
     location: center;
 }
