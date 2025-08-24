@@ -80,15 +80,15 @@ set $lock_fork 'LC_TIME=sv_SE.UTF-8 swaylock -f \
     --effect-vignette 0.5:0.5 \
     --color 2e3440 \
     --inside-color 2e3440 \
-    --ring-color 3b4252 \
-    --key-hl-color b48ead \
+    --ring-color 4c566a \
+    --key-hl-color a3be8c \
     --text-color 88c0d0 \
     --inside-wrong-color bf616a \
-    --ring-wrong-color 3b4252 \
+    --ring-wrong-color 4c566a \
     --inside-ver-color 81a1c1 \
-    --ring-ver-color 3b4252 \
+    --ring-ver-color 4c566a \
     --inside-clear-color ebcb8b \
-    --ring-clear-color 3b4252 \
+    --ring-clear-color 4c566a \
     --fade-in 0.2 \
     --font "Iosevka Nerd Font Mono"'
 
@@ -102,15 +102,15 @@ set $lock_no_fork 'LC_TIME=sv_SE.UTF-8 swaylock \
     --effect-vignette 0.5:0.5 \
     --color 2e3440 \
     --inside-color 2e3440 \
-    --ring-color 3b4252 \
-    --key-hl-color b48ead \
+    --ring-color 4c566a \
+    --key-hl-color a3be8c \
     --text-color 88c0d0 \
     --inside-wrong-color bf616a \
-    --ring-wrong-color 3b4252 \
+    --ring-wrong-color 4c566a \
     --inside-ver-color 81a1c1 \
-    --ring-ver-color 3b4252 \
+    --ring-ver-color 4c566a \
     --inside-clear-color ebcb8b \
-    --ring-clear-color 3b4252 \
+    --ring-clear-color 4c566a \
     --fade-in 0.2 \
     --font "Iosevka Nerd Font Mono"'
 
@@ -132,43 +132,6 @@ exec rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 
 
 ### Colorscheme
 
-# Everforest colors
-#set $bg0  #2d353b
-#set $bg1  #343f44
-#set $fg   #d3c6aa
-#set $green #a7c080
-#set $blue  #7fbbb3
-#set $yellow #dbbc7f
-#set $gray  #868d80
-#set $blue  #81a1c1
-
-# Pastel TTY Colors
-#set $bg0    #282828
-#set $bg1    #323232
-#set $fg     #e0e0e0
-#set $green  #b5e8a9
-#set $blue   #a5d8ff
-#set $yellow #ffe6a7
-#set $gray   #a0a0a0
-#set $red    #ff9a9e
-#set $magenta #dda0dd
-#set $cyan   #a3e8e8
-#set $white  #ffffff
-#set $orange #ffbb8a
-
-set $bg0    #282828
-set $bg1    #3c3836
-set $fg     #ebdbb2
-set $green  #b8bb26
-set $blue   #83a598
-set $yellow #fabd2f
-set $gray   #928374
-set $red    #fb4934
-set $magenta #d3869b
-set $cyan   #8ec07c
-set $white  #ebdbb2
-set $orange #fe8019
-
 set $bg0          #2e3440
 set $bg1          #3b4252
 set $fg           #d8dee9
@@ -176,6 +139,7 @@ set $glacier_nord #81a1c1
 set $blue_nord    #5e81ac
 set $green_nord   #a3be8c
 set $red_nord     #bf616a
+set $gray_nord    #4c566a
 
 ### Output configuration
 
@@ -550,12 +514,11 @@ exec --no-startup-id $i3lowbatwarn
 include @sysconfdir@/sway/config.d/*
 
 ## Sway Borders
-
 # Focused window (active)
 client.focused $green_nord $bg1 $fg $glacier_nord $green_nord
 
 # Unfocused window (inactive)
-client.unfocused $bg0 $bg1 $gray $bg0 $bg1
+client.unfocused $bg0 $bg1 $gray_nord $bg0 $gray_nord
 
 # Urgent window (e.g., alerts)
 client.urgent $red_nord $bg1 $fg $red_nord $red_nord
@@ -575,6 +538,6 @@ titlebar_border_thickness 2
 corner_radius 10
 
 # Optional: Shadows to complement the rounded look
-shadows enable
-shadow_blur_radius 30
-shadow_color #2e3440dd
+shadows disable
+# shadow_blur_radius 10
+# shadow_color #2e3440dd
