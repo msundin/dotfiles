@@ -79,47 +79,47 @@ element-text {
 
 element normal.normal {
     text-color: @nord6;
-    background-color: @nord1;
+    background-color: transparent;
 }
 
 element normal.urgent {
     text-color: @nord11;
-    background-color: @nord1;
+    background-color: transparent;
 }
 
 element normal.active {
     text-color: @nord8;
-    background-color: @nord1;
+    background-color: transparent;
 }
 
 element selected.normal {
     text-color: @nord6;
-    background-color: @nord3;
+    background-color: rgba(76, 86, 106, 0.6); /* @nord3 with transparency */
 }
 
 element selected.urgent {
     text-color: @nord6;
-    background-color: @nord11;
+    background-color: rgba(191, 97, 106, 0.6); /* @nord11 with transparency */
 }
 
 element selected.active {
     text-color: @nord6;
-    background-color: @nord9;
+    background-color: rgba(129, 161, 193, 0.6); /* @nord9 with transparency */
 }
 
 element alternate.normal {
     text-color: @nord6;
-    background-color: @nord1;
+    background-color: transparent;
 }
 
 element alternate.urgent {
     text-color: @nord11;
-    background-color: @nord1;
+    background-color: transparent;
 }
 
 element alternate.active {
     text-color: @nord8;
-    background-color: @nord1;
+    background-color: transparent;
 }
 
 scrollbar {
