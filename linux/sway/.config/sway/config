@@ -258,6 +258,8 @@ font pango:Iosevka Nerd Font Mono 14
 # Set background for all outputs
 exec swaybg -i /home/mattias/Downloads/nord-theme-bg-1.jpg -m fill
 
+
+
 ## Sway Automatic Tiling
 exec autotiling -l 2
 
@@ -568,3 +570,11 @@ default_border pixel 2
 
 titlebar_padding 8 2
 titlebar_border_thickness 2
+
+# Rounded corners
+corner_radius 10
+
+# Optional: Shadows to complement the rounded look
+shadows enable
+shadow_blur_radius 30
+shadow_color #2e3440dd
