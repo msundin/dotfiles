@@ -1,157 +1,189 @@
 /**
- * A floating box version of the paper theme (Gruvbox edition).
- *
- * User: Qball
- * Copyright: Dave Davenport
+ * Nord theme for rofi - consistent with nwg-bar
  */
-
 * {
-    background-nord: #3b4252;
-    dark-blue-nord: #5e81ac;
-    selection-bg-nord: #4c566a;
-    selection-fg-nord: #eceff4;
-    grey-nord: #3b4252;
-    // blue-nord: #81a1c1;
-    white-nord: #d8dee9;
-    black-nord: #3b4252;
-
-    yellow: #fabd2f;
-    white:  #ebdbb2;
-    black:  #282828;
-    grey:   #3c3836;
-    red:    #cc241d;
-    blue:   #458588;
-    green:  #98971a;
-    background-light: #1d2021; /* Gruvbox dark background */
+    /* Nord color palette - matching your exact colors */
+    nord0:  #2e3440; /* background */
+    nord1:  #3b4252; /* palette 0 */
+    nord2:  #434c5e; 
+    nord3:  #4c566a; /* palette 8 */
+    nord4:  #d8dee9; /* foreground */
+    nord5:  #e5e9f0; /* palette 7 */
+    nord6:  #eceff4; /* palette 15 */
+    nord7:  #8fbcbb; /* palette 14 */
+    nord8:  #88c0d0; /* palette 6 */
+    nord9:  #81a1c1; /* palette 4 */
+    nord10: #5e81ac;
+    nord11: #bf616a; /* palette 1 - red */
+    nord12: #ebcb8b; /* palette 3 - yellow */
+    nord13: #a3be8c; /* palette 2 - green */
+    nord14: #b48ead; /* palette 5 - purple */
 
     spacing: 2;
-
-    // background-color: @background-nord; /* Dark background */
     background-color: transparent;
-    border-color: @grey-nord; /* Gruvbox blue border */
+    border-color: @nord3;
     anchor: north;
     location: center;
 }
+
 window {
     transparency: "real";
-    background-color: #00000000; /* Dark background */
+    background-color: transparent;
     border: 0;
     padding: 0% 0% 1em 0%;
     x-offset: 0;
     y-offset: -10%;
 }
+
 mainbox {
     padding: 0px;
     border: 0;
     spacing: 1%;
 }
+
 message {
     border: 2px;
     padding: 1em;
-    background-color: @background-light; /* Dark background */
-    text-color: @dark-blue-nord; /* White text for contrast */
+    background-color: @nord1;
+    text-color: @nord9;
 }
+
 textbox normal {
-    text-color: @dark-blue-nord;
+    text-color: @nord9;
     padding: 0;
     border: 0;
 }
+
 listview {
     background: transparent;
     fixed-height: 1;
     border: 2px;
     padding: 1em;
     reverse: false;
-
     columns: 1;
-    background-color: @background-nord; /* Dark background */
+    background-color: @nord1;
+    border-color: @nord3;
 }
+
 element {
     border: 0;
     padding: 4px;
     highlight: bold;
+    border-radius: 4px;
 }
+
 element-text {
     background-color: inherit;
     text-color: inherit;
 }
+
 element normal.normal {
-    text-color: @white-nord;
-    background-color: @background-nord;
+    text-color: @nord6;
+    background-color: @nord1;
 }
+
 element normal.urgent {
-    text-color: @red;
-    background-color: @background-light;
+    text-color: @nord11;
+    background-color: @nord1;
 }
+
 element normal.active {
-    text-color: @blue;
-    background-color: @background-light;
+    text-color: @nord8;
+    background-color: @nord1;
 }
+
 element selected.normal {
-    text-color: @selection-fg-nord; /* Black selected foreground */
-    background-color: @selection-bg-nord; /* Gruvbox yellow selected background */
+    text-color: @nord6;
+    background-color: @nord3;
 }
+
 element selected.urgent {
-    text-color: @black;
-    background-color: @dark-blue-nord;
+    text-color: @nord6;
+    background-color: @nord11;
 }
+
 element selected.active {
-    text-color: @black;
-    background-color: @dark-blue-nord;
+    text-color: @nord6;
+    background-color: @nord9;
 }
+
 element alternate.normal {
-    text-color: @white-nord;
-    background-color: @background-nord; /* Gruvbox grey alternate */
+    text-color: @nord6;
+    background-color: @nord1;
 }
+
 element alternate.urgent {
-    text-color: @red;
-    background-color: #3a2929;
+    text-color: @nord11;
+    background-color: @nord1;
 }
+
 element alternate.active {
-    text-color: @blue;
-    background-color: #2d353b;
+    text-color: @nord8;
+    background-color: @nord1;
 }
+
 scrollbar {
     border: 0;
     padding: 0;
 }
+
 inputbar {
     spacing: 0;
     border: 2px;
+    border-color: @nord3;
     padding: 0.5em 1em;
-    background-color: @background-nord;
+    background-color: @nord1;
+    border-radius: 8px;
     index: 0;
 }
+
 inputbar normal {
-    foreground-color: @dark-blue-nord;
-    background-color: #00000000;
+    foreground-color: @nord6;
+    background-color: transparent;
 }
+
 mode-switcher {
     border: 2px;
+    border-color: @nord3;
     padding: 0.5em 1em;
-    background-color: @background-light;
+    background-color: @nord1;
+    border-radius: 8px;
     index: 10;
 }
+
 button selected {
-    text-color: @dark-blue-nord; /* Gruvbox yellow for selected buttons */
+    text-color: @nord9;
+    background-color: @nord3;
 }
+
+button normal {
+    text-color: @nord6;
+}
+
 inputbar {
-    children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
+    children: [ prompt, textbox-prompt-colon, entry, case-indicator ];
 }
 
 prompt, entry {
-    text-color: @white-nord;
+    text-color: @nord6;
 }
 
 textbox-prompt-colon {
-    expand:     false;
-    str:        ":";
-    margin:     0px 0.3em 0em 0em;
-    text-color: @white-nord;
+    expand: false;
+    str: ":";
+    margin: 0px 0.3em 0em 0em;
+    text-color: @nord6;
 }
+
+case-indicator {
+    text-color: @nord8;
+}
+
 error-message {
     border: 2px;
+    border-color: @nord11;
     padding: 1em;
-    background-color: @red;
-    text-color: @black;
+    background-color: @nord11;
+    text-color: @nord6;
+    border-radius: 8px;
 }
