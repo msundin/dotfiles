@@ -61,7 +61,7 @@ listview {
     padding: 1em;
     reverse: false;
     columns: 1;
-    background-color: @nord1;
+    background-color: rgba(59, 66, 82, 0.95); /* @nord1 with transparency */
     border-color: @nord3;
 }
 
@@ -132,7 +132,7 @@ inputbar {
     border: 2px;
     border-color: @nord3;
     padding: 0.5em 1em;
-    background-color: @nord1;
+    background-color: rgba(59, 66, 82, 0.95); /* @nord1 with transparency */
     border-radius: 8px;
     index: 0;
 }
@@ -146,7 +146,7 @@ mode-switcher {
     border: 2px;
     border-color: @nord3;
     padding: 0.5em 1em;
-    background-color: @nord1;
+    background-color: rgba(59, 66, 82, 0.95); /* @nord1 with transparency */
     border-radius: 8px;
     index: 10;
 }
