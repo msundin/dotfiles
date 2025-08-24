@@ -63,13 +63,15 @@ listview {
     columns: 1;
     background-color: rgba(59, 66, 82, 0.95); /* @nord1 with transparency */
     border-color: @nord3;
+    border-radius: 8px;
 }
 
 element {
     border: 0;
-    padding: 4px;
+    padding: 8px 12px;
     highlight: bold;
     border-radius: 4px;
+    spacing: 8px;
 }
 
 element-text {
