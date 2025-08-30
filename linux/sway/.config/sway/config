@@ -476,12 +476,13 @@ bindsym $mod+r mode "resize"
     # Special key to take a screenshot with grim
     # Screenshots dir (ensure it exists at login)
     exec test -d "$HOME/nextcloud/screenshots" || mkdir -p "$HOME/nextcloud/screenshots"
-    
-    # Area screenshot → save + copy (PNG), freeze frame while selecting
+
+    # Area screenshot → save + copy (only if region was selected)
     bindsym $mod+shift+s exec sh -c 'f="$HOME/nextcloud/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"; \
-      grim -g "$(slurp -d)" - | tee "$f" | wl-copy --type image/png && \
+      sel="$(slurp -d)" || exit 0; [ -n "$sel" ] || exit 0; \
+      grim -g "$sel" - | tee "$f" | wl-copy --type image/png && \
       notify-send "📸 Area screenshot saved & copied" "$f"'
-    
+
     # Fullscreen screenshot → save + copy (PNG)
     bindsym ctrl+shift+s exec sh -c 'f="$HOME/nextcloud/screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png"; \
       grim - | tee "$f" | wl-copy --type image/png && \

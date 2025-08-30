@@ -26,6 +26,15 @@ map("n", "<C-e>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 map("n", "J", ":bprevious<CR>", { silent = true })
 map("n", "K", ":bnext<CR>", { silent = true })
 
+-- Terminal mode window navigation
+vim.keymap.set("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
+vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to down window" })
+vim.keymap.set("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to up window" })
+vim.keymap.set("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
+
+-- Also useful - exit terminal mode easily
+vim.keymap.set("t", "<C-/>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
 -- Jump List Navigation
 map("n", "H", "<C-o>", { silent = true })
 map("n", "L", "<C-i>", { silent = true })

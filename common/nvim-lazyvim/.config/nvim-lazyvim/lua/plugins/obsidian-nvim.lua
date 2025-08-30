@@ -125,12 +125,12 @@ return {
     vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<CR>", { desc = "Obsidian links" }),
     vim.keymap.set("n", "<leader>obl", "<cmd>ObsidianBacklinks<CR>", { desc = "Obsidian backlinks" }),
     vim.keymap.set("n", "<leader>od", "<cmd>ObsidianDailies<CR>", { desc = "Obsidian daily notes" }),
-    vim.keymap.set(
-      "n",
-      "<leader>ov",
-      "<cmd>ObsidianWorkspace<CR>",
-      { desc = "Obsidian switch to other vault/workspace" }
-    ),
+    -- vim.keymap.set(
+    --   "n",
+    --   "<leader>ov",
+    --   "<cmd>ObsidianWorkspace<CR>",
+    --   { desc = "Obsidian switch to other vault/workspace" }
+    -- ),
     vim.keymap.set(
       "n",
       "<leader>ornf",
@@ -159,18 +159,18 @@ return {
     -- >>> ou # sync local with Notion
     --
     -- navigate to vault
-    vim.keymap.set(
-      "n",
-      "<leader>op",
-      ":cd ~/obsidian-vaults/personal/<cr>",
-      { desc = "Obsidian switch to personal vault/workspace" }
-    ),
-    vim.keymap.set(
-      "n",
-      "<leader>ow",
-      ":cd ~/obsidian-vaults/work/<cr>",
-      { desc = "Obsidian switch to work vault/workspace" }
-    ),
+    -- vim.keymap.set(
+    --   "n",
+    --   "<leader>op",
+    --   ":cd ~/obsidian-vaults/personal/<cr>",
+    --   { desc = "Obsidian switch to personal vault/workspace" }
+    -- ),
+    -- vim.keymap.set(
+    --   "n",
+    --   "<leader>ow",
+    --   ":cd ~/obsidian-vaults/work/<cr>",
+    --   { desc = "Obsidian switch to work vault/workspace" }
+    -- ),
     --
     -- strip date from note title and replace dashes with spaces
     -- must have cursor on title
