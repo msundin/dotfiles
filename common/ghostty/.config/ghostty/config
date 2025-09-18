@@ -50,6 +50,10 @@ theme = nord-alt
 # theme = catppuccin-mocha
 # theme = tokyonight
 
+# Enable vi-mode keybindings
+keybind = super+shift+space=esc:vim_mode
+# Optional: Set vi-mode specific settings
+cursor-style-blink = false
 
 # === General ===
 shell-integration = zsh

@@ -108,7 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # Bash scripts
-export PATH=$HOME/scripts/bash:$PATH
+export PATH=$HOME/scripts/bash:$HOME/scripts/bash/media/:$PATH
 
 eval "$(zoxide init --cmd cd zsh)"
 # eval "$(zoxide init zsh)"

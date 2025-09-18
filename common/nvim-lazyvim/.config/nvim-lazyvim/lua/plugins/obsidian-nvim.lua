@@ -70,6 +70,16 @@ return {
 
     -- see below for full list of optional dependencies 👇
   },
+  keys = {
+    -- Paste image
+    {
+      "<leader>op",
+      function()
+        vim.cmd("Obsidian paste_img")
+      end,
+      desc = "Paste image",
+    },
+  },
   opts = {
     workspaces = {
       {
