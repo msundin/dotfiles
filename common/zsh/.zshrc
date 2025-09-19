@@ -81,8 +81,8 @@ HIST_STAMPS="yyyy-mm-dd"
 ZVM_INIT_MODE=sourcing
 
 plugins=(
-  zsh-vi-mode
-  zsh-syntax-highlighting
+#  zsh-vi-mode
+#  zsh-syntax-highlighting
   history-substring-search
   colored-man-pages
   ## Seems lik it conflicts with SPACE+TAB in zoxide https://github.com/marlonrichert/zsh-autocomplete/issues/706
@@ -133,6 +133,8 @@ esac
 
 if [[ "$(uname)" == "Darwin" ]]; then
   ### Commands specific to macOS
+
+source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
   # To be able to run X11 applications (like feh) on Mac with xQuartz
   export DISPLAY=:0
