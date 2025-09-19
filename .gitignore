@@ -4,3 +4,5 @@
 common/shell-scripts/scripts/bash/auto_commit.log
 
 mac/kitty/.config/kitty/kitty.conf.bak
+.nvimlog
+**/.nvimlog
