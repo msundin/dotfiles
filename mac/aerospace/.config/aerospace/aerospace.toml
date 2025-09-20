@@ -102,66 +102,41 @@ automatically-unhide-macos-hidden-apps = true
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
 
-#    # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-#    # Focus across monitors when hitting edges
-#    alt-h = 'focus left --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
-#    alt-j = 'focus down --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
-#    alt-k = 'focus up --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
-#    alt-l = 'focus right --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
-#
-#    # Focus with arrow keys (across monitors)
-#    alt-left = 'focus left --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
-#    alt-down = 'focus down --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
-#    alt-up = 'focus up --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
-#    alt-right = 'focus right --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
-#
-#    # See: https://nikitabobko.github.io/AeroSpace/commands#move
-#    # Move windows within monitor, and to adjacent monitor at edges
-#    alt-shift-h = 'move left'
-#    alt-shift-j = 'move down'
-#    alt-shift-k = 'move up'
-#    alt-shift-l = 'move right'
-#
-#    # Move windows with arrow keys
-#    alt-shift-left = 'move left'
-#    alt-shift-down = 'move down'
-#    alt-shift-up = 'move up'
-#    alt-shift-right = 'move right'
-#
+    # See: https://nikitabobko.github.io/AeroSpace/commands#focus
+    # Focus that wraps across monitors
+    alt-h = 'focus left --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
+    alt-j = 'focus down --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
+    alt-k = 'focus up --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
+    alt-l = 'focus right --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
 
-# Focus that wraps across monitors (HJKL + Arrow keys)
-alt-h      = "focus left  --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors"
-alt-left   = "focus left  --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors"
+    # Focus with arrow keys (across monitors)
+    alt-left = 'focus left --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
+    alt-down = 'focus down --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
+    alt-up = 'focus up --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
+    alt-right = 'focus right --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors'
 
-alt-l      = "focus right --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors"
-alt-right  = "focus right --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors"
+    # See: https://nikitabobko.github.io/AeroSpace/commands#move
+    # Move windows within monitor, and to adjacent monitor at edges
+    alt-shift-h = 'move left --boundaries all-monitors-outer-frame'
+    alt-shift-j = 'move down --boundaries all-monitors-outer-frame'
+    alt-shift-k = 'move up --boundaries all-monitors-outer-frame'
+    alt-shift-l = 'move right --boundaries all-monitors-outer-frame'
 
-alt-k      = "focus up    --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors"
-alt-up     = "focus up    --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors"
+    # Move windows with arrow keys (same behavior)
+    alt-shift-left = 'move left --boundaries all-monitors-outer-frame'
+    alt-shift-down = 'move down --boundaries all-monitors-outer-frame'
+    alt-shift-up = 'move up --boundaries all-monitors-outer-frame'
+    alt-shift-right = 'move right --boundaries all-monitors-outer-frame'
 
-alt-j      = "focus down  --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors"
-alt-down   = "focus down  --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors"
+    # Direct monitor focus (optional)
+    alt-ctrl-h = 'focus-monitor left'
+    alt-ctrl-l = 'focus-monitor right'
+    alt-ctrl-left = 'focus-monitor left'
+    alt-ctrl-right = 'focus-monitor right'
+    alt-ctrl-up = 'focus-monitor up'
+    alt-ctrl-down = 'focus-monitor down'
 
-# Move the WINDOW within the monitor; if at edge, hop to adjacent monitor (HJKL + Arrow keys)
-alt-shift-h     = "move left  --boundaries all-monitors-outer-frame"
-alt-shift-left  = "move left  --boundaries all-monitors-outer-frame"
-
-alt-shift-l     = "move right --boundaries all-monitors-outer-frame"
-alt-shift-right = "move right --boundaries all-monitors-outer-frame"
-
-alt-shift-k     = "move up    --boundaries all-monitors-outer-frame"
-alt-shift-up    = "move up    --boundaries all-monitors-outer-frame"
-
-alt-shift-j     = "move down  --boundaries all-monitors-outer-frame"
-alt-shift-down  = "move down  --boundaries all-monitors-outer-frame"
-
-# (Optional) hop monitor focus directly with arrows too
-alt-ctrl-left  = "focus-monitor left"
-alt-ctrl-right = "focus-monitor right"
-alt-ctrl-up    = "focus-monitor up"
-alt-ctrl-down  = "focus-monitor down"
-
-    # Force move to specific monitor (when you want to jump monitors directly)
+    # Force move to specific monitor
     alt-shift-comma = 'move-node-to-monitor left --focus-follows-window'
     alt-shift-period = 'move-node-to-monitor right --focus-follows-window'
 
@@ -202,7 +177,7 @@ alt-ctrl-down  = "focus-monitor down"
     # See: https://nikitabobko.github.io/AeroSpace/commands#mode
     alt-shift-semicolon = 'mode service'
 
-    [workspace-to-monitor-force-assignment]
+[workspace-to-monitor-force-assignment]
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
