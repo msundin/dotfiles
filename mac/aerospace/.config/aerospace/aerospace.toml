@@ -129,13 +129,25 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-up = 'move up --boundaries all-monitors-outer-frame'
     alt-shift-right = 'move right --boundaries all-monitors-outer-frame'
 
-    # Direct monitor focus (optional)
-    alt-ctrl-h = 'focus-monitor left'
-    alt-ctrl-l = 'focus-monitor right'
-    alt-ctrl-left = 'focus-monitor left'
-    alt-ctrl-right = 'focus-monitor right'
-    alt-ctrl-up = 'focus-monitor up'
-    alt-ctrl-down = 'focus-monitor down'
+#    # Direct monitor focus (optional)
+#    alt-ctrl-h = 'focus-monitor left'
+#    alt-ctrl-l = 'focus-monitor right'
+#    alt-ctrl-left = 'focus-monitor left'
+#    alt-ctrl-right = 'focus-monitor right'
+#    alt-ctrl-up = 'focus-monitor up'
+#    alt-ctrl-down = 'focus-monitor down'
+
+# Direct resize without mode
+alt-ctrl-h = 'resize width -50'
+alt-ctrl-l = 'resize width +50'
+alt-ctrl-j = 'resize height +50'
+alt-ctrl-k = 'resize height -50'
+
+alt-ctrl-left = 'resize width -50'
+alt-ctrl-right = 'resize width +50'
+alt-ctrl-up = 'resize height +50'
+alt-ctrl-down = 'resize height -50'
+
 
     # Force move to specific monitor
     alt-shift-comma = 'move-node-to-monitor left --focus-follows-window'
