@@ -48,10 +48,12 @@ alt-shift-q = 'close'
 # Reload config
 alt-shift-c = 'reload-config'
 
-# Fullscreen - toggles macOS native fullscreen
-alt-f = 'macos-native-fullscreen'
+# Fullscreen - removes gaps for true fullscreen feel
+# alt-f = 'fullscreen'
+# alt-z = 'fullscreen'
+alt-z = 'fullscreen --no-outer-gaps'
 
-# Alternative: Maximize within workspace (doesn't create new Space)
+# Alternative fullscreen with gaps
 alt-shift-f = 'fullscreen'
 
 # Floating toggle
