@@ -91,6 +91,12 @@ automatically-unhide-macos-hidden-apps = true
     #     activate
     # end tell'
     # '''
+    alt-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
+    alt-b = 'exec-and-forget open -a "Brave Browser"'
+    alt-shift-q = 'close'
+    alt-shift-c = 'reload-config'
+    alt-t = 'layout floating tiling'
+    alt-shift-space = 'layout floating tiling'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-slash = 'layout tiles horizontal vertical'
@@ -176,4 +182,3 @@ automatically-unhide-macos-hidden-apps = true
     down = 'volume down'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
-
