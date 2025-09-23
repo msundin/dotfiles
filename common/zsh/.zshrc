@@ -110,6 +110,9 @@ source $ZSH/oh-my-zsh.sh
 # Bash scripts
 export PATH=$HOME/scripts/bash:$HOME/scripts/bash/media/:$PATH
 
+# Increase number of file descriptors
+ulimit -n 4096
+
 eval "$(zoxide init --cmd cd zsh)"
 # eval "$(zoxide init zsh)"
 
