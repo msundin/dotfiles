@@ -94,7 +94,7 @@ automatically-unhide-macos-hidden-apps = true
     # '''
     alt-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
     alt-b = 'exec-and-forget open -a "Brave Browser"'
-    alt-shift-q = 'close'
+    # alt-shift-q = 'close'
     alt-shift-c = 'reload-config'
     alt-t = 'layout floating tiling'
     alt-shift-space = 'layout floating tiling'

@@ -4,6 +4,40 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Corne fix: Left Shift for Ä, Right Shift for close",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": { "mandatory": ["left_shift", "right_option"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "q",
+                                        "modifiers": ["shift", "option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": { "mandatory": ["right_shift", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "opt/homebrew/bin/aerospace close" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": { "mandatory": ["right_shift", "right_option"] }
+                                },
+                                "to": [{ "shell_command": "opt/homebrew/bin/aerospace close" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Control+A/F/C/V/X/Z to Command+A/F/C/V/X/Z (except in Kitty, Alacritty, and Android Studio)",
                         "manipulators": [
                             {
@@ -12,6 +46,7 @@
                                         "bundle_identifiers": [
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.google\\.android\\.studio$"
                                         ],
                                         "type": "frontmost_application_unless"
@@ -35,6 +70,7 @@
                                         "bundle_identifiers": [
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.google\\.android\\.studio$"
                                         ],
                                         "type": "frontmost_application_unless"
@@ -58,6 +94,7 @@
                                         "bundle_identifiers": [
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.google\\.android\\.studio$"
                                         ],
                                         "type": "frontmost_application_unless"
@@ -81,6 +118,7 @@
                                         "bundle_identifiers": [
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.google\\.android\\.studio$"
                                         ],
                                         "type": "frontmost_application_unless"
@@ -104,6 +142,7 @@
                                         "bundle_identifiers": [
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.google\\.android\\.studio$"
                                         ],
                                         "type": "frontmost_application_unless"
@@ -127,6 +166,7 @@
                                         "bundle_identifiers": [
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.google\\.android\\.studio$"
                                         ],
                                         "type": "frontmost_application_unless"
@@ -155,6 +195,7 @@
                                         "bundle_identifiers": [
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.google\\.android\\.studio$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -178,6 +219,7 @@
                                         "bundle_identifiers": [
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.google\\.android\\.studio$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -201,6 +243,7 @@
                                         "bundle_identifiers": [
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.google\\.android\\.studio$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -224,6 +267,7 @@
                                         "bundle_identifiers": [
                                             "^net\\.kovidgoyal\\.kitty$",
                                             "^org\\.alacritty$",
+                                            "^com\\.mitchellh\\.ghostty$",
                                             "^com\\.google\\.android\\.studio$"
                                         ],
                                         "type": "frontmost_application_if"
@@ -232,238 +276,6 @@
                                 "from": {
                                     "key_code": "z",
                                     "modifiers": { "mandatory": ["control", "shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "z",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Control+Shift+C/X/V/Z to Command+C/X/V/Z (only in Kitty and Alacritty)",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "c",
-                                    "modifiers": { "mandatory": ["control", "shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "c",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "x",
-                                    "modifiers": { "mandatory": ["control", "shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "x",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "v",
-                                    "modifiers": { "mandatory": ["control", "shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "v",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "z",
-                                    "modifiers": { "mandatory": ["control", "shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "z",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Control+A/F/C/V/X/Z to Command+A/F/C/V/X/Z (except in Kitty and Alacritty)",
-                        "enabled": false,
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "a",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "a",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "f",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "f",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "c",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "c",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "v",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "v",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "x",
-                                    "modifiers": { "mandatory": ["control"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "x",
-                                        "modifiers": ["command"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^net\\.kovidgoyal\\.kitty$",
-                                            "^org\\.alacritty$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "z",
-                                    "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [
                                     {
