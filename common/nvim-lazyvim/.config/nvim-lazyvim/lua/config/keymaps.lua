@@ -32,6 +32,25 @@ vim.keymap.set("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to down window" }
 vim.keymap.set("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to up window" })
 vim.keymap.set("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 
+-- File handling
+vim.keymap.set("n", "<leader>fd", function()
+  local file = vim.fn.expand("%:p")
+  if file == "" or vim.fn.filereadable(file) == 0 then
+    vim.notify("No file to delete", vim.log.levels.WARN)
+    return
+  end
+
+  -- Use shorter filename for display
+  local short_file = vim.fn.expand("%:t")
+  local choice = vim.fn.confirm("Delete '" .. short_file .. "'?", "&Yes\n&No", 2)
+
+  if choice == 1 then
+    vim.cmd("bdelete!")
+    vim.fn.delete(file)
+    vim.notify("Deleted: " .. short_file)
+  end
+end, { desc = "Delete current file" })
+
 -- Also useful - exit terminal mode easily
 vim.keymap.set("t", "<C-/>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 

@@ -2,3 +2,44 @@
 edit = [
   { run = "NVIM_APPNAME=nvim-lazyvim nvim $1", desc = "Open in LazyVim", block = true },
 ]
+
+video = [{ run = 'mpv "$@"', desc = "Open with mpv" }]
+
+# Alternative with specific mpv options
+video-fullscreen = [{ run = 'mpv --fullscreen "$@"', desc = "Open fullscreen" }]
+
+# For terminal preview (no separate window)
+video-terminal = [{ run = 'mpv --vo=tct "$@"', desc = "ASCII preview" }]
+
+# Quick preview (small window)
+video-preview = [
+  { run = 'mpv --geometry=50% --autofit=50% "$@"', desc = "Preview" },
+]
+
+# Background playback (audio only)
+video-audio = [{ run = 'mpv --no-video "$@"', desc = "Audio only" }]
+
+# Playlist mode
+video-playlist = [{ run = 'mpv --playlist-start=1 "$@"', desc = "Play all" }]
+
+[open]
+rules = [
+  { name = "*/", use = "folder" },
+  { mime = "video/*", use = "video" },
+  { name = "*.mp4", use = "video" },
+  { name = "*.mkv", use = "video" },
+  { name = "*.avi", use = "video" },
+  { name = "*.mov", use = "video" },
+  { name = "*.webm", use = "video" },
+  { name = "*.flv", use = "video" },
+  { name = "*.m4v", use = "video" },
+  { name = "*.mpg", use = "video" },
+  { name = "*.mpeg", use = "video" },
+]
+
+[plugin]
+previewers = [
+  { name = "*.mp4", run = "video" },
+  { name = "*.mkv", run = "video" },
+  # ... other video formats
+]
