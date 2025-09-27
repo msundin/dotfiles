@@ -68,4 +68,4 @@ macos-titlebar-style = hidden
 
 # === Font ===
 font-family = "JetBrainsMono Nerd Font Mono"
-font-size = 20
+font-size = 16
