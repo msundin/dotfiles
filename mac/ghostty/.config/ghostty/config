@@ -43,8 +43,8 @@
 # resize-overlay-duration = 4s 200ms
 #
 
-theme = nord-alt
-# theme = onenord
+# theme = nord-alt
+theme = onenord
 # theme = catppuccin-frappe
 # theme = catppuccin-macchiato
 # theme = catppuccin-mocha
@@ -57,7 +57,7 @@ cursor-style-blink = false
 
 # === General ===
 shell-integration = zsh
-# background-opacity = 1
+# background-opacity = 0.9
 window-padding-x = 6
 window-padding-y = 6
 confirm-close-surface = false
@@ -69,3 +69,4 @@ macos-titlebar-style = hidden
 # === Font ===
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 20
+font-style = bold
