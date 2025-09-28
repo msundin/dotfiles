@@ -1,11 +1,9 @@
 # ~/.config/yazi/yazi.toml
-
 [opener]
 # Only define your custom openers - yazi will use defaults for everything else
 nvim-lazy = [
-  { run = "NVIM_APPNAME=nvim-lazyvim nvim $@", desc = "Open in LazyVim", block = true },
+  { run = 'NVIM_APPNAME=nvim-lazyvim nvim "$@"', desc = "Open in LazyVim", block = true },
 ]
-
 video = [{ run = 'mpv "$@"', desc = "Open with mpv" }]
 video-fullscreen = [{ run = 'mpv --fullscreen "$@"', desc = "Open fullscreen" }]
 video-terminal = [{ run = 'mpv --vo=tct "$@"', desc = "ASCII preview" }]
@@ -28,11 +26,8 @@ prepend_rules = [
   { name = "*.m4v", use = "video" },
   { name = "*.mpg", use = "video" },
   { name = "*.mpeg", use = "video" },
-
   # Optional: override text files to use your custom nvim
   { mime = "text/*", use = "nvim-lazy" },
   { name = "*.txt", use = "nvim-lazy" },
   { name = "*.md", use = "nvim-lazy" },
 ]
-
-# Don't define [plugin] section unless you have actual preview scripts
