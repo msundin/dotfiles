@@ -43,8 +43,8 @@
 # resize-overlay-duration = 4s 200ms
 #
 
-# theme = nord-alt
-theme = onenord
+theme = nord-alt
+# theme = onenord
 # theme = catppuccin-frappe
 # theme = catppuccin-macchiato
 # theme = catppuccin-mocha
