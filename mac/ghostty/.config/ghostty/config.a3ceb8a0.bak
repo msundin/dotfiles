@@ -70,4 +70,3 @@ macos-titlebar-style = hidden
 font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 20
 font-style = bold
-keybind = shift+enter=text:\x1b\r
