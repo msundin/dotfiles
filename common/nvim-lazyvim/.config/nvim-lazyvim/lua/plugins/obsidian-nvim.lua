@@ -47,17 +47,6 @@ return {
       min_chars = 2,
     },
 
-    keys = {
-      -- Paste image
-      {
-        "<leader>op",
-        function()
-          vim.cmd("Obsidian paste_img")
-        end,
-        desc = "Paste image",
-      },
-    },
-
     vim.keymap.set("n", "<leader>onn", "<cmd>ObsidianNew<CR>", { desc = "Obsidian new note" }),
     vim.keymap.set("n", "<leader>ont", "<cmd>ObsidianNewFromTemplate<CR>", { desc = "Obsidian new template note" }),
     vim.keymap.set("n", "<leader>ond", "<cmd>ObsidianToday<CR>", { desc = "Obsidian new daily note for today" }),
@@ -69,6 +58,7 @@ return {
       "<cmd>ObsidianSearch<CR>",
       { desc = "Obsidian find in file and filename with grep" }
     ),
+    vim.keymap.set("n", "<leader>op", "<cmd>Obsidian paste_img<CR>", { desc = "Paste image" }),
     vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Obsidian open note in app" }),
     vim.keymap.set("n", "<leader>ot", "<cmd>ObsidianTags<CR>", { desc = "Obsidian tags" }),
     vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<CR>", { desc = "Obsidian links" }),
@@ -221,9 +211,9 @@ return {
 
     picker = {
       -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', 'snacks.pick' or 'mini.pick'.
-      name = "telescope.nvim",
+      -- name = "telescope.nvim",
       -- name = "fzf-lua",
-      -- name = "snacks.pick",
+      name = "snacks.pick",
       -- Optional, configure key mappings for the picker. These are the defaults.
       -- Not all pickers support all mappings.
       mappings = {
