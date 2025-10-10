@@ -200,11 +200,11 @@ input type:touchpad {
 #     resume 'swaymsg output "*" power on' \
 #     before-sleep 'swaylock -f -c 000000'
 
-exec swayidle -w \
-    timeout 600 $lock_fork \
-    timeout 86400 'systemctl suspend' \
-    resume 'swaymsg "output * power on"' \
-    before-sleep $lock_no_fork
+# exec swayidle -w \
+#     timeout 600 $lock_fork \
+#     timeout 86400 'systemctl suspend' \
+#     resume 'swaymsg "output * power on"' \
+#     before-sleep $lock_no_fork
 
 # Sleep shortcuts
 bindsym $mod+ctrl+h exec systemctl hibernate
