@@ -319,9 +319,12 @@ vv() {
 
 [ -f ~/.private-aliases.zsh ] && source ~/.private-aliases.zsh
 
+export PATH="$HOME/.local/bin:$PATH"
+export JAVA_HOME="/Applications/Android Studio.app/Contents/jbr/Contents/Home"
+
+[ -f "/home/mattias/.ghcup/env" ] && . "/home/mattias/.ghcup/env" # ghcup-env
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-export PATH="$HOME/.local/bin:$PATH"
 
-[ -f "/home/mattias/.ghcup/env" ] && . "/home/mattias/.ghcup/env" # ghcup-env
