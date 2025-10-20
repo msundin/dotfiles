@@ -4,19 +4,17 @@ return {
     picker = {
       sources = {
         explorer = {
-          auto_close = true,
-          follow = true,
+          -- Use sidebar layout with preview in main window
           layout = {
             preset = "sidebar",
-            preview = true,
+            preview = "main", -- Preview in main Neovim window (to the right)
           },
         },
       },
-      -- Global win config applies to explorer too
       win = {
         input = {
           keys = {
-            -- Arrow key navigation in picker input
+            -- Arrow key navigation in input
             ["<Down>"] = { "list_down", mode = { "i", "n" } },
             ["<Up>"] = { "list_up", mode = { "i", "n" } },
           },
@@ -35,23 +33,23 @@ return {
             ["<Down>"] = "list_down",
             ["<Up>"] = "list_up",
 
-            -- Open in splits
+            -- Open in splits (visual mnemonics)
             ["<cr>"] = "confirm",
-            ["<c-|>"] = "confirm_vsplit",
-            ["<c-->"] = "confirm_split",
-            ["<c-t>"] = "confirm_tab",
+            ["<c-|>"] = "vsplit",
+            ["<c-->"] = "split",
+            ["<c-t>"] = "tab",
 
             -- File operations
             a = "explorer_add",
             d = "explorer_del",
             r = "explorer_rename",
-            y = "explorer_copy",
-            x = "explorer_cut",
+            y = { "explorer_yank", mode = { "n", "x" } },
+            x = "explorer_yank", -- Cut uses yank then delete
             p = "explorer_paste",
 
             -- View options
-            ["<c-p>"] = "preview",
-            ["<c-h>"] = "explorer_hidden",
+            ["<c-p>"] = "toggle_preview",
+            ["<c-h>"] = "toggle_hidden",
 
             -- Directory navigation
             ["-"] = "explorer_up",
