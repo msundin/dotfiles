@@ -129,6 +129,17 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-up = 'move up --boundaries all-monitors-outer-frame'
     alt-shift-right = 'move right --boundaries all-monitors-outer-frame'
 
+    # Move window to specific position (non-swapping) with alt-ctrl-shift
+    alt-ctrl-shift-h = 'move left'
+    alt-ctrl-shift-j = 'move down'
+    alt-ctrl-shift-k = 'move up'
+    alt-ctrl-shift-l = 'move right'
+
+    alt-ctrl-shift-left = 'move left'
+    alt-ctrl-shift-down = 'move down'
+    alt-ctrl-shift-up = 'move up'
+    alt-ctrl-shift-right = 'move right'
+
 #    # Direct monitor focus (optional)
 #    alt-ctrl-h = 'focus-monitor left'
 #    alt-ctrl-l = 'focus-monitor right'
