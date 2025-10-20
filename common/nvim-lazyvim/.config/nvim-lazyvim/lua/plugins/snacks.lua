@@ -21,14 +21,15 @@ return {
         -- input window
         input = {
           keys = {
-            ["<a-d>"] = { "inspect", mode = { "n", "i" } },
-            ["<a-f>"] = { "toggle_follow", mode = { "i", "n" } },
-            ["<a-h>"] = { "toggle_hidden", mode = { "i", "n" } },
-            ["<a-i>"] = { "toggle_ignored", mode = { "i", "n" } },
-            ["<a-m>"] = { "toggle_maximize", mode = { "i", "n" } }, -- Doesn't work due to yabai wiht Colemak
-            ["<a-b>"] = { "toggle_maximize", mode = { "i", "n" } },
-            ["<a-p>"] = { "toggle_preview", mode = { "i", "n" } },
-            ["<a-w>"] = { "cycle_win", mode = { "i", "n" } },
+            -- Replace Alt with Leader (avoid Aerospace WM conflicts)
+            ["<leader>d"] = { "inspect", mode = { "n", "i" } },
+            ["<leader>f"] = { "toggle_follow", mode = { "i", "n" } },
+            ["<leader>h"] = { "toggle_hidden", mode = { "i", "n" } },
+            ["<leader>i"] = { "toggle_ignored", mode = { "i", "n" } },
+            ["<leader>m"] = { "toggle_maximize", mode = { "i", "n" } },
+            ["<leader>p"] = { "toggle_preview", mode = { "i", "n" } },
+            ["<leader>w"] = { "cycle_win", mode = { "i", "n" } },
+            ["<leader>."] = { "toggle_hidden", mode = { "i", "n" } }, -- Yazi-like
             ["<PageDown>"] = { "preview_scroll_down", mode = { "i", "n" } },
             ["<PageUp>"] = { "preview_scroll_up", mode = { "i", "n" } },
           },
