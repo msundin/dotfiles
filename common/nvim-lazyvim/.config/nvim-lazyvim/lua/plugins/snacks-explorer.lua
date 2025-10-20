@@ -35,17 +35,9 @@ return {
 
             -- Open in splits (visual mnemonics)
             ["<cr>"] = "confirm",
-            ["<c-|>"] = "vsplit",
-            ["<c-->"] = "split",
+            ["<leader>|"] = "vsplit",
+            ["<leader>-"] = "split",
             ["<c-t>"] = "tab",
-
-            -- File operations
-            a = "explorer_add",
-            d = "explorer_del",
-            r = "explorer_rename",
-            y = { "explorer_yank", mode = { "n", "x" } },
-            x = "explorer_yank", -- Cut uses yank then delete
-            p = "explorer_paste",
 
             -- View options
             ["<c-p>"] = "toggle_preview",
