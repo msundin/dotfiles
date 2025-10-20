@@ -6,6 +6,10 @@ return {
         explorer = {
           auto_close = true,
           follow = true,
+          layout = {
+            preset = "sidebar",
+            preview = true,
+          },
         },
       },
       -- Global win config applies to explorer too
