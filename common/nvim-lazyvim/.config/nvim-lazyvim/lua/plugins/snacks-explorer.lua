@@ -37,11 +37,11 @@ return {
             ["<cr>"] = "confirm",
             ["<leader>|"] = "vsplit",
             ["<leader>-"] = "split",
-            ["<c-t>"] = "tab",
+            ["<leader>t>"] = "tab",
 
             -- View options
-            ["<c-p>"] = "toggle_preview",
-            ["<c-h>"] = "toggle_hidden",
+            ["<leader>p"] = "toggle_preview",
+            ["<leader>h"] = "toggle_hidden",
 
             -- Directory navigation
             ["-"] = "explorer_up",
