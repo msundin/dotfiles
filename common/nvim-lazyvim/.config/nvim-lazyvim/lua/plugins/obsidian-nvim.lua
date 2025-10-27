@@ -41,9 +41,9 @@ return {
     -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
     completion = {
       -- Enables completion using nvim_cmp
-      nvim_cmp = true,
+      nvim_cmp = false,
       -- Enables completion using blink.cmp
-      blink = false,
+      blink = true,
       min_chars = 2,
     },
 
@@ -239,8 +239,34 @@ return {
     -- 3. "hsplit" - to open in a horizontal split if there's not already a horizontal split
     open_notes_in = "current",
 
+    -- ui = {
+    --   checkboxes = {
+    --     [" "] = { char = "󰄱", hl_group = "obsidiantodo" },
+    --     ["-"] = { char = "󰰱", hl_group = "obsidiancancelled" },
+    --     ["!"] = { char = "", hl_group = "obsidianimportant" },
+    --     [">"] = { char = "", hl_group = "obsidianrightarrow" },
+    --     ["x"] = { char = "", hl_group = "obsidiandone" },
+    --
+    --     ["/"] = { char = "", hl_group = "obsidiandone" },
+    --   },
+    --   hl_groups = {
+    --     ObsidianTodo = { bold = true, fg = "#f78c6c" },
+    --     ObsidianDone = { bold = true, fg = "#89ddff" },
+    --     ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
+    --     ObsidianTilde = { bold = true, fg = "#ff5370" },
+    --     ObsidianCancelled = { fg = "#ff5370", bold = true },
+    --     ObsidianImportant = { bold = true, fg = "#d73128" },
+    --     ObsidianBullet = { bold = true, fg = "#89ddff" },
+    --     ObsidianRefText = { underline = true, fg = "#c792ea" },
+    --     ObsidianExtLinkIcon = { fg = "#c792ea" },
+    --     ObsidianTag = { italic = true, fg = "#89ddff" },
+    --     ObsidianBlockID = { italic = true, fg = "#89ddff" },
+    --     ObsidianHighlightText = { bg = "#75662e" },
+    --   },
+    -- },
+
     checkbox = {
-      order = { " ", "x", ">", "~", "!" },
+      order = { " ", "x", "-", "/", "!", ">" },
     },
 
     -- Specify how to handle attachments.
