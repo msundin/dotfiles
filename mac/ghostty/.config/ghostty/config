@@ -71,6 +71,9 @@ font-family = "JetBrainsMono Nerd Font Mono"
 font-size = 20
 font-style = bold
 keybind = shift+enter=text:\x1b\r
+keybind = ctrl+equal=increase_font_size:1
+keybind = ctrl+minus=decrease_font_size:1
+keybind = ctrl+zero=reset_font_size
 
 # === Scrollback Navigation ===
 # Scroll with arrow keys (similar to Kitty's ctrl+shift+up/down)
