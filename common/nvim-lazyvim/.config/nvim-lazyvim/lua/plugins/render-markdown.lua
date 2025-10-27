@@ -32,7 +32,7 @@ return {
       scope_priority = nil,
     },
     checkbox = {
-      right_pad = 2,
+      right_pad = 1,
       unchecked = {
         -- Replaces '[ ]' of 'task_list_marker_unchecked'.
         icon = "󰄱 ",
@@ -72,11 +72,11 @@ return {
     require("render-markdown").setup(opts)
 
     -- Define highlight groups
-    vim.api.nvim_set_hl(0, "RenderMarkdownTodo", { fg = "#88C0D0" })
+    vim.api.nvim_set_hl(0, "RenderMarkdownTodo", { fg = "#D08F70" })
     vim.api.nvim_set_hl(0, "RenderMarkdownDone", { fg = "#A3BE8C" })
-    vim.api.nvim_set_hl(0, "RenderMarkdownImportant", { fg = "#D08F70" })
+    vim.api.nvim_set_hl(0, "RenderMarkdownImportant", { fg = "#D57780" })
     vim.api.nvim_set_hl(0, "RenderMarkdownCancelled", { fg = "#646A76" })
-    vim.api.nvim_set_hl(0, "RenderMarkdownInProgress", { fg = "#88C0D0" })
+    vim.api.nvim_set_hl(0, "RenderMarkdownInProgress", { fg = "#D08F70" })
     vim.api.nvim_set_hl(0, "RenderMarkdownPostponed", { fg = "#81A1C1" })
     vim.api.nvim_set_hl(0, "RenderMarkdownQuestion", { fg = "#B988B0" })
   end,
