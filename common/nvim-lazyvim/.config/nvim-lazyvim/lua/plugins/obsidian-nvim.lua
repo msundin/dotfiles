@@ -266,7 +266,7 @@ return {
     -- },
 
     checkbox = {
-      order = { " ", "x", "-", "/", "!", ">" },
+      order = { " ", "x", "!", "-", "/", ">", "?" },
     },
 
     -- Specify how to handle attachments.
