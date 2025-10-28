@@ -1,5 +1,6 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
+  lazy = false,
   dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.nvim" }, -- if you use the mini.nvim suite
   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.icons' },        -- if you use standalone mini plugins
   -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
@@ -13,7 +14,7 @@ return {
     bullet = {
       -- Turn on / off list bullet rendering
       enabled = true,
-      icons = { "●", "○", "◆", "◇" },
+      icons = { "", "", "◆", "◇" },
       -- Padding to add to the left of bullet point.
       -- Output is evaluated depending on the type.
       -- | function | `value(context)` |
@@ -50,20 +51,15 @@ return {
         scope_highlight = nil,
       },
       custom = {
-        -- [" "] = { char = "󰄱", hl_group = "obsidiantodo" },
-        -- ["~"] = { char = "󰰱", hl_group = "obsidiantilde" },
-        -- ["!"] = { char = "", hl_group = "obsidianimportant" },
-        -- [">"] = { char = "", hl_group = "obsidianrightarrow" },
-        -- ["x"] = { char = "", hl_group = "obsidiandone" },
         important = {
           raw = "[!]",
           rendered = " ",
           highlight = "RenderMarkdownImportant",
           scope_highlight = nil,
         },
-        cancelled = { raw = "[-]", rendered = "󰬟 ", highlight = "RenderMarkdownCancelled", scope_highlight = nil },
+        cancelled = { raw = "[~]", rendered = "󰬟 ", highlight = "RenderMarkdownCancelled", scope_highlight = nil },
         inProgress = { raw = "[/]", rendered = " ", highlight = "RenderMarkdownInProgress", scope_highlight = nil },
-        postponed = { raw = "[>]", rendered = "󰥔 ", highlight = "RenderMarkdownPostponed", scope_highlight = nil },
+        postponed = { raw = "[>]", rendered = "󰒲 ", highlight = "RenderMarkdownPostponed", scope_highlight = nil },
         question = { raw = "[?]", rendered = " ", highlight = "RenderMarkdownQuestion", scope_highlight = nil },
       },
     },
@@ -72,12 +68,13 @@ return {
     require("render-markdown").setup(opts)
 
     -- Define highlight groups
-    vim.api.nvim_set_hl(0, "RenderMarkdownTodo", { fg = "#D08F70" })
-    vim.api.nvim_set_hl(0, "RenderMarkdownDone", { fg = "#A3BE8C" })
+    vim.api.nvim_set_hl(0, "RenderMarkdownTodo", { fg = "#f78c6c" })
+    vim.api.nvim_set_hl(0, "RenderMarkdownDone", { fg = "#89ddff" })
     vim.api.nvim_set_hl(0, "RenderMarkdownImportant", { fg = "#D57780" })
     vim.api.nvim_set_hl(0, "RenderMarkdownCancelled", { fg = "#646A76" })
-    vim.api.nvim_set_hl(0, "RenderMarkdownInProgress", { fg = "#D08F70" })
+    vim.api.nvim_set_hl(0, "RenderMarkdownInProgress", { fg = "#f78c6c" })
     vim.api.nvim_set_hl(0, "RenderMarkdownPostponed", { fg = "#81A1C1" })
     vim.api.nvim_set_hl(0, "RenderMarkdownQuestion", { fg = "#B988B0" })
+    vim.api.nvim_set_hl(0, "RenderMarkdownBullet", { fg = "#89ddff" })
   end,
 }
