@@ -14,7 +14,7 @@ return {
     bullet = {
       -- Turn on / off list bullet rendering
       enabled = true,
-      icons = { "", "", "◆", "◇" },
+      icons = { "•", "", "◆", "◇" },
       -- Padding to add to the left of bullet point.
       -- Output is evaluated depending on the type.
       -- | function | `value(context)` |
