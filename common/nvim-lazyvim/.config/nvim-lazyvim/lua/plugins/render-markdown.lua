@@ -9,7 +9,7 @@ return {
   opts = {
     heading = {
       -- Turn on / off heading icon & background rendering.
-      enabled = false,
+      enabled = true,
     },
     bullet = {
       -- Turn on / off list bullet rendering
