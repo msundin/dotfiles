@@ -4,7 +4,7 @@ return {
     "rmehri01/onenord.nvim",
     opts = {
       disable = {
-        background = true, -- Disable setting the background color
+        background = false, -- Disable setting the background color
       },
     },
   },
