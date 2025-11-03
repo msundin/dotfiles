@@ -1,6 +1,6 @@
 return {
   "obsidian-nvim/obsidian.nvim",
-  version = "*", -- recommended, use latest release instead of latest commit
+  -- version = "*", -- Temporarily disabled to get fix for rename offset bug (PR #478)
   lazy = false,
 
   dependencies = {
