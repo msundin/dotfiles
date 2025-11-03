@@ -9,7 +9,11 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = "markdown",
   callback = function()
     vim.opt_local.spell = true
-    vim.opt_local.spelllang = { "en", "sv" }
+    vim.opt_local.spelllang = { "sv", "en" }
+    vim.opt_local.spellfile = {
+      vim.fn.stdpath("config") .. "/spell/sv.utf-8.add",
+      vim.fn.stdpath("config") .. "/spell/en.utf-8.add",
+    }
   end,
 })
 

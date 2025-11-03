@@ -191,27 +191,6 @@ _G.rename_tag_in_vault = function(old_tag, new_tag)
   print("Tag rename complete!")
 end
 
--- Spellcheck but only for markdown
-vim.api.nvim_create_augroup("Markdown", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-  group = "Markdown",
-  pattern = "markdown",
-  callback = function()
-    vim.opt_local.spell = true
-    vim.opt_local.spelllang = { "en", "sv" }
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  group = "Markdown",
-  pattern = "*",
-  callback = function()
-    if vim.bo.filetype ~= "markdown" then
-      vim.opt_local.spell = false
-    end
-  end,
-})
-
 -- Function to check if file is in special directory
 local function is_in_special_dir(filepath)
   local special_dir = vim.fn.expand("~/obsidian-vaults")
