@@ -237,6 +237,9 @@ alias yt='yt-dlp'
 alias l='lazygit'
 alias f='fzf'
 
+alias cf='copyfile'
+alias ch='copypath'
+
 # Obsidian
 alias ow='cd ~/obsidian-vaults/work/'
 alias op='cd ~/obsidian-vaults/personal/'
