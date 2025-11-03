@@ -330,6 +330,24 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Map Control+N to Command+N",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": { "mandatory": ["control"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "n",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ],
                 "title": "Linux-style Control Shortcuts for Copy, Paste, Cut, Undo, Redo"
