@@ -204,16 +204,28 @@ alt-ctrl-down = 'resize height -50'
     alt-shift-semicolon = 'mode service'
 
 [workspace-to-monitor-force-assignment]
-1 = 2  # Workspace 1 etc on right/second monitor
+1 = 2  # Workspace 1 etc on right/first monitor
 2 = 2
 3 = 2
 4 = 2
 5 = 2
 6 = 2
-7 = 1  # Workspace 7 on lefp/second monitor
+7 = 1  # Workspace 7 on left/second monitor
 8 = 1
 9 = 1
 0 = 3
+
+# [workspace-to-monitor-force-assignment]
+# 1 = 1  # Workspace 1 etc on top/first monitor
+# 2 = 1
+# 3 = 1
+# 4 = 1
+# 5 = 1
+# 6 = 1
+# 7 = 1
+# 8 = 1
+# 9 = 1
+# 0 = 2  # Workspace 0 on bottom/second monitor
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
