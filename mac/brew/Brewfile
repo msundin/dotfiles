@@ -3,60 +3,136 @@ tap "cmacrae/formulae"
 tap "felixkratz/formulae"
 tap "koekeishiya/formulae"
 tap "nikitabobko/tap"
+tap "supabase/tap"
+# All-in-one AI-Powered CLI Chat & Copilot
 brew "aichat"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Container runtimes on MacOS (and Linux) with minimal setup
+brew "colima"
+# GNU File, Shell, and Text utilities
 brew "coreutils"
+# Debugger for the Go programming language
 brew "delve"
+# Pack, ship and run any application as a lightweight container
+brew "docker"
+# Isolated development environments using Docker
+brew "docker-compose"
+# Modern, maintained replacement for ls
 brew "eza"
+# Like neofetch, but much faster because written mostly in C
 brew "fastfetch"
+# Simple, fast and user-friendly alternative to find
 brew "fd"
+# X11 image viewer
 brew "feh"
+# Play, record, convert, and stream audio and video
 brew "ffmpeg"
+# Create thumbnails for your video files
+brew "ffmpegthumbnailer"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
 brew "gh"
+# Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Open-source video transcoder available for Linux, Mac, and Windows
 brew "handbrake"
+# C/C++ and Java libraries for Unicode and globalization
 brew "icu4c@76"
+# Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# Simple terminal UI for git commands
 brew "lazygit"
+# Terminal file manager
 brew "lf"
+# Curses-based tool for viewing and analyzing log files
 brew "lnav"
+# Powerful, lightweight programming language
 brew "lua"
+# Package manager for the Lua programming language
 brew "luarocks"
+# Utility for directing compilation
 brew "make"
-brew "ncdu"
-brew "neovim"
-brew "node"
-brew "pkgconf"
-brew "pngpaste"
-brew "protobuf"
-brew "python@3.12"
-brew "ripgrep"
-brew "rust"
-brew "stow"
-brew "stylua"
-brew "syncthing", restart_service: :changed
-brew "tectonic"
-brew "tmux"
-brew "tree"
-brew "wget"
-brew "xclip"
-brew "yazi"
+# Feature-rich command-line audio/video downloader
 brew "yt-dlp"
+# Media player based on MPlayer and mplayer2
+brew "mpv"
+# NCurses Disk Usage
+brew "ncdu"
+# Ambitious Vim-fork focused on extensibility and agility
+brew "neovim"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Package compiler and linker metadata toolkit
+brew "pkgconf"
+# Paste PNG into files
+brew "pngpaste"
+# Protocol buffers (Google's data interchange format)
+brew "protobuf"
+# Interpreted, interactive, object-oriented programming language
+brew "python@3.12"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Safe, concurrent, practical language
+brew "rust"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
+# Opinionated Lua code formatter
+brew "stylua"
+# Open source continuous file synchronization application
+brew "syncthing", restart_service: :changed
+# Modernized, complete, self-contained TeX/LaTeX engine
+brew "tectonic"
+# Terminal multiplexer
+brew "tmux"
+# Display directories as trees (with optional color/HTML output)
+brew "tree"
+# Internet file retriever
+brew "wget"
+# Access X11 clipboards from the command-line
+brew "xclip"
+# Blazing fast terminal file manager written in Rust, based on async I/O
+brew "yazi"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
+# Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# Feature-rich syntax highlighting for Zsh
 brew "zsh-fast-syntax-highlighting"
+# Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Better and friendly vi(vim) mode plugin for ZSH
 brew "zsh-vi-mode"
+# The modern, text-based browser
 brew "browsh-org/browsh/browsh"
+# A minimal status bar for macOS.
 brew "cmacrae/formulae/spacebar"
+# A window border system for macOS
 brew "felixkratz/formulae/borders"
+# Supabase CLI
+brew "supabase/tap/supabase"
+# AeroSpace is an i3-like tiling window manager for macOS
 cask "aerospace"
+# GPU-accelerated terminal emulator
 cask "alacritty"
+# Automatic tiling window manager similar to xmonad
 cask "amethyst"
+# Tools for building Android applications
+cask "android-studio"
+# Virtual Audio Driver
 cask "blackhole-2ch"
+# OpenAI's official ChatGPT desktop app
+cask "chatgpt"
+# Anthropic's official Claude AI desktop app
+cask "claude"
+# Colemak mod for more comfortable typing (DH variant)
 cask "colemak-dh"
+# Voice and text chat software
+cask "discord"
+# Web browser
 cask "firefox"
 cask "font-awesome-terminal-fonts"
 cask "font-fira-code"
@@ -67,22 +143,55 @@ cask "font-fontawesome"
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-meslo-lg-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Free and open-source image editor
 cask "gimp"
+# Desktop automation application
 cask "hammerspoon"
+# Keyboard shortcuts for every button on your screen
+cask "homerow"
+# Convert your caps lock key or any of your modifier keys to the hyper key
 cask "hyperkey"
+# Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
+# Keyboard customiser
 cask "karabiner-elements"
+# Password manager app
 cask "keepassxc"
+# Open-source keystroke visualiser
 cask "keycastr"
+# GPU-based terminal emulator
 cask "kitty"
+# Provides updates to various Microsoft products
+cask "microsoft-auto-update"
+# Multi-platform web browser
 cask "microsoft-edge"
+# Meet, chat, call, and collaborate in just one place
+cask "microsoft-teams"
+# Desktop sync client for Nextcloud software products
 cask "nextcloud"
+# App to write, plan, collaborate, and get organised
 cask "notion"
+# Simple application that will prevent iTunes or Apple Music from launching
 cask "notunes"
+# Open-source software for live streaming and screen recording
+cask "obs"
+# Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Instant messaging application focusing on security
 cask "signal"
+# Team communication and collaboration software
+cask "slack"
+# Music streaming service
 cask "spotify"
+# Configuration application for the Ultimate Hacking Keyboard
 cask "uhk-agent"
+# Multimedia player
 cask "vlc"
+# Native desktop client for WhatsApp
+cask "whatsapp"
+# Open-source version of the X.Org X Window System
 cask "xquartz"
+# Video communication and virtual meeting platform
+cask "zoom"
